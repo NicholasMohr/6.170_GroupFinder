@@ -21,7 +21,7 @@ if (process.env.OPENSHIFT_MONGODB_DB_PASSWORD) {
 var db = monk(connection_string);
 
 var routes = require('./routes/index');
-var projects = require('./routes/projects');
+var projs = require('./routes/projects');
 var users = require('./routes/users');
 
 var app = express();
@@ -43,9 +43,10 @@ app.use(function(req,res,next){
     next();
 });
 
+app.use('/users', users);
+app.use('/projects', projs);
 app.use('/', routes);
-app.use('/projects', projects);
-app.use('/users',users);
+
 
 
 
