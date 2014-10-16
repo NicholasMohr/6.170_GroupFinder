@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body>
+    <h1><%= title %></h1>
+	<h2>You must first login</h2>
+    <form name="input" action="loginuser" method="post">
+      Username: <input type="text" name="username">
+      Password: <input type="text" name="password">
+      <input class="btn" type="submit" value="Login">
+    </form>
+		<% if (error){ %>
+			<div class= "error">The username or password is incorrect. Please try again or create a new account</div>
+		<%}%>
+    <div><a href="newuser/"> Make a new Account </a></div>
+    
+  </body>
+</html>

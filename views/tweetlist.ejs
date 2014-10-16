@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Fritter Feed</title>
+  </head>
+  <body>
+    <h1>Welcome <%= user %></h1>
+	<% if( justfollowers){ %><h2>These are the tweets you are currently following</h2>	<%}%>
+	<form> <a href="logoutuser"> Logout</a> <input class="btn" type="button" value="New Tweet" onClick="window.location.href='/newtweet'"></form>
+		
+		<% if( justfollowers){ %><form>  <input class="btn" type="button" value="All Tweets" onClick="window.location.href='/tweetlist'"></form><%} else{%>
+			<input class="btn" type="button" value="Following Tweets" onClick="window.location.href='/followerslist'"></form>
+			<%}%>
+				
+	<form name="input" action="/search" method="post">
+      <input type="text" name="query">
+      <input class="btn" type="submit" value="Search">
+    </form>
+		
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+		
+    <% for(var i = 0; i < tweetlist.length; i++){ %>
+    	<div id ='tweet'>
+    		'<%= tweetlist[i].content %>' - <%= tweetlist[i].username %>
+			
+	<span id = 'tweetbuttons'>		
+		<% if (! justfollowers && following.indexOf(tweetlist[i].username)<0){ %>
+	   <form name="follow" action="/followuser" method="post">
+       <input type="text" name="followusername" value = "<%=tweetlist[i].username %>" style="display:none"> 
+	   <input class="btn" type="submit" value="Follow"></form>
+		<%} else{%> 
+			<form name="follow" action="/unfollowuser" method="post">
+       <input type="text" name="followusername" value = "<%=tweetlist[i].username %>" style="display:none"> 
+	   <input class="btn" type="submit" value="Unfollow"></form>
+			<%}%>
+			
+		<% if (tweetlist[i].username==user ){ %>
+	   <form name="edit" action="/edittweet" method="post">
+       <input type="text" name="edittweetid" value = "<%=tweetlist[i]._id %>" style="display:none"> 
+	   <input class="btn" type="submit" value="Edit"></form>
+		   
+	   <form name="delete" action="deletetweet" method="post">
+       <input type="text" name="tweetid" value = "<%=tweetlist[i]._id %>" style="display:none">
+	   <input class="btn" type="submit" value="X"></form>	
+		
+		<%}%>
+	</span>
+				 
+    	</div>
+		
+    <%}%>
+ </body>
+</html>
+
+
+                

@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body>
+    <h1>Create a New User</h1>
+    <form name="input" action="/adduser" method="post">
+      Username: <input type="text" name="username">
+      Password: <input type="text" name="password">
+      <input class="btn" type="submit" value="Create User">
+    </form>
+	  <% if (error){ %>
+			<div class= "error">The username already exists. Please try again.</div>
+		<%}%>
+  </body>
+</html>
