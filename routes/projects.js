@@ -56,16 +56,16 @@ router.get('/:project_name/users/filter', function(req, res) {
 				// for grade, interaction, dedication, and timing the score is 1 minus the difference 
 				// times the user-inputed weight
 				if(currentUser.grade){
-					score+=score+ (1-Math.abs(currentUser.grade-user.grade))*grade)
+					score+=score+ (1-Math.abs(currentUser.grade-user.grade))*grade;
 				}
 				if(currentUser.interaction){
-					score+=(1-Math.abs(currentUser.interaction-user.interaction))*interaction);
+					score+=(1-Math.abs(currentUser.interaction-user.interaction))*interaction;
 				}
 				if(currentUser.dedication){
-					score+= (1-Math.abs(currentUser.dedication-user.dedication))*dedication);
+					score+= (1-Math.abs(currentUser.dedication-user.dedication))*dedication;
 				}
 				if(currentUser.timing){
-					score+=(1-Math.abs(currentUser.timing-user.timing))*timing);
+					score+=(1-Math.abs(currentUser.timing-user.timing))*timing;
 				}
 				// number of matched requested skills divided by the total number of requested skills
 				// times the user-inputted weight
