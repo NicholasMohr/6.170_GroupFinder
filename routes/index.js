@@ -10,6 +10,17 @@ router.get('/', function(req, res) {
 	
 });
 
+router.post('/login', function(req, res) {
+    //TODO: login user
+});
+
+router.post('/logout', function(req, res) {
+    //TODO: logout user
+});
+
+router.post('/signup', function(req, res) {
+    //TODO: sign in and create new user
+});
 
 
 module.exports = router;
