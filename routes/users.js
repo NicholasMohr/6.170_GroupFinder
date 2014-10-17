@@ -13,7 +13,6 @@ router.get('/', function(req, res) {
 
 router.get('/:username', function(req, res) {
   	// TODO: return user with specified username
-	//req.param('user_id')
 });
 
 router.get('/:username/projects', function(req, res) {
