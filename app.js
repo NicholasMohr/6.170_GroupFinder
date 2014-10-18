@@ -1,16 +1,21 @@
+// node package dependencies
 var express = require('express');
+var session = require('express-session')
 var path = require('path');
-var favicon = require('static-favicon');
+var mongo = require('mongodb');
 var logger = require('morgan');
+var favicon = require('static-favicon');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
+var passport = require('passport')
+var flash = require('connect-flash');
 
-// New Code
 var mongo = require('mongodb');
-var monk = require('monk');
+var mongoose = require('mongoose');
 
-var connection_string = 'localhost:27017/nodetest1';
+var connection_string = 'localhost/groupfinder';
 
+// openshift dependencies
 if (process.env.OPENSHIFT_MONGODB_DB_PASSWORD) {
   connection_string = process.env.OPENSHIFT_MONGODB_DB_USERNAME + ':' +
         process.env.OPENSHIFT_MONGODB_DB_PASSWORD + '@' +
@@ -18,26 +23,43 @@ if (process.env.OPENSHIFT_MONGODB_DB_PASSWORD) {
         process.env.OPENSHIFT_MONGODB_DB_PORT + '/project3';
 }
 
-var db = monk(connection_string);
+// instantiate db
+mongoose.connect('mongodb://' + connection_string);
+var db = mongoose.connection;
+db.on('error', console.error.bind(console, 'connection error:'));
+db.once('open', function callback() {})
 
+// pass passport for configuration
+require('./config/passport')(passport);
+
+// instantiate routes
 var routes = require('./routes/index');
 var projs = require('./routes/projects');
 var users = require('./routes/users');
 
-var app = express();
+/**
+----- MIDDLEWARE -----
+**/
 
-// view engine setup
+var app = express();
+app.listen(8080);
+
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 
 app.use(favicon());
 app.use(logger('dev'));
+app.use(bodyParser());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded());
 app.use(cookieParser());
+app.use(session({ secret: 'keyboard cat' }));
+app.use(flash());
+app.use(passport.initialize());
+app.use(passport.session());
 app.use(express.static(path.join(__dirname, 'public')));
 
-// Make our db accessible to our router
+// make db accessible to router/requests
 app.use(function(req,res,next){
     req.db = db;
     next();
@@ -47,9 +69,6 @@ app.use('/users', users);
 app.use('/projects', projs);
 app.use('/', routes);
 
-
-
-
 /// catch 404 and forwarding to error handler
 app.use(function(req, res, next) {
     var err = new Error('Not Found');
@@ -57,10 +76,11 @@ app.use(function(req, res, next) {
     next(err);
 });
 
-/// error handlers
+/**
+----- ERROR HANDLERS -----
+**/
 
-// development error handler
-// will print stacktrace
+// development error handler: will print stacktrace
 if (app.get('env') === 'development') {
     app.use(function(err, req, res, next) {
         res.status(err.status || 500);
@@ -71,8 +91,7 @@ if (app.get('env') === 'development') {
     });
 }
 
-// production error handler
-// no stacktraces leaked to user
+// production error handler: no stacktraces leaked to user
 app.use(function(err, req, res, next) {
     res.status(err.status || 500);
     res.render('error', {

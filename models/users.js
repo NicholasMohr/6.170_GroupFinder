@@ -9,7 +9,7 @@ var user_schema = mongoose.Schema({
 	projects: [{ type: String, ref: "Projects"}],
 	info: {
 		location: String,
-		availibility: [String],
+		availability: [String],
 		skills: [String],
 		workstyle : {
 			grade: Number,
@@ -17,10 +17,9 @@ var user_schema = mongoose.Schema({
 			dedication: Number,
 			timing: Number
 		}
-	},
+	}
+});
 
 var User = mongoose.model('User', user_schema);
 
 module.exports = User;
-
-Yeah it's like three separate clicks
