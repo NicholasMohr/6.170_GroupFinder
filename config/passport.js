@@ -15,20 +15,23 @@ module.exports = function(passport) {
     });
 
  	passport.use('local-signup', new LocalStrategy({
-        usernameField : 'email',
+        usernameField : 'username',
         passwordField : 'password',
         passReqToCallback : true
-    }, function(req, email, password, done) {
+    }, function(req, username, password, done) {
         process.nextTick(function() {
-            User.findOne({ 'local.email' :  email }, function(err, user) {
+            User.findOne({ 'authentication.username' :  username }, function(err, user) {
                 if (err)
                     return done(err);
                 if (user) {
+                    console.log("That email is already taken.");
                     return done(null, false, { message: 'That email is already taken.' });
                 } else {
                     var new_user = new User();
-                    new_user.local.email    = email;
-                    new_user.local.password = password;
+                    new_user.authentication.name = req.body.name;
+                    new_user.authentication.username = username;
+                    new_user.set_password(password);
+                    console.log(new_user.authentication.password);
                     new_user.save(function(err) {
                         if (err)
                             throw err;
@@ -40,19 +43,22 @@ module.exports = function(passport) {
     }));
 
     passport.use('local-login', new LocalStrategy({
-        usernameField : 'email',
+        usernameField : 'username',
         passwordField : 'password',
         passReqToCallback : true
     },
-    function(req, email, password, done) {
-        User.findOne({ 'local.email' :  email }, function(err, user) {
+    function(req, username, password, done) {
+        User.findOne({ 'authentication.username' :  username }, function(err, user) {
             if (err) { return done(err); }
             if (!user) {
+                console.log("Incorrect Username.");
                 return done(null, false, { message: 'Incorrect Username.' });
             }
-            if (!user.validPassword(password)) {
+            if (!user.valid_password(password)) {
+                console.log("Incorrect Password.");
                 return done(null, false, { message: 'Incorrect Password.' });
             }
+            console.log("should have been success")
             return done(null, user);
         });
     }));

@@ -15,20 +15,48 @@ router.get('/login', function(req, res) {
 	
 });
 
-router.post('/login',passport.authenticate('local-login', {
-	successRedirect: '/',
+router.get('/user/:username', function(req, res) {
+	if (req.user == null) {
+		res.redirect('/');
+	} else if (req.params.username != req.user.authentication.username) {
+		res.redirect('/user/' + req.user.authentication.username)
+	} else {
+		res.json(req.user);
+	}
+})
+
+router.get('/user/:username/projects', function(req, res) {
+	if (req.user == null) {
+		res.redirect('/');
+	} else if (req.params.username != req.user.authentication.username) {
+		res.redirect('/user/' + req.user.authentication.username + '/projects')
+	} else {
+		res.json(req.user.projects);
+	}
+})
+
+router.post('/login', passport.authenticate('local-login', {
 	failureRedirect: '/login',
 	failureFlash: true 
-}));
+}), function(req, res) { // if successful
+    res.redirect('/user/' + req.user.authentication.username);
+});
 
-router.post('/logout', function(req, res) {
-    //TODO: logout user
+router.get('/logout', function(req, res) {
+    req.logout();
+  	res.redirect('/');
+});
+
+router.get('/signup', function(req, res) {
+    res.render('signup', { title: 'Login'});
+	
 });
 
 router.post('/signup', passport.authenticate('local-signup', {
-	successRedirect : '/',
 	failureRedirect : '/signup',
 	failureFlash : true 
-}));
+}), function (req,res) {
+	res.redirect('/user/' + req.user.authentication.username);
+});
 
 module.exports = router;
