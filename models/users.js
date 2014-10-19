@@ -6,7 +6,7 @@ var user_schema = mongoose.Schema({
 		username: String,
 		password: String
 	},
-	projects: [{ type: String, ref: "Projects"}],
+	projects: [{ type: String, ref: "Project"}],
 	info: {
 		location: String,
 		availability: [String],
