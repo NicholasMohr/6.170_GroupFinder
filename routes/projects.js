@@ -4,8 +4,8 @@ var router = express.Router();
 router.get('/', function(req, res) {
   	//TODO: RETURN LIST OF PROJECTS
   	//still hasn't been done!
-  	data.Project.find().exec(function(e,projects){
-  		return projects;
+  	data.Project.find({}).exec(function(e,projects){
+  		res.json(projects);
   	})
   	//res.render('index', { title: 'Project Request'});
 });
@@ -18,7 +18,7 @@ router.post('/', function(req, res) {
 	})
 	newProject.save(function(err){
 		if(err){
-			return err
+			res.send(err);
 		}
 	})
   	//TODO: Add a new project
@@ -26,7 +26,7 @@ router.post('/', function(req, res) {
 
 router.get('/:project_name/users', function(req, res) {
   	data.Project.find({"name" : req.params.project_name}).populate('users').exec(function(err, docs){
-  		return docs[0].users;
+  		res.json(docs[0].users);
   	});
 });
 
@@ -104,10 +104,10 @@ router.get('/:project_name/users/filter', function(req, res) {
 
 router.post('/:project_name/users', function(req, res) {
   	//TODO: Add a user to the project
-  	if(req.session.user){
+  	if(req.user){
   		data.Project.find({"name" : req.params.project_name}).exec(function(err, docs){
   			data.Project.update({username: req.session.user},{$addToSet: {"users": {_id: req.session.user}}}).exec(function(e,docs){
-  				return true;
+  				res.send('worked!');
   			});
   		});
   	}
@@ -119,18 +119,18 @@ router.post('/:project_name/users', function(req, res) {
 router.delete('/:project_name/users', function(req, res) {
   	//TODO: delete the logged in user from the project
 
-  	if(req.session.user){
+  	if(req.user){
   		data.Project.find({"name" : req.params.project_name}).populate('users').exec(function(err, docs){
   			docs.users.remove(req.session.user)
   			user.save(function(){
-  				return true;
+  				res.send('worked!');
   			})
   		});
   	}
 });
 
 router.delete('/:project_name', function(req, res) {
-  	if(req.session.user){
+  	if(req.user){
   		data.Project.remove({name:req.params.project_name});
   	}
 });
