@@ -27,11 +27,25 @@ module.exports = function(passport) {
                     console.log("That email is already taken.");
                     return done(null, false, { message: 'That email is already taken.' });
                 } else {
-                    var new_user = new User();
-                    new_user.authentication.name = req.body.name;
-                    new_user.authentication.username = username;
+                    var new_user = new User({
+                        authentication: {
+                            name: req.param('name', ''),
+                            username: username,
+                        },
+                        projects: [],
+                        info: {
+                            location: '',
+                            availability: [],
+                            skills: [],
+                            workstyle : {
+                                grade: -1,
+                                interaction: -1,
+                                dedication: -1,
+                                timing: -1
+                            }
+                        }
+                    });
                     new_user.set_password(password);
-                    console.log(new_user.authentication.password);
                     new_user.save(function(err) {
                         if (err)
                             throw err;

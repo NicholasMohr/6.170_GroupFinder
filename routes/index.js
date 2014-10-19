@@ -10,11 +10,6 @@ router.get('/', function(req, res) {
 	
 });
 
-router.get('/login', function(req, res) {
-    res.render('login', { title: 'Login'});
-	
-});
-
 router.get('/user/:username', function(req, res) {
 	if (req.user == null) {
 		res.redirect('/');
@@ -31,12 +26,16 @@ router.get('/user/:username/projects', function(req, res) {
 	} else if (req.params.username != req.user.authentication.username) {
 		res.redirect('/user/' + req.user.authentication.username + '/projects')
 	} else {
-		res.json(req.user.projects);
+		var projects = req.Project;
+		var users = req.User;
+		users.findOne({'_id': req.user._id}).populate("projects").exec({}, function (err, user) {
+			res.json(user.projects)
+		});
 	}
 })
 
-router.post('/login', passport.authenticate('local-login', {
-	failureRedirect: '/login',
+router.get('/login', passport.authenticate('local-login', {
+	failureRedirect: '/',
 	failureFlash: true 
 }), function(req, res) { // if successful
     res.redirect('/user/' + req.user.authentication.username);
@@ -47,13 +46,8 @@ router.get('/logout', function(req, res) {
   	res.redirect('/');
 });
 
-router.get('/signup', function(req, res) {
-    res.render('signup', { title: 'Login'});
-	
-});
-
-router.post('/signup', passport.authenticate('local-signup', {
-	failureRedirect : '/signup',
+router.get('/signup', passport.authenticate('local-signup', {
+	failureRedirect : '/',
 	failureFlash : true 
 }), function (req,res) {
 	res.redirect('/user/' + req.user.authentication.username);
