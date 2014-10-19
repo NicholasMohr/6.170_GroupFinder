@@ -41,16 +41,13 @@ router.get('/:project_name/users/filter', function(req, res) {
 	var timing=req.param('timing')?req.param('timing') :1;	
 	var skills=req.param('skills')?req.param('skills') :1;
 	var skillset=req.param('skillset')?req.param('skillset') :[];		
-	var db = req.db;
-	var users = db.get('usercollection');
-	var projects = db.get('projectcollection');	
-	projects.find({name:name},function(err,doc){	
+	data.Project.find({name:name}).exec(function(err,doc){	
 		//THROW PROJECT NOT FOUND ERROR
 		if(err || doc.length==0){   
             res.send("That project could not be found");
 		}
 		var usernames=doc[0].users;
-		users.find({name:{$in: usernames}}, function(errs,docs){
+		data.User.find({name:{$in: usernames}}, function(errs,docs){
 			//THROW USER NOT FOUND ERROR
 			if(errs || docs.length==0){   
             	res.send("The project could not find any users");
@@ -95,7 +92,7 @@ router.get('/:project_name/users/filter', function(req, res) {
 				user.score=score;
 			});
 			// return users sorted by ascending scores
-			return users.sort(function(a, b) {return a.score - b.score;});
+			res.json(users.sort(function(a, b) {return a.score - b.score;}));
 		});
 	});
 	
