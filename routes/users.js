@@ -9,39 +9,26 @@ router.get('/', function(req, res) {
 });
 
 router.get('/:username', function(req, res) {
-	if (req.user == null) {
-		//TODO: FIX SO authorization info isn't returned
-		res.redirect('/');
-	} else if (req.params.username != req.user.authentication.username) {
-		res.redirect('/user/' + req.user.authentication.username)
-	} else {
-		User.findOne({'_id': req.user._id}).populate("projects.proj_id").exec({}, function (err, user) {
-			if(err){
-				utils.sendErrResponse(res, 500, 'An unexpected error occured.');
-			}
-			else{
-				res.json(user);
-			}
-			
-		});
-	}
+	User.findOne({'authentication.username': req.params.username}).populate("projects.proj_id").exec({}, function (err, user) {
+		if(err){
+			utils.sendErrResponse(res, 500, 'An unexpected error occured.');
+		}
+		else{
+			res.json(user.info);
+		}
+		
+	});
 })
 
 router.get('/:username/projects', function(req, res) {
-	if (req.user == null) {
-		res.redirect('/');
-	} else if (req.params.username != req.user.authentication.username) {
-		res.redirect('/user/' + req.user.authentication.username + '/projects')
-	} else {
-		User.findOne({'_id': req.user._id}).populate("projects.proj_id").exec({}, function (err, user) {
-			if(err){
-			utils.sendErrResponse(res, 500, 'An unexpected error occured.');
-			}
-			else{
-				res.json(user.projects);
-			}
-		});
-	}
+	User.findOne({'authentication.username': req.params.username}).populate("projects.proj_id").exec({}, function (err, user) {
+		if(err){
+		utils.sendErrResponse(res, 500, 'An unexpected error occured.');
+		}
+		else{
+			res.json(user.projects);
+		}
+	});
 });
 
 /**
@@ -51,12 +38,10 @@ Users can update:
 router.put('/', function (req,res) {
 	
 	var password=req.user.authentication.password;
-	console.log(password);
 	if (req.body.password) {password=req.body.password;} 
 	
 	info = req.user.info;
 	if (req.body.name) { info.name = req.body.name; }
-	console.log(info.name);
 	if (req.body.email) { info.email = req.body.email; }
 	if (req.body.phone) { info.phone = req.body.phone; }
 	if (req.body.location) { info.location = req.body.location; }
@@ -69,7 +54,7 @@ router.put('/', function (req,res) {
 	}, function (err) {
 		
 			if(err){utils.sendErrResponse(res, 500, 'An unexpected error occured. Could not update information');}
-		else{console.log(req.user);res.json(req.user);}
+		else{res.json(req.user);}
 	});
 
 	
@@ -83,7 +68,7 @@ router.delete('/', function(req, res) {
 				 utils.sendErrResponse(res, 500, 'An unexpected error occurred. We could not add the user to the project.');
 			}
 			else{
-				utils.sendErrResponse(res, 200, 'Sucessfully removed user');
+				utils.sendSuccessResponse(res, 'Sucessfully removed user from project');
 			}
   		});
   	}
