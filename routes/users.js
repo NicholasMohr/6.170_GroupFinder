@@ -2,6 +2,7 @@ var express = require('express');
 var router = express.Router();
 var User = require('../models/users');
 var Project = require('../models/projects');
+var utils = require('../utils/utils');
 
 router.get('/', function(req, res) {
   	res.render('index', { title: 'User Request'});
@@ -70,6 +71,22 @@ router.post('/', function (req,res) {
 	});
 	
 	res.json(req.user);
+});
+
+router.delete('/', function(req, res) {
+  	if(req.user){
+  		User.remove({_id:req.user._id},function(e,docs){
+			if(e){
+				 utils.sendErrResponse(res, 500, 'An unexpected error occurred. We could not add the user to the project.');
+			}
+			else{
+				utils.sendErrResponse(res, 200, 'Sucessfully removed user');
+			}
+  		});
+  	}
+  	else{
+		utils.sendErrResponse(res, 401, 'You must first login as a user');
+  	}
 });
 
 module.exports = router;
