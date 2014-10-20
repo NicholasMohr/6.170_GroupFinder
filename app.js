@@ -61,9 +61,14 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 // make db accessible to router/requests
 app.use(function(req,res,next){
-    req.db = db;
+    //req.db = db;
     next();
 });
+
+var port= process.env.OPENSHIFT_NODEJS_PORT;
+var ip= process.env.OPENSHIFT_NODEJS_IP;
+
+app.listen(port || 3000, ip)
 
 app.use('/users', users);
 app.use('/projects', projs);
