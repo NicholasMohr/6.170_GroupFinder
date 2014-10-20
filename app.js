@@ -13,7 +13,7 @@ var flash = require('connect-flash');
 var mongo = require('mongodb');
 var mongoose = require('mongoose');
 
-var connection_string = 'localhost:27017/nodetest1';
+var connection_string = 'localhost/groupfinder';
 
 // openshift dependencies
 if (process.env.OPENSHIFT_MONGODB_DB_PASSWORD) {
@@ -25,9 +25,6 @@ if (process.env.OPENSHIFT_MONGODB_DB_PASSWORD) {
 
 // instantiate db
 mongoose.connect('mongodb://' + connection_string);
-//var db = mongoose.connection;
-//db.on('error', console.error.bind(console, 'connection error:'));
-//db.once('open', function callback() {})
 
 // pass passport for configuration
 require('./config/passport')(passport);
@@ -61,7 +58,6 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 // make db accessible to router/requests
 app.use(function(req,res,next){
-    //req.db = db;
     next();
 });
 
