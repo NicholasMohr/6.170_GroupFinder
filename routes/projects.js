@@ -1,20 +1,22 @@
 var express = require('express');
 var router = express.Router();
+var Project = require('../models/projects');
+
 
 router.get('/', function(req, res) {
   	//TODO: RETURN LIST OF PROJECTS
-  	//still hasn't been done!
-  	data.Project.find({}).exec(function(e,projects){
+  	Project.find({}).exec(function(e,projects){
   		res.json(projects);
   	})
   	//res.render('index', { title: 'Project Request'});
 });
 
 router.post('/', function(req, res) {
-	var newProject = new data.Project({
-	  name: req.body.text,
-	  end_date: req.body.date,//should be some nice date representation
-	  users: []
+
+	//TODO: make sure there is not already a project
+	var newProject = new Project({
+	  name: req.param('name', '')
+	  //end_date: req.param('end_date', '')//should be some nice date representation
 	})
 	newProject.save(function(err){
 		if(err){
@@ -25,9 +27,10 @@ router.post('/', function(req, res) {
 }); 
 
 router.get('/:project_name/users', function(req, res) {
-  	data.Project.find({"name" : req.params.project_name}).populate('users').exec(function(err, docs){
-  		res.json(docs[0].users);
-  	});
+  	/*Project.findOne({"name" : req.params.project_name}).populate('users').exec(function(err, docs){
+  		res.json(docs.users);
+  	});*/
+	//failuresause
 });
 
 router.get('/:project_name/users/filter', function(req, res) {
@@ -106,13 +109,15 @@ router.get('/:project_name/users/filter', function(req, res) {
 router.post('/:project_name/users', function(req, res) {
   	//TODO: Add a user to the project
   	if(req.user){
-  		data.Project.find({"name" : req.params.project_name}).exec(function(err, docs){
-  			data.Project.update({_id: req.user._id},{$addToSet: {"users": {_id: req.user._id}}}).exec(function(e,docs){
-  				res.send('worked!');
-  			});
-  		});
+  		console.log('user is a thing');
+  		console.log(req.user._id);
+		Project.update({"name": req.params.project_name},{$addToSet: {"users": {_id: req.user._id}}}).exec(function(e,docs){
+			console.log('worked!!');
+		});
   	}
-
+  	else{
+  		res.send('no session, make sure you\'re logged in!');
+  	}
   	
 
 });
@@ -121,18 +126,24 @@ router.delete('/:project_name/users', function(req, res) {
   	//TODO: delete the logged in user from the project
 
   	if(req.user){
-  		data.Project.find({"name" : req.params.project_name}).populate('users').exec(function(err, docs){
+  		Project.find({"name" : req.params.project_name}).populate('users').exec(function(err, docs){
   			docs.users.remove(req.user._id)
   			user.save(function(){
-  				res.send('worked!');
+  				console.log('worked!!');
   			})
   		});
+  	}
+  	else{
+  		res.send('no session, make sure you\'re logged in!');
   	}
 });
 
 router.delete('/:project_name', function(req, res) {
   	if(req.user){
-  		data.Project.remove({name:req.params.project_name});
+  		Project.remove({name:req.params.project_name});
+  	}
+  	else{
+  		res.send('no session, make sure you\'re logged in!');
   	}
 });
 module.exports = router;
