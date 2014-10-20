@@ -142,9 +142,9 @@ router.put('/:project_name/users', function(req, res) {
 						user.projects.find({"proj_id": docs._id},function(e, projects){
 							if(projects.length === 0){
 								var newProject = {
-								  proj_id : docs._id
-								  desired_grade : req.body.desired_grade
-								  dedication : req.body.dedication
+								  proj_id : docs._id,
+								  desired_grade : req.body.desired_grade,
+								  dedication : req.body.dedication,
 								  interaction :  req.body.interaction
 								}
 								User.update({"_id": req.user._id},{$push: {"projects": newProject}},function(e,docs){
@@ -162,9 +162,9 @@ router.put('/:project_name/users', function(req, res) {
 					else{
 						//user.projects has not been intialized
 						var newProject = {
-						  proj_id : docs._id
-						  desired_grade : req.body.desired_grade
-						  dedication : req.body.dedication
+						  proj_id : docs._id,
+						  desired_grade : req.body.desired_grade,
+						  dedication : req.body.dedication,
 						  interaction :  req.body.interaction
 						}
 						User.update({"_id": req.user._id},{$push: {"projects": newProject}},function(e,docs){
