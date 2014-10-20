@@ -32,20 +32,20 @@ $.ajax({
 $.ajax({
             url: '/users',
             type: 'PUT',
-            data: { 'location': 'place2', 'availability': ['M10','W15'], 'grade': 1, 'skills':['fun']
+            data: { 'location': 'place2', 'availability': ['M10','W15'], 'skills':['fun']
             },
 			success: function(user){
 				if(user.info.location!='place2'){passes=false};
 				if(user.info.skills.length!=1){passes=false};
 				if(user.info.availability.length!=2){passes=false};
-				//if(user.projects[0].grade!=1){passes=false};
 				// Add mySampleUser1 to sample
 				
 $.ajax({
             url: '/projects/sample/users',
             type: 'PUT',
+			data: { 'desired_grade': 1, 'dedication':1, 'interaction':1},
 			success: function(result){
-				if(result!=1){passes=false}
+				if(!result.success){passes=false}
 				// logout mySampleUser 1		
 $.ajax({
             url: '/logout',
@@ -76,18 +76,19 @@ $.ajax({
 $.ajax({
             url: '/users',
             type: 'PUT',
-            data: { 'location': 'place2', 'availability': ['M11','W15'], 'grade': .9
+            data: { 'location': 'place2', 'availability': ['M11','W15']
             },
 			success: function(user){
 				if(user.info.location!='place2'){passes=false};
 				if(user.info.availability.length!=2){passes=false};
-				//if(user.projects[0].grade!=.9){passes=false};
+		
 				// Add mySampleUser2 to sample
 $.ajax({
             url: '/projects/sample/users',
             type: 'PUT',
+			data: { 'desired_grade': .9, 'dedication':.1, 'interaction':1},
 			success:function(result){
-				if(result!=1){passes=false}
+				if(!result.success){passes=false}
 			// logout mySampleUser 2		
 $.ajax({
             url: '/logout',
@@ -117,7 +118,7 @@ $.ajax({
 $.ajax({
             url: '/users',
             type: 'PUT',
-            data: { 'location': 'place1', 'availability': ['M10','W15'], 'grade': 1
+            data: { 'location': 'place1', 'availability': ['M10','W15']
             },
 			success: function(user){
 				if(user.info.location!='place1'){passes=false};
@@ -127,7 +128,9 @@ $.ajax({
 $.ajax({
             url: '/projects/sample/users',
             type: 'PUT',
-			success: function(){
+			data: { 'desired_grade': 1, 'dedication':1, 'interaction':1},
+			success: function(result){
+				if(!result.success){passes=false}
 				// get list of mySampleUsers		
 $.ajax({
             url: '/projects/sample/users',

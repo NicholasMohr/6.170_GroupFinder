@@ -9,7 +9,6 @@ router.get('/', function(req, res) {
 });
 
 router.get('/:username', function(req, res) {
-	console.log(req.params.username);
 	User.findOne({'authentication.username': req.params.username}, function (err, user) {
 		if(err){
 			utils.sendErrResponse(res, 500, 'An unexpected error occured.');

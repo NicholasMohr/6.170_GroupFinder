@@ -22,8 +22,7 @@ router.post('/', function(req, res) {
 	})
 	newProject.save(function(err){
 		if(err){
-			utils.sendErrResponse(res, 404, 'The project could not be created');
-			res.send(err);
+			utils.sendErrResponse(res, 500, 'An unexpected error occured.');
 		}
 		else{
 			res.json(newProject);
@@ -90,9 +89,7 @@ router.get('/:project_name/users/filter', function(req, res) {
 									score+=(result.length*availability)/currentUser.info.availibility.length
 								}
 								
-								if(currentUser.info.grade){
-									score+=score+ (1-Math.abs(currentUser.info.grade-user.info.grade))*grade;
-								}
+							
 								
 								// number of matched requested skills divided by the total number of requested skills
 								// times the user-inputted weight
@@ -106,6 +103,9 @@ router.get('/:project_name/users/filter', function(req, res) {
 								var userProject=user.projects.filter(function(e){ return e.proj_id == projectID; });
 								// for grade, interaction, dedication, and timing the score is 1 minus the difference 
 								// times the user-inputed weight
+								if(currentUserProject.desired_grade){
+									score+=score+ (1-Math.abs(currentUserProject.desired_grade-userProject.desired_grade))*grade;
+								}
 								if(currentUserProject.interaction){
 									score+=(1-Math.abs(currentUserProject.interaction-userProject.interaction))*interaction;
 								}
@@ -118,7 +118,7 @@ router.get('/:project_name/users/filter', function(req, res) {
 								// add to list of users
 								users.push({'user':user, 'score':score});
 							});
-							console.log(users.sort(function(a, b) {return a.score > b.score;}).reverse());
+						
 							// return users sorted by descending scores
 							res.json(users.sort(function(a, b) {return a.score > b.score;}).reverse());
 						}
@@ -136,9 +136,30 @@ router.put('/:project_name/users', function(req, res) {
 			if(e){
 				 utils.sendErrResponse(res, 500, 'An unexpected error occurred. We could not add the user to the project.');
 			}
-			res.json(docs);
 			//TODO: add project name to user's project list
-			
+			Project.findOne({"name": req.params.project_name},function(err,docs){
+				User.find({"_id": req.user._id,"projects.proj_id": docs._id}, function(e,projects){
+					if(projects.length === 0){
+						var newProject = {
+						  proj_id : docs._id,
+						  desired_grade : req.body.desired_grade,
+						  dedication : req.body.dedication,
+						  interaction :  req.body.interaction
+						}
+						User.update({"_id": req.user._id},{$push: {"projects": newProject}},function(e,docs){
+							utils.sendSuccessResponse(res, 'Sucessfully added user to project');
+
+						});
+					}
+					else{
+						utils.sendErrResponse(res, 409, 'That project is already in your projects');
+
+					}
+				});
+				
+				
+
+			});
 		});
   	}
   	else{
