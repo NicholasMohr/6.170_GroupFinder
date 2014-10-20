@@ -135,32 +135,8 @@ router.put('/:project_name/users', function(req, res) {
 			}
 			//TODO: add project name to user's project list
 			Project.findOne({"name": req.params.project_name},function(err,docs){
-				User.find({"_id": req.user._id},function(e,user){
-
-					if (user.projects){
-						//user.projects has been initialized
-						user.projects.find({"proj_id": docs._id},function(e, projects){
-							if(projects.length === 0){
-								var newProject = {
-								  proj_id : docs._id,
-								  desired_grade : req.body.desired_grade,
-								  dedication : req.body.dedication,
-								  interaction :  req.body.interaction
-								}
-								User.update({"_id": req.user._id},{$push: {"projects": newProject}},function(e,docs){
-									utils.sendErrResponse(res, 200, 'Sucessfully added user to project');
-
-								})
-							}
-							else{
-								//this should be more descriptive
-								utils.sendErrResponse(res, 500, 'An unexpected error occurred. We could not add the user to the project.');
-
-							}
-						});
-					}
-					else{
-						//user.projects has not been intialized
+				User.find({"_id": req.user._id,"projects.proj_id": docs._id}, function(e,projects){
+					if(projects.length === 0){
 						var newProject = {
 						  proj_id : docs._id,
 						  desired_grade : req.body.desired_grade,
@@ -170,7 +146,13 @@ router.put('/:project_name/users', function(req, res) {
 						User.update({"_id": req.user._id},{$push: {"projects": newProject}},function(e,docs){
 							utils.sendErrResponse(res, 200, 'Sucessfully added user to project');
 
-						})
+						});
+					}
+					else{
+						//this should be more descriptive
+						console.log(projects);
+						utils.sendErrResponse(res, 409, 'That project is already in your projects');
+
 					}
 				});
 				
