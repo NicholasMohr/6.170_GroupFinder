@@ -20,17 +20,14 @@ if (process.env.OPENSHIFT_MONGODB_DB_PASSWORD) {
   connection_string = process.env.OPENSHIFT_MONGODB_DB_USERNAME + ':' +
         process.env.OPENSHIFT_MONGODB_DB_PASSWORD + '@' +
         process.env.OPENSHIFT_MONGODB_DB_HOST + ':' +
-        process.env.OPENSHIFT_MONGODB_DB_PORT + '/' +
-        process.env.OPENSHIFT_APP_NAME;
+        process.env.OPENSHIFT_MONGODB_DB_PORT + '/project3';
 }
-var port= process.env.OPENSHIFT_NODEJS_PORT;
-var ip= process.env.OPENSHIFT_NODEJS_IP;
-
-app.listen(port || 3000, ip)
 
 // instantiate db
 mongoose.connect('mongodb://' + connection_string);
-
+//var db = mongoose.connection;
+//db.on('error', console.error.bind(console, 'connection error:'));
+//db.once('open', function callback() {})
 
 // pass passport for configuration
 require('./config/passport')(passport);
@@ -68,7 +65,10 @@ app.use(function(req,res,next){
     next();
 });
 
+var port= process.env.OPENSHIFT_NODEJS_PORT;
+var ip= process.env.OPENSHIFT_NODEJS_IP;
 
+app.listen(port || 3000, ip)
 
 app.use('/users', users);
 app.use('/projects', projs);
