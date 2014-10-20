@@ -3,7 +3,6 @@ var router = express.Router();
 
 router.get('/', function(req, res) {
   	//TODO: RETURN LIST OF PROJECTS
-  	//still hasn't been done!
   	data.Project.find({}).exec(function(e,projects){
   		res.json(projects);
   	})
@@ -11,10 +10,11 @@ router.get('/', function(req, res) {
 });
 
 router.post('/', function(req, res) {
+
+	//TODO: make sure there is not already a project
 	var newProject = new data.Project({
-	  name: req.body.text,
-	  end_date: req.body.date,//should be some nice date representation
-	  users: []
+	  name: req.param('name', ''),
+	  end_date: req.param('end_date', ''),//should be some nice date representation
 	})
 	newProject.save(function(err){
 		if(err){
@@ -112,7 +112,9 @@ router.post('/:project_name/users', function(req, res) {
   			});
   		});
   	}
-
+  	else{
+  		res.send('no session, make sure you\'re logged in!');
+  	}
   	
 
 });
@@ -128,11 +130,17 @@ router.delete('/:project_name/users', function(req, res) {
   			})
   		});
   	}
+  	else{
+  		res.send('no session, make sure you\'re logged in!');
+  	}
 });
 
 router.delete('/:project_name', function(req, res) {
   	if(req.user){
   		data.Project.remove({name:req.params.project_name});
+  	}
+  	else{
+  		res.send('no session, make sure you\'re logged in!');
   	}
 });
 module.exports = router;
