@@ -7,6 +7,7 @@ var utils = require('../utils/utils');
 router.get('/', function(req, res) {
   	//TODO: RETURN LIST OF PROJECTS
   	Project.find({},function(e,projects){
+		//TODO: THROW HTTP ERROR if e
 		console.log(projects[0].name);
   		res.json(projects);
   	});
@@ -21,6 +22,7 @@ router.post('/', function(req, res) {
 	})
 	newProject.save(function(err){
 		if(err){
+			//TODO: THROW HTTP ERROR
 			res.send(err);
 		}
 		else{
@@ -40,7 +42,7 @@ router.get('/:project_name/users', function(req, res) {
   	});
 
 });
-//NOT SURE IF WORKING
+//WORKING
 router.get('/:project_name/users/filter', function(req, res) {
 	var userID=req.session.passport.user; 
 	var name=req.param('project_name');
@@ -58,64 +60,68 @@ router.get('/:project_name/users/filter', function(req, res) {
 		}
 		else{
 			var projectID=project.id;
-			var usernames=doc.users;
-			User.findOne({id:userID} ,function(err,user){
-				if(err||user==null){   
-					utils.sendErrResponse(res, 404, 'The user could not be found');
+			var userIDs=project.users;
+			if(!req.user){   
+					utils.sendErrResponse(res, 401, 'You must first login as a user');
 				}
-				else{
-					var currentUser=user;
-					User.find({name:{$in: usernames}},function(errs,docs){
+			else{
+					var currentUser=req.user;
+					User.find({_id:{$in: userIDs}},function(errs,docs){
+						console.log(docs);
 						if(errs){
 							utils.sendErrResponse(res, 500, 'An unknown error occurred.');
 						}
 						else{
-								
+							var users=[];	
 							docs.forEach(function(user){
 								var score=0;
 								// Add 1 if the location is the same. Otherwise add 0
-								if(user.location==currentUser.location){
-									score+= location
+								if(currentUser.info.location){
+									if(currentUser.info.location==user.info.location){
+										console.log('location match'+ user.info.location+ "and"+ currentUser.info.location);
+										score+= location
+									}
 								}
 								// number of same hours availible over total number of hours current user is available
 								// times the user-inputted weight
-								if(currentUser.availibility.length!=0){
-								var result = currentUser.availibility.filter(function(c) {
-									return user.availibility.indexOf(c) !== -1;
+								if(currentUser.info.availibility){
+								var result = currentUser.info.availibility.filter(function(c) {
+									return user.info.availibility.indexOf(c) !== -1;
 								});
-									score+=(result.length*availability)/currentUser.availibility.length
+									score+=(result.length*availability)/currentUser.info.availibility.length
 								}
 								// for grade, interaction, dedication, and timing the score is 1 minus the difference 
 								// times the user-inputed weight
-								if(currentUser.grade){
-									score+=score+ (1-Math.abs(currentUser.grade-user.grade))*grade;
+								if(currentUser.info.grade){
+									score+=score+ (1-Math.abs(currentUser.info.grade-user.info.grade))*grade;
 								}
-								if(currentUser.interaction){
-									score+=(1-Math.abs(currentUser.interaction-user.interaction))*interaction;
+								if(currentUser.info.interaction){
+									score+=(1-Math.abs(currentUser.info.interaction-user.info.interaction))*interaction;
 								}
-								if(currentUser.dedication){
-									score+= (1-Math.abs(currentUser.dedication-user.dedication))*dedication;
+								if(currentUser.info.dedication){
+									score+= (1-Math.abs(currentUser.info.dedication-user.info.dedication))*dedication;
 								}
-								if(currentUser.timing){
-									score+=(1-Math.abs(currentUser.timing-user.timing))*timing;
+								if(currentUser.info.timing){
+									score+=(1-Math.abs(currentUser.info.timing-user.info.timing))*timing;
 								}
 								// number of matched requested skills divided by the total number of requested skills
 								// times the user-inputted weight
 								if(skillset.length!=0){
 								var result = skillset.filter(function(c) {
-									return user.skillset.indexOf(c) !== -1;
+									return user.info.skillset.indexOf(c) !== -1;
 								});
 									score+=(result.length*skills)/skillset.length
 								}
 								// add score to user
 								user.score=score;
+								console.log(score);
+								users.push(user);
 							});
 							// return users sorted by ascending scores
-							res.json(users.sort(function(a, b) {return a.score - b.score;}));
+							res.json(users.sort(function(a, b) {return a.score - b.score;}).reverse());
 						}
 					});
 				}
-			});
 		}
 
 	});
@@ -123,21 +129,18 @@ router.get('/:project_name/users/filter', function(req, res) {
 });
 //WORKING
 router.post('/:project_name/users', function(req, res) {
-  	//TODO: Add a user to the project
   	if(req.user){
 		Project.update({"name": req.params.project_name},{$addToSet: {"users":  req.user._id}},function(e,docs){
 			if(e){
 				console.log("THIS IS BAD");
 				//TODO: THROW ERROR
 			}
-			else{
-				console.log(docs);
-				res.json(docs)
-			}
+			//TODO: add project name to user's project list
 			
 		});
   	}
   	else{
+		//TODO: THROW HTTP ERROR
   		res.send('no session, make sure you\'re logged in!');
   	}
   	
@@ -145,30 +148,17 @@ router.post('/:project_name/users', function(req, res) {
 });
 
 router.delete('/:project_name/users', function(req, res) {
-  	//TODO: delete the logged in user from the project
-
   	if(req.user){
   		Project.findOne({"name": req.params.project_name},function(err,docs){
+			//TODO: THROW ERROR
   			docs.users.remove(req.user._id);
   			docs.save(function(){
   				console.log("great job");
   			})
   		})
-  		/*
-  		Project.update({"name" : req.params.project_name},{$remove: {"users":  req.user._id}},function(err, docs){
-  	
-  				if(err){
-					res.send(err);
-				}
-				else{
-					console.log(docs);
-					res.json(docs);
-				}
-  		
-  		});
-*/
   	}
   	else{
+		//TODO: THROW HTTP ERROR
   		res.send('no session, make sure you\'re logged in!');
   	}
 });
@@ -177,10 +167,12 @@ router.delete('/:project_name/users', function(req, res) {
 router.delete('/:project_name', function(req, res) {
   	if(req.user){
   		Project.remove({name:req.params.project_name},function(e,docs){
+			//TODO: THROW ERROR
   			console.log("great job");
   		});
   	}
   	else{
+	   //TODO: THROW HTTP ERROR
   		res.send('no session, make sure you\'re logged in!');
   	}
 });

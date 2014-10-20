@@ -9,8 +9,10 @@ router.get('/', function(req, res) {
 
 router.get('/:username', function(req, res) {
 	if (req.user == null) {
+		//TODO: THROW HTTP ERROR instead
 		res.redirect('/');
 	} else if (req.params.username != req.user.authentication.username) {
+		//TODO: THROW HTTP ERROR instead
 		res.redirect('/user/' + req.user.authentication.username)
 	} else {
 		User.findOne({'_id': req.user._id}).populate("projects.proj_id").exec({}, function (err, user) {
@@ -35,27 +37,30 @@ router.get('/:username/projects', function(req, res) {
 Users can update:
   password, name, email, phone, location, availability, skills, timing
 **/
-router.put('/:username', function (req,res) {
-	if (req.body.password) {
-		User.update({'_id': req.user._id}, {
-			$set: { 'authentication.password': req.body.password }
-		}, function (err) {
-			// unable to update password
-		})
-	} 
+router.post('/', function (req,res) {
+	
+	var password=req.user.authentication.password;
+	console.log(password);
+	if (req.body.password) {password=req.body.password;} 
+	
 	info = req.user.info;
 	if (req.body.name) { info.name = req.body.name; }
+	console.log(info.name);
 	if (req.body.email) { info.email = req.body.email; }
 	if (req.body.phone) { info.phone = req.body.phone; }
 	if (req.body.location) { info.location = req.body.location; }
 	if (req.body.availability) { info.availability = req.body.availability; }
 	if (req.body.skills) { info.skills = req.body.skills; }
 	if (req.body.timing) { info.timing = req.body.timing; }
+	
 	User.update({'_id': req.user._id}, {
-		$set: { 'info': info }
+		$set: { 'info': info , 'authentication.password': password}
 	}, function (err) {
+		//TODO: THROW HTTP ERROR
 		// unable to update user information
-	})
+	});
+	
+	res.json(req.user);
 });
 
 module.exports = router;
