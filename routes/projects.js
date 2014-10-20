@@ -16,18 +16,28 @@ router.get('/', function(req, res) {
 });
 //WORKING
 router.post('/', function(req, res) {
-	var newProject = new Project({
-	  name: req.body.name,
-	  end_date: req.body.end_date 
-	})
-	newProject.save(function(err){
+	Project.find({name:req.body.name},function(err,docs){
 		if(err){
 			utils.sendErrResponse(res, 500, 'An unexpected error occured.');
 		}
-		else{
-			res.json(newProject);
+		if(docs.length === 0){
+			var newProject = new Project({
+			  name: req.body.name,
+			  end_date: req.body.end_date 
+			})
+			newProject.save(function(err){
+				if(err){
+					utils.sendErrResponse(res, 500, 'An unexpected error occured.');
+				}
+				else{
+					utils.sendSuccessResponse(res, 'Sucessfully added project');
+				}
+			})
+		}else{
+			utils.sendErrResponse(res, 409, 'That project already exists');
 		}
-	})
+	});
+	
 }); 
 //WORKING
 router.get('/:project_name/users', function(req, res) {
@@ -37,7 +47,7 @@ router.get('/:project_name/users', function(req, res) {
 			 utils.sendErrResponse(res, 404, 'The project could not be found.');
 		}
 		else{
-  		res.json(docs.users);
+  			res.json(docs.users);
 		}
   	});
 
@@ -172,7 +182,7 @@ router.put('/:project_name/users', function(req, res) {
 router.delete('/:project_name/users', function(req, res) {
   	if(req.user){
   		Project.findOne({"name": req.params.project_name},function(err,docs){
-			if(e){
+			if(err){
 				 utils.sendErrResponse(res, 500, 'An unexpected error occurred. We could not add the user to the project.');
 			}
 			else{
