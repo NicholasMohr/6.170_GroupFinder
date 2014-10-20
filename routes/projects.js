@@ -107,7 +107,7 @@ router.post('/:project_name/users', function(req, res) {
   	//TODO: Add a user to the project
   	if(req.user){
   		data.Project.find({"name" : req.params.project_name}).exec(function(err, docs){
-  			data.Project.update({username: req.session.user},{$addToSet: {"users": {_id: req.session.user}}}).exec(function(e,docs){
+  			data.Project.update({_id: req.user._id},{$addToSet: {"users": {_id: req.user._id}}}).exec(function(e,docs){
   				res.send('worked!');
   			});
   		});
@@ -122,7 +122,7 @@ router.delete('/:project_name/users', function(req, res) {
 
   	if(req.user){
   		data.Project.find({"name" : req.params.project_name}).populate('users').exec(function(err, docs){
-  			docs.users.remove(req.session.user)
+  			docs.users.remove(req.user._id)
   			user.save(function(){
   				res.send('worked!');
   			})
