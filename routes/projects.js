@@ -61,6 +61,7 @@ router.get('/:project_name/users/filter', function(req, res) {
 		else{
 			var projectID=project.id;
 			var userIDs=project.users;
+			console.log(req.user);
 			if(!req.user){   
 					utils.sendErrResponse(res, 401, 'You must first login as a user');
 				}
