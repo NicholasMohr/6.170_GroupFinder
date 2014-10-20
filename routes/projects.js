@@ -18,18 +18,28 @@ router.get('/', function(req, res) {
 router.post('/', function(req, res) {
 
 	//TODO: make sure there is not already a project!!!
-	var newProject = new Project({
-	  name: req.body.name,
-	  end_date: req.body.end_date 
-	})
-	newProject.save(function(err){
+	Project.find({name:req.body.name},function(err,docs){
 		if(err){
 			utils.sendErrResponse(res, 500, 'An unexpected error occured.');
 		}
-		else{
-			res.json(newProject);
+		if(docs.length === 0){
+			var newProject = new Project({
+			  name: req.body.name,
+			  end_date: req.body.end_date 
+			})
+			newProject.save(function(err){
+				if(err){
+					utils.sendErrResponse(res, 500, 'An unexpected error occured.');
+				}
+				else{
+					res.json(newProject);
+				}
+			})
+		}else{
+			utils.sendErrResponse(res, 409, 'That project already exists');
 		}
-	})
+	});
+	
 }); 
 //WORKING
 router.get('/:project_name/users', function(req, res) {
@@ -39,7 +49,7 @@ router.get('/:project_name/users', function(req, res) {
 			 utils.sendErrResponse(res, 404, 'The project could not be found.');
 		}
 		else{
-  		res.json(docs.users);
+  			res.json(docs.users);
 		}
   	});
 
