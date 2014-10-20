@@ -15,6 +15,7 @@ router.post('/login', passport.authenticate('local-login', {
 	failureFlash: true 
 }), function(req, res) { // if successful
 	console.log('meow');
+	console.log(req.user);
     res.redirect('/users/' + req.user.authentication.username);
 });
 

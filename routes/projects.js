@@ -1,9 +1,9 @@
 var express = require('express');
 var router = express.Router();
+
 var User = require('../models/users');
 var Project = require('../models/projects');
 var utils = require('../utils/utils');
-
 router.get('/', function(req, res) {
   	//TODO: RETURN LIST OF PROJECTS
   	Project.find({}).exec(function(e,projects){
@@ -28,9 +28,11 @@ router.post('/', function(req, res) {
 }); 
 
 router.get('/:project_name/users', function(req, res) {
+
   	Project.find({"name" : req.params.project_name}).populate('users').exec(function(err, docs){
   		res.json(docs[0].users);
   	});
+
 });
 
 router.get('/:project_name/users/filter', function(req, res) {
@@ -118,11 +120,11 @@ router.get('/:project_name/users/filter', function(req, res) {
 router.post('/:project_name/users', function(req, res) {
   	//TODO: Add a user to the project
   	if(req.user){
-  		data.Project.find({"name" : req.params.project_name}).exec(function(err, docs){
-  			data.Project.update({_id: req.user._id},{$addToSet: {"users": {_id: req.user._id}}}).exec(function(e,docs){
-  				res.send('worked!');
-  			});
-  		});
+  		console.log('user is a thing');
+  		console.log(req.user._id);
+		Project.update({"name": req.params.project_name},{$addToSet: {"users": {_id: req.user._id}}}).exec(function(e,docs){
+			console.log('worked!!');
+		});
   	}
   	else{
   		res.send('no session, make sure you\'re logged in!');
@@ -138,7 +140,7 @@ router.delete('/:project_name/users', function(req, res) {
   		Project.find({"name" : req.params.project_name}).populate('users').exec(function(err, docs){
   			docs.users.remove(req.user._id)
   			user.save(function(){
-  				res.send('worked!');
+  				console.log('worked!!');
   			})
   		});
   	}

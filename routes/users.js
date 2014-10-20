@@ -33,11 +33,29 @@ router.get('/:username/projects', function(req, res) {
 
 /**
 Users can update:
-  password, name, email, phone, location, availability, skills,
-  project.grade, project.interaction, project.dedication
+  password, name, email, phone, location, availability, skills, timing
 **/
-router.put('/', function (req,res) {	
-
+router.put('/:username', function (req,res) {
+	if (req.body.password) {
+		User.update({'_id': req.user._id}, {
+			$set: { 'authentication.password': req.body.password }
+		}, function (err) {
+			// unable to update password
+		})
+	} 
+	info = req.user.info;
+	if (req.body.name) { info.name = req.body.name; }
+	if (req.body.email) { info.email = req.body.email; }
+	if (req.body.phone) { info.phone = req.body.phone; }
+	if (req.body.location) { info.location = req.body.location; }
+	if (req.body.availability) { info.availability = req.body.availability; }
+	if (req.body.skills) { info.skills = req.body.skills; }
+	if (req.body.timing) { info.timing = req.body.timing; }
+	User.update({'_id': req.user._id}, {
+		$set: { 'info': info }
+	}, function (err) {
+		// unable to update user information
+	})
 });
 
 module.exports = router;
