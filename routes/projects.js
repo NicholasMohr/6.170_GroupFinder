@@ -24,8 +24,7 @@ router.post('/', function(req, res) {
 	})
 	newProject.save(function(err){
 		if(err){
-			//TODO: THROW HTTP ERROR
-			res.send(err);
+			utils.sendErrResponse(res, 500, 'An unexpected error occured.');
 		}
 		else{
 			console.log(newProject);
@@ -139,9 +138,44 @@ router.put('/:project_name/users', function(req, res) {
 			if(e){
 				 utils.sendErrResponse(res, 500, 'An unexpected error occurred. We could not add the user to the project.');
 			}
-			res.json(docs);
 			//TODO: add project name to user's project list
-			
+			Project.findOne({"name": req.params.project_name},function(err,docs){
+				User.find({"_id": req.user._id},function(e,user){
+
+					if (user.projects){
+						//user.projects has been initialized
+						user.projects.find({"proj_id": docs._id},function(e, projects){
+							if(projects.length === 0){
+								var newProject = {
+								  proj_id : docs._id
+								}
+								User.update({"_id": req.user._id},{$push: {"projects": newProject}},function(e,docs){
+									utils.sendErrResponse(res, 200, 'Sucessfully added user to project');
+
+								})
+							}
+							else{
+								//this should be more descriptive
+								utils.sendErrResponse(res, 500, 'An unexpected error occurred. We could not add the user to the project.');
+
+							}
+						});
+					}
+					else{
+						//user.projects has not been intialized
+						var newProject = {
+						  proj_id : docs._id
+						}
+						User.update({"_id": req.user._id},{$push: {"projects": newProject}},function(e,docs){
+							utils.sendErrResponse(res, 200, 'Sucessfully added user to project');
+
+						})
+					}
+				});
+				
+				
+
+			});
 		});
   	}
   	else{
