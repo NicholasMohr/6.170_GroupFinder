@@ -16,15 +16,13 @@ router.get('/', function(req, res) {
 });
 //WORKING
 router.post('/', function(req, res) {
-
-	//TODO: make sure there is not already a project!!!
 	var newProject = new Project({
 	  name: req.body.name,
 	  end_date: req.body.end_date 
 	})
 	newProject.save(function(err){
 		if(err){
-			//TODO: THROW HTTP ERROR
+			utils.sendErrResponse(res, 404, 'The project could not be created');
 			res.send(err);
 		}
 		else{
@@ -91,20 +89,11 @@ router.get('/:project_name/users/filter', function(req, res) {
 								});
 									score+=(result.length*availability)/currentUser.info.availibility.length
 								}
-								// for grade, interaction, dedication, and timing the score is 1 minus the difference 
-								// times the user-inputed weight
+								
 								if(currentUser.info.grade){
 									score+=score+ (1-Math.abs(currentUser.info.grade-user.info.grade))*grade;
 								}
-								if(currentUser.info.interaction){
-									score+=(1-Math.abs(currentUser.info.interaction-user.info.interaction))*interaction;
-								}
-								if(currentUser.info.dedication){
-									score+= (1-Math.abs(currentUser.info.dedication-user.info.dedication))*dedication;
-								}
-								if(currentUser.info.timing){
-									score+=(1-Math.abs(currentUser.info.timing-user.info.timing))*timing;
-								}
+								
 								// number of matched requested skills divided by the total number of requested skills
 								// times the user-inputted weight
 								if(skillset){
@@ -112,6 +101,19 @@ router.get('/:project_name/users/filter', function(req, res) {
 									return user.info.skills.indexOf(c) !== -1;
 								});
 									score+=(result.length*skills)/skillset.length
+								}
+								var currentUserProject=$.grep(currentUser.projects, function(e){ return e.proj_id == projectID; });
+								var userProject=$.grep(user.projects, function(e){ return e.proj_id == projectID; });
+								// for grade, interaction, dedication, and timing the score is 1 minus the difference 
+								// times the user-inputed weight
+								if(currentUserProject.interaction){
+									score+=(1-Math.abs(currentUserProject.interaction-userProject.interaction))*interaction;
+								}
+								if(currentUserProject.dedication){
+									score+= (1-Math.abs(currentUserProject.dedication-userProject.dedication))*dedication;
+								}
+								if(currentUser.info.timing){
+									score+=(1-Math.abs(currentUserProject.timing-userProject.timing))*timing;
 								}
 								// add to list of users
 								users.push({'user':user, 'score':score});

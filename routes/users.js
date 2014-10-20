@@ -25,7 +25,7 @@ router.get('/:username', function(req, res) {
 			
 		});
 	}
-})
+});
 
 router.get('/:username/projects', function(req, res) {
 	if (req.user == null) {

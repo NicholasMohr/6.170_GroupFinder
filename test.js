@@ -81,7 +81,8 @@ $.ajax({
 			success: function(user){
 				if(user.info.location!='place2'){passes=false};
 				if(user.info.availability.length!=2){passes=false};
-				//if(user.info.grade!=.9){passes=false};
+				console.log(user.projects);
+				//if(user.projects.grade!=.9){passes=false};
 				// Add mySampleUser2 to sample
 $.ajax({
             url: '/projects/sample/users',
