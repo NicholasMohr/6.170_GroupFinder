@@ -25,9 +25,9 @@ if (process.env.OPENSHIFT_MONGODB_DB_PASSWORD) {
 
 // instantiate db
 mongoose.connect('mongodb://' + connection_string);
-var db = mongoose.connection;
-db.on('error', console.error.bind(console, 'connection error:'));
-db.once('open', function callback() {})
+//var db = mongoose.connection;
+//db.on('error', console.error.bind(console, 'connection error:'));
+//db.once('open', function callback() {})
 
 // pass passport for configuration
 require('./config/passport')(passport);
