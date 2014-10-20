@@ -1,3 +1,7 @@
-The OpenShift `nodejs` cartridge documentation can be found at:
 
-http://openshift.github.io/documentation/oo_cartridge_guide.html#nodejs
+
+proj3
+
+Project 3: Mini team project
+View at
+ http://project3-testmarissa.rhcloud.com/

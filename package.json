@@ -1,35 +1,41 @@
 {
-  "name": "OpenShift-Sample-App",
-  "version": "1.0.0",
-  "description": "OpenShift Sample Application",
-  "keywords": [
-    "OpenShift",
-    "Node.js",
-    "application",
-    "openshift"
-  ],
-  "author": {
-    "name": "OpenShift",
-    "email": "ramr@example.org",
-    "url": "http://www.openshift.com/"
-  },
-  "homepage": "http://www.openshift.com/",
+  "name": "project3",
+  "description": "Group finder application",
+
   "repository": {
-    "type": "git",
-    "url": "https://github.com/openshift/origin-server"
+    "type":  "git",
+    "url":   "https://github.com/openshift/origin-server"
   },
 
   "engines": {
-    "node": ">= 0.6.0",
-    "npm": ">= 1.0.0"
+    "node":  ">= 0.6.0",
+    "npm":   ">= 1.0.0"
   },
 
   "dependencies": {
-    "express": "~3.4.4"
-  },
-  "devDependencies": {},
-  "bundleDependencies": [],
+        "express": "~4.0.0",
+        "static-favicon":  "~1.0.0",
+        "morgan":          "~1.0.0",
+        "cookie-parser":   "~1.0.1",
+        "body-parser":     "~1.0.0",
+        "debug":           "~0.7.4",
+        "ejs":             "*",
+        "mongodb":         "*",
+        "mongoose":        "*",
+        "express-session": "*",
+        "passport":        "0.1.x",
+        "passport-local":  "0.1.x",
+        "connect-flash":   "~0.1.1",
+        "bcrypt-nodejs":   "*",
+        "crypto":          "0.0.3",
+        "uuid":            "2.0.1"
+    },
 
   "private": true,
-  "main": "server.js"
+  
+	"scripts": {
+        "start": "node ./bin/www"
+    },
+
+  "main": "app.js"
 }
