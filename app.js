@@ -13,7 +13,7 @@ var flash = require('connect-flash');
 var mongo = require('mongodb');
 var mongoose = require('mongoose');
 
-var connection_string = 'localhost/groupfinder';
+var connection_string = 'localhost/nodetest1';
 
 // openshift dependencies
 if (process.env.OPENSHIFT_MONGODB_DB_PASSWORD) {
