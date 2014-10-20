@@ -6,35 +6,41 @@ var Project = require('../models/projects');
 var utils = require('../utils/utils');
 router.get('/', function(req, res) {
   	//TODO: RETURN LIST OF PROJECTS
-  	Project.find({}).exec(function(e,projects){
+  	Project.find({},function(e,projects){
+		console.log(projects[0].name);
   		res.json(projects);
-  	})
-  	//res.render('index', { title: 'Project Request'});
+  	});
 });
-
+//WORKING
 router.post('/', function(req, res) {
 
-	//TODO: make sure there is not already a project
+	//TODO: make sure there is not already a project!!!
 	var newProject = new Project({
-	  name: req.query.name,
-	  end_date: req.query.end_date //should be some nice date representation
+	  name: req.body.name,
+	  end_date: req.body.end_date 
 	})
 	newProject.save(function(err){
 		if(err){
 			res.send(err);
 		}
+		else{
+			console.log(newProject);
+			res.json(newProject);
+		}
 	})
-  	//TODO: Add a new project
 }); 
-
+//WORKING
 router.get('/:project_name/users', function(req, res) {
 
-  	Project.find({"name" : req.params.project_name}).populate('users').exec(function(err, docs){
-  		res.json(docs[0].users);
+  	Project.findOne({"name" : req.params.project_name},function(err, docs){
+		if(err){
+			//TODO: THROW ERROR
+		}
+  		res.json(docs.users);
   	});
 
 });
-
+//NOT SURE IF WORKING
 router.get('/:project_name/users/filter', function(req, res) {
 	var userID=req.session.passport.user; 
 	var name=req.param('project_name');
@@ -48,14 +54,14 @@ router.get('/:project_name/users/filter', function(req, res) {
 	var skillset=req.query.skillset?req.query.skillset :[];		
 	Project.findOne({name:name},function(err,project){
 		if(err||project==null){   
-            utils.sendErrResponse(res, 403, 'The project could not be found.');
+            utils.sendErrResponse(res, 404, 'The project could not be found.');
 		}
 		else{
 			var projectID=project.id;
 			var usernames=doc.users;
 			User.findOne({id:userID} ,function(err,user){
 				if(err||user==null){   
-					utils.sendErrResponse(res, 403, 'The user could not be found');
+					utils.sendErrResponse(res, 404, 'The user could not be found');
 				}
 				else{
 					var currentUser=user;
@@ -117,12 +123,10 @@ router.get('/:project_name/users/filter', function(req, res) {
 });
 
 
-router.post('/:project_name/users', function(req, res) {
+router.put('/:project_name/users', function(req, res) {
   	//TODO: Add a user to the project
   	if(req.user){
-  		console.log('user is a thing');
-  		console.log(req.user._id);
-		Project.update({"name": req.params.project_name},{$addToSet: {"users": {_id: req.user._id}}}).exec(function(e,docs){
+		Project.update({"name": req.params.project_name},{$addToSet: {"users": {_id: req.user._id}}},function(e,docs){
 			console.log('worked!!');
 		});
   	}
