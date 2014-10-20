@@ -143,7 +143,7 @@ router.put('/:project_name/users', function(req, res) {
 							if(projects.length === 0){
 								var newProject = {
 								  proj_id : docs._id
-								  grade : req.body.grade
+								  desired_grade : req.body.desired_grade
 								  dedication : req.body.dedication
 								  interaction :  req.body.interaction
 								}
@@ -163,7 +163,7 @@ router.put('/:project_name/users', function(req, res) {
 						//user.projects has not been intialized
 						var newProject = {
 						  proj_id : docs._id
-						  grade : req.body.grade
+						  desired_grade : req.body.desired_grade
 						  dedication : req.body.dedication
 						  interaction :  req.body.interaction
 						}
