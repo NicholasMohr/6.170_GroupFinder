@@ -121,7 +121,6 @@ router.get('/:project_name/users/filter', function(req, res) {
 	});
 	
 });
-
 //WORKING
 router.post('/:project_name/users', function(req, res) {
   	//TODO: Add a user to the project
@@ -149,23 +148,23 @@ router.delete('/:project_name/users', function(req, res) {
   	//TODO: delete the logged in user from the project
 
   	if(req.user){
-  		Project.findOne({"name" : req.params.project_name},function(err, docs){
-  			docs.users.remove(req.user._id);
-  			user.save(function(err){
+  		Project.update({"name" : req.params.project_name},{$remove: {"users":  req.user._id}},function(err, docs){
+  	
   				if(err){
 					res.send(err);
 				}
 				else{
-					console.log(user);
-					res.json(Project);
+					console.log(docs);
+					res.json(docs);
 				}
-  			})
+  		
   		});
   	}
   	else{
   		res.send('no session, make sure you\'re logged in!');
   	}
 });
+
 
 router.delete('/:project_name', function(req, res) {
   	if(req.user){
