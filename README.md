@@ -1,7 +1,8 @@
+=================
+6.170 Project 3 : GroupFinder
+=================
 
+The design docs for the app can be found in /docs.
 
-proj3
-
-Project 3: Mini team project
-View at
- http://project3-testmarissa.rhcloud.com/
+The app can be viewed at:
+http://project3-testmarissa.rhcloud.com/
