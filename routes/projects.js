@@ -28,7 +28,6 @@ router.post('/', function(req, res) {
 			res.send(err);
 		}
 		else{
-			console.log(newProject);
 			res.json(newProject);
 		}
 	})
@@ -65,14 +64,12 @@ router.get('/:project_name/users/filter', function(req, res) {
 		else{
 			var projectID=project.id;
 			var userIDs=project.users;
-			console.log(req.user);
 			if(!req.user){   
 					utils.sendErrResponse(res, 401, 'You must first login as a user');
 				}
 			else{
 					var currentUser=req.user;
 					User.find({_id:{$in: userIDs}},function(errs,docs){
-						console.log(docs);
 						if(errs){
 							utils.sendErrResponse(res, 500, 'An unknown error occurred.');
 						}
@@ -83,7 +80,6 @@ router.get('/:project_name/users/filter', function(req, res) {
 								// Add 1 if the location is the same. Otherwise add 0
 								if(currentUser.info.location){
 									if(currentUser.info.location==user.info.location){
-										console.log('location match'+ user.info.location+ "and"+ currentUser.info.location);
 										score+= location
 									}
 								}
@@ -117,13 +113,12 @@ router.get('/:project_name/users/filter', function(req, res) {
 								});
 									score+=(result.length*skills)/skillset.length
 								}
-								// add score to user
-								user.score=score;
-								console.log(score);
-								users.push(user);
+								// add to list of users
+								users.push({'user':user, 'score':score});
 							});
-							// return users sorted by ascending scores
-							res.json(users.sort(function(a, b) {return a.score - b.score;}).reverse());
+							console.log(users.sort(function(a, b) {return a.score > b.score;}).reverse());
+							// return users sorted by descending scores
+							res.json(users.sort(function(a, b) {return a.score > b.score;}).reverse());
 						}
 					});
 				}
@@ -159,7 +154,7 @@ router.delete('/:project_name/users', function(req, res) {
 			}
 			else{
   				docs.users.remove(req.user._id);
-  				docs.save(function(){utils.sendErrResponse(res, 200, 'Sucessfully removed user from project');});
+  				docs.save(function(){utils.sendSuccessResponse(res, 'Sucessfully removed user from project');});
 			}
   		});
   	}
@@ -176,7 +171,7 @@ router.delete('/:project_name', function(req, res) {
 				 utils.sendErrResponse(res, 500, 'An unexpected error occurred. We could not add the user to the project.');
 			}
 			else{
-				utils.sendErrResponse(res, 200, 'Sucessfully removed project');
+				utils.sendSuccessResponse(res, 'Sucessfully removed user from project');
 			}
   		});
   	}

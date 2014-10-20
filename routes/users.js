@@ -51,12 +51,10 @@ Users can update:
 router.put('/', function (req,res) {
 	
 	var password=req.user.authentication.password;
-	console.log(password);
 	if (req.body.password) {password=req.body.password;} 
 	
 	info = req.user.info;
 	if (req.body.name) { info.name = req.body.name; }
-	console.log(info.name);
 	if (req.body.email) { info.email = req.body.email; }
 	if (req.body.phone) { info.phone = req.body.phone; }
 	if (req.body.location) { info.location = req.body.location; }
@@ -69,7 +67,7 @@ router.put('/', function (req,res) {
 	}, function (err) {
 		
 			if(err){utils.sendErrResponse(res, 500, 'An unexpected error occured. Could not update information');}
-		else{console.log(req.user);res.json(req.user);}
+		else{res.json(req.user);}
 	});
 
 	
@@ -83,7 +81,7 @@ router.delete('/', function(req, res) {
 				 utils.sendErrResponse(res, 500, 'An unexpected error occurred. We could not add the user to the project.');
 			}
 			else{
-				utils.sendErrResponse(res, 200, 'Sucessfully removed user');
+				utils.sendSuccessResponse(res, 'Sucessfully removed user from project');
 			}
   		});
   	}
