@@ -38,7 +38,7 @@ $.ajax({
 				if(user.info.location!='place2'){passes=false};
 				if(user.info.skills.length!=1){passes=false};
 				if(user.info.availability.length!=2){passes=false};
-				//if(user.info.grade!=1){passes=false};
+				//if(user.projects[0].grade!=1){passes=false};
 				// Add mySampleUser1 to sample
 				
 $.ajax({
@@ -81,8 +81,7 @@ $.ajax({
 			success: function(user){
 				if(user.info.location!='place2'){passes=false};
 				if(user.info.availability.length!=2){passes=false};
-				console.log(user.projects);
-				//if(user.projects.grade!=.9){passes=false};
+				//if(user.projects[0].grade!=.9){passes=false};
 				// Add mySampleUser2 to sample
 $.ajax({
             url: '/projects/sample/users',
@@ -123,7 +122,7 @@ $.ajax({
 			success: function(user){
 				if(user.info.location!='place1'){passes=false};
 				if(user.info.availability.length!=2){passes=false};
-				//if(user.info.grade!=.9){passes=false};
+				//if(user.projects[0].grade!=1){passes=false};
 				// Add mySampleUser3 to sample
 $.ajax({
             url: '/projects/sample/users',

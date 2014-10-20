@@ -102,8 +102,8 @@ router.get('/:project_name/users/filter', function(req, res) {
 								});
 									score+=(result.length*skills)/skillset.length
 								}
-								var currentUserProject=$.grep(currentUser.projects, function(e){ return e.proj_id == projectID; });
-								var userProject=$.grep(user.projects, function(e){ return e.proj_id == projectID; });
+								var currentUserProject=currentUser.projects.filter(function(e){ return e.proj_id == projectID; });
+								var userProject=user.projects.filter(function(e){ return e.proj_id == projectID; });
 								// for grade, interaction, dedication, and timing the score is 1 minus the difference 
 								// times the user-inputed weight
 								if(currentUserProject.interaction){

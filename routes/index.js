@@ -14,7 +14,7 @@ router.post('/login', passport.authenticate('local-login', {
 	failureRedirect: '/',
 	failureFlash: true 
 }), function(req, res) { // if successful
-    res.redirect('/users/' + req.user.authentication.username);
+    res.json(req.user);
 });
 
 router.post('/logout', function(req, res) {
@@ -26,8 +26,7 @@ router.post('/signup', passport.authenticate('local-signup', {
 	failureRedirect : '/',
 	failureFlash : true 
 }), function (req,res) { // if successful
-	console.log('woof');
-	res.redirect('/users/' + req.user.authentication.username);
+	res.json(req.user);
 });
 
 module.exports = router;
