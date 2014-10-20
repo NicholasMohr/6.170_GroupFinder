@@ -29,20 +29,16 @@ module.exports = function(passport) {
                 } else {
                     var new_user = new User({
                         authentication: {
-                            name: req.param('name', ''),
-                            username: username,
+                            username: username
                         },
                         projects: [],
                         info: {
-                            location: '',
+                            name: req.param('name', ''),
+                            email: req.param('email', ''),
+                            phone: req.param('phone', ''),
+                            location: req.param('location', ''),
                             availability: [],
                             skills: [],
-                            workstyle : {
-                                grade: -1,
-                                interaction: -1,
-                                dedication: -1,
-                                timing: -1
-                            }
                         }
                     });
                     new_user.set_password(password);

@@ -59,12 +59,8 @@ app.use(passport.initialize());
 app.use(passport.session());
 app.use(express.static(path.join(__dirname, 'public')));
 
-var Project = require('./models/projects');
-var User = require('./models/users');
 // make db accessible to router/requests
 app.use(function(req,res,next){
-    req.Project = Project;
-    req.User = User;
     req.db = db;
     next();
 });
