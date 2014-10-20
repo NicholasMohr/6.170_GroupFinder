@@ -17,15 +17,9 @@
 10 error You can get their info via:
 10 error     npm owner ls project3
 10 error There is likely additional logging output above.
-<<<<<<< Updated upstream
 11 error System Darwin 12.4.0
 12 error command "node" "/usr/local/bin/npm" "start"
 13 error cwd /Users/marissastephens/Documents/6.170/project3
-=======
-11 error System Darwin 13.3.0
-12 error command "node" "/usr/local/bin/npm" "start"
-13 error cwd /Users/Dani/Documents/College/Junior/6.170/daniman_marissas_nmohr_proj3
->>>>>>> Stashed changes
 14 error node -v v0.10.32
 15 error npm -v 1.4.28
 16 error code ELIFECYCLE

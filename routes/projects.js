@@ -123,11 +123,19 @@ router.get('/:project_name/users/filter', function(req, res) {
 });
 
 
-router.put('/:project_name/users', function(req, res) {
+router.post('/:project_name/users', function(req, res) {
   	//TODO: Add a user to the project
   	if(req.user){
-		Project.update({"name": req.params.project_name},{$addToSet: {"users": {_id: req.user._id}}},function(e,docs){
-			console.log('worked!!');
+		Project.updateOne({"name": req.params.project_name},{$addToSet: {"users": {_id: req.user._id}}},function(e,docs){
+			if(e){
+				console.log("THIS IS BAD");
+				//TODO: THROW ERROR
+			}
+			else{
+				console.log(docs);
+				res.json(docs)
+			}
+			
 		});
   	}
   	else{
@@ -143,8 +151,14 @@ router.delete('/:project_name/users', function(req, res) {
   	if(req.user){
   		Project.find({"name" : req.params.project_name}).populate('users').exec(function(err, docs){
   			docs.users.remove(req.user._id)
-  			user.save(function(){
-  				console.log('worked!!');
+  			user.save(function(err){
+  				if(err){
+					res.send(err);
+				}
+				else{
+					console.log(user);
+					res.json(newProject);
+				}
   			})
   		});
   	}
