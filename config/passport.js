@@ -59,7 +59,10 @@ module.exports = function(passport) {
         passReqToCallback : true
     },
     function(req, username, password, done) {
+        console.log(username)
         User.findOne({ 'authentication.username' :  username }, function(err, user) {
+            console.log('meow');
+            console.log(user);
             if (err) { return done(err); }
             if (!user) {
                 console.log("Incorrect Username.");
