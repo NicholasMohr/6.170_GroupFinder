@@ -148,6 +148,13 @@ router.delete('/:project_name/users', function(req, res) {
   	//TODO: delete the logged in user from the project
 
   	if(req.user){
+  		Project.findOne({"name": req.params.project_name},function(err,docs){
+  			docs.users.remove(req.user._id);
+  			docs.save(function(){
+  				console.log("great job");
+  			})
+  		})
+  		/*
   		Project.update({"name" : req.params.project_name},{$remove: {"users":  req.user._id}},function(err, docs){
   	
   				if(err){
@@ -159,6 +166,7 @@ router.delete('/:project_name/users', function(req, res) {
 				}
   		
   		});
+*/
   	}
   	else{
   		res.send('no session, make sure you\'re logged in!');
@@ -168,7 +176,9 @@ router.delete('/:project_name/users', function(req, res) {
 
 router.delete('/:project_name', function(req, res) {
   	if(req.user){
-  		Project.remove({name:req.params.project_name});
+  		Project.remove({name:req.params.project_name},function(e,docs){
+  			console.log("great job");
+  		});
   	}
   	else{
   		res.send('no session, make sure you\'re logged in!');
