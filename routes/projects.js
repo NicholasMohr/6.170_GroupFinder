@@ -143,6 +143,9 @@ router.put('/:project_name/users', function(req, res) {
 							if(projects.length === 0){
 								var newProject = {
 								  proj_id : docs._id
+								  grade : req.body.grade
+								  dedication : req.body.dedication
+								  interaction :  req.body.interaction
 								}
 								User.update({"_id": req.user._id},{$push: {"projects": newProject}},function(e,docs){
 									utils.sendErrResponse(res, 200, 'Sucessfully added user to project');
@@ -160,6 +163,9 @@ router.put('/:project_name/users', function(req, res) {
 						//user.projects has not been intialized
 						var newProject = {
 						  proj_id : docs._id
+						  grade : req.body.grade
+						  dedication : req.body.dedication
+						  interaction :  req.body.interaction
 						}
 						User.update({"_id": req.user._id},{$push: {"projects": newProject}},function(e,docs){
 							utils.sendErrResponse(res, 200, 'Sucessfully added user to project');
