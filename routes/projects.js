@@ -17,7 +17,6 @@ router.get('/', function(req, res) {
 //WORKING
 router.post('/', function(req, res) {
 
-	//TODO: make sure there is not already a project!!!
 	Project.find({name:req.body.name},function(err,docs){
 		if(err){
 			utils.sendErrResponse(res, 500, 'An unexpected error occured.');
@@ -32,7 +31,7 @@ router.post('/', function(req, res) {
 					utils.sendErrResponse(res, 500, 'An unexpected error occured.');
 				}
 				else{
-					res.json(newProject);
+					utils.sendSuccessResponse(res, 'Sucessfully added project');
 				}
 			})
 		}else{
@@ -154,13 +153,13 @@ router.put('/:project_name/users', function(req, res) {
 						  interaction :  req.body.interaction
 						}
 						User.update({"_id": req.user._id},{$push: {"projects": newProject}},function(e,docs){
-							utils.sendErrResponse(res, 200, 'Sucessfully added user to project');
+							utils.sendSuccessResponse(res, 'Sucessfully added user to project');
+
 
 						});
 					}
 					else{
 						//this should be more descriptive
-						console.log(projects);
 						utils.sendErrResponse(res, 409, 'That project is already in your projects');
 
 					}
@@ -181,7 +180,7 @@ router.put('/:project_name/users', function(req, res) {
 router.delete('/:project_name/users', function(req, res) {
   	if(req.user){
   		Project.findOne({"name": req.params.project_name},function(err,docs){
-			if(e){
+			if(err){
 				 utils.sendErrResponse(res, 500, 'An unexpected error occurred. We could not add the user to the project.');
 			}
 			else{
