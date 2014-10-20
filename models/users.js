@@ -2,21 +2,23 @@ var mongoose = require('mongoose');
 
 var user_schema = mongoose.Schema({
 	authentication: {
-		name: String,
 		username: String,
 		password: String
 	},
-	projects: [{ type: String, ref: "Project"}],
+	projects: [{
+		proj_id: {type: String, ref: "Project"},
+		desired_grade: Number,
+		interaction: Number,
+		dedication: Number
+	}],
 	info: {
+		name: String,
+		email: String,
+		phone: String,
 		location: String,
 		availability: [String],
 		skills: [String],
-		workstyle : {
-			grade: Number,
-			interaction: Number,
-			dedication: Number,
-			timing: Number
-		}
+		timing: Number
 	}
 });
 
