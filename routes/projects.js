@@ -5,11 +5,13 @@ var User = require('../models/users');
 var Project = require('../models/projects');
 var utils = require('../utils/utils');
 router.get('/', function(req, res) {
-  	//TODO: RETURN LIST OF PROJECTS
   	Project.find({},function(e,projects){
-		//TODO: THROW HTTP ERROR if e
-		console.log(projects[0].name);
-  		res.json(projects);
+		if(e){
+			utils.sendErrResponse(res, 500, 'An unexpected error occured.');
+		}
+		else{
+  			res.json(projects);
+		}
   	});
 });
 //WORKING
@@ -35,10 +37,12 @@ router.post('/', function(req, res) {
 router.get('/:project_name/users', function(req, res) {
 
   	Project.findOne({"name" : req.params.project_name},function(err, docs){
-		if(err){
-			//TODO: THROW ERROR
+		if(err|| docs==null){
+			 utils.sendErrResponse(res, 404, 'The project could not be found.');
 		}
+		else{
   		res.json(docs.users);
+		}
   	});
 
 });
@@ -133,16 +137,14 @@ router.post('/:project_name/users', function(req, res) {
   	if(req.user){
 		Project.update({"name": req.params.project_name},{$addToSet: {"users":  req.user._id}},function(e,docs){
 			if(e){
-				console.log("THIS IS BAD");
-				//TODO: THROW ERROR
+				 utils.sendErrResponse(res, 500, 'An unexpected error occurred. We could not add the user to the project.');
 			}
 			//TODO: add project name to user's project list
 			
 		});
   	}
   	else{
-		//TODO: THROW HTTP ERROR
-  		res.send('no session, make sure you\'re logged in!');
+		utils.sendErrResponse(res, 401, 'You must first login as a user');
   	}
   	
 
@@ -151,16 +153,17 @@ router.post('/:project_name/users', function(req, res) {
 router.delete('/:project_name/users', function(req, res) {
   	if(req.user){
   		Project.findOne({"name": req.params.project_name},function(err,docs){
-			//TODO: THROW ERROR
-  			docs.users.remove(req.user._id);
-  			docs.save(function(){
-  				console.log("great job");
-  			})
-  		})
+			if(e){
+				 utils.sendErrResponse(res, 500, 'An unexpected error occurred. We could not add the user to the project.');
+			}
+			else{
+  				docs.users.remove(req.user._id);
+  				docs.save(function(){utils.sendErrResponse(res, 200, 'Sucessfully removed user from project');});
+			}
+  		});
   	}
   	else{
-		//TODO: THROW HTTP ERROR
-  		res.send('no session, make sure you\'re logged in!');
+		utils.sendErrResponse(res, 401, 'You must first login as a user');
   	}
 });
 
@@ -168,13 +171,16 @@ router.delete('/:project_name/users', function(req, res) {
 router.delete('/:project_name', function(req, res) {
   	if(req.user){
   		Project.remove({name:req.params.project_name},function(e,docs){
-			//TODO: THROW ERROR
-  			console.log("great job");
+			if(e){
+				 utils.sendErrResponse(res, 500, 'An unexpected error occurred. We could not add the user to the project.');
+			}
+			else{
+				utils.sendErrResponse(res, 200, 'Sucessfully removed project');
+			}
   		});
   	}
   	else{
-	   //TODO: THROW HTTP ERROR
-  		res.send('no session, make sure you\'re logged in!');
+		utils.sendErrResponse(res, 401, 'You must first login as a user');
   	}
 });
 module.exports = router;

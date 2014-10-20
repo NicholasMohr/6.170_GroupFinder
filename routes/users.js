@@ -9,14 +9,19 @@ router.get('/', function(req, res) {
 
 router.get('/:username', function(req, res) {
 	if (req.user == null) {
-		//TODO: THROW HTTP ERROR instead
+		//TODO: FIX SO authorization info isn't returned
 		res.redirect('/');
 	} else if (req.params.username != req.user.authentication.username) {
-		//TODO: THROW HTTP ERROR instead
 		res.redirect('/user/' + req.user.authentication.username)
 	} else {
 		User.findOne({'_id': req.user._id}).populate("projects.proj_id").exec({}, function (err, user) {
-			res.json(user)
+			if(err){
+				utils.sendErrResponse(res, 500, 'An unexpected error occured.');
+			}
+			else{
+				res.json(user);
+			}
+			
 		});
 	}
 })
@@ -28,7 +33,12 @@ router.get('/:username/projects', function(req, res) {
 		res.redirect('/user/' + req.user.authentication.username + '/projects')
 	} else {
 		User.findOne({'_id': req.user._id}).populate("projects.proj_id").exec({}, function (err, user) {
-			res.json(user.projects)
+			if(err){
+			utils.sendErrResponse(res, 500, 'An unexpected error occured.');
+			}
+			else{
+				res.json(user.projects);
+			}
 		});
 	}
 });
@@ -56,8 +66,7 @@ router.post('/', function (req,res) {
 	User.update({'_id': req.user._id}, {
 		$set: { 'info': info , 'authentication.password': password}
 	}, function (err) {
-		//TODO: THROW HTTP ERROR
-		// unable to update user information
+			utils.sendErrResponse(res, 500, 'An unexpected error occured. Could not update information');
 	});
 	
 	res.json(req.user);

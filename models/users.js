@@ -5,12 +5,7 @@ var user_schema = mongoose.Schema({
 		username: String,
 		password: String
 	},
-	projects: [{
-		proj_id: {type: String, ref: "Project"},
-		desired_grade: Number,
-		interaction: Number,
-		dedication: Number
-	}],
+	projects: [{ type: String, ref: "Projects"}],
 	info: {
 		name: String,
 		email: String,
@@ -18,7 +13,10 @@ var user_schema = mongoose.Schema({
 		location: String,
 		availability: [String],
 		skills: [String],
-		timing: Number
+		timing: Number,
+		grade: Number,
+		interaction: Number,
+		dedication: Number
 	}
 });
 
