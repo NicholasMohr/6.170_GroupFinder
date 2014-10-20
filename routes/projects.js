@@ -111,9 +111,9 @@ router.get('/:project_name/users/filter', function(req, res) {
 								}
 								// number of matched requested skills divided by the total number of requested skills
 								// times the user-inputted weight
-								if(skillset.length!=0){
+								if(skillset){
 								var result = skillset.filter(function(c) {
-									return user.info.skillset.indexOf(c) !== -1;
+									return user.info.skills.indexOf(c) !== -1;
 								});
 									score+=(result.length*skills)/skillset.length
 								}
@@ -133,12 +133,13 @@ router.get('/:project_name/users/filter', function(req, res) {
 	
 });
 //WORKING
-router.post('/:project_name/users', function(req, res) {
+router.put('/:project_name/users', function(req, res) {
   	if(req.user){
 		Project.update({"name": req.params.project_name},{$addToSet: {"users":  req.user._id}},function(e,docs){
 			if(e){
 				 utils.sendErrResponse(res, 500, 'An unexpected error occurred. We could not add the user to the project.');
 			}
+			res.json(docs);
 			//TODO: add project name to user's project list
 			
 		});

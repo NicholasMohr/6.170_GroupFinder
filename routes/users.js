@@ -48,7 +48,7 @@ router.get('/:username/projects', function(req, res) {
 Users can update:
   password, name, email, phone, location, availability, skills, timing
 **/
-router.post('/', function (req,res) {
+router.put('/', function (req,res) {
 	
 	var password=req.user.authentication.password;
 	console.log(password);
@@ -67,10 +67,13 @@ router.post('/', function (req,res) {
 	User.update({'_id': req.user._id}, {
 		$set: { 'info': info , 'authentication.password': password}
 	}, function (err) {
-			utils.sendErrResponse(res, 500, 'An unexpected error occured. Could not update information');
+		
+			if(err){utils.sendErrResponse(res, 500, 'An unexpected error occured. Could not update information');}
+		else{console.log(req.user);res.json(req.user);}
 	});
+
 	
-	res.json(req.user);
+	
 });
 
 router.delete('/', function(req, res) {
