@@ -39,6 +39,7 @@ module.exports = function(passport) {
                             location: req.param('location', ''),
                             availability: [],
                             skills: [],
+                            timing: -1
                         }
                     });
                     new_user.set_password(password);
