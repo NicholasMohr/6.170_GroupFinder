@@ -34,7 +34,7 @@ router.post('/', function(req, res) {
 				}
 			})
 		}else{
-			utils.sendErrResponse(res, 409, 'That project already exists');
+			utils.sendSuccessResponse(res, 'That project already exists');
 		}
 	});
 	
@@ -163,7 +163,7 @@ router.put('/:project_name/users', function(req, res) {
 						});
 					}
 					else{
-						utils.sendErrResponse(res, 409, 'That project is already in your projects');
+						utils.sendSuccessResponse(res, 'That project is already in your projects');
 
 					}
 				});
