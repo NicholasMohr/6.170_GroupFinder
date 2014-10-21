@@ -7,15 +7,13 @@ $.ajax({
     data: {
     	'name': 'sample',
     	'end_date': new Date(1000)
-    }, success: function(project) {
-		if (project.name != 'sample') {
+    }, success: function(object) {
+		if (object.content != 'Sucessfully added project') {
 			passes=false;
 			console.log('/projects POST: name instantiated -- FAILED');
 		} else {
 			console.log('/projects POST: name instantiated -- PASSED');
 		}
-// 	}
-// });
 			
 // Signup Sample User
 $.ajax({
@@ -37,8 +35,6 @@ $.ajax({
 		} else {
 			console.log('/signup POST: password instantiated -- PASSED');
 		};
-// 	}
-// });
 
 // Logout Sample User		
 $.ajax({
@@ -46,8 +42,6 @@ $.ajax({
     type: 'POST',
 	success: function(user) {
 		console.log('/logout POST: redirected to index -- PASSED')
-// 	}
-// });
 
 // Login User
 $.ajax({
@@ -69,8 +63,6 @@ $.ajax({
 		} else {
 			console.log('/login POST: successful login and password retreival -- PASSED');
 		};
-// 	}
-// });
 
 // Add Test User 1 Information		
 $.ajax({
@@ -99,8 +91,6 @@ $.ajax({
 		} else {
 			console.log('/users PUT: addition of skills to user info -- PASSED');
 		};
-// 	}
-// });
 
 // Add Sample User to Sample Project	
 $.ajax({
@@ -115,18 +105,14 @@ $.ajax({
 			passes=false;
 			console.log('/projects/sample/users PUT: added user to project -- PASSED');
 		} else {
-			console.log('/projects/sample/users PUT: added user to project -- FAILED');
+			console.log('/projects/sample/users PUT: added user to project -- PASSED');
 		}
-// 	}
-// });
 
 // Logout Sample User		
 $.ajax({
     url: '/logout',
     type: 'POST',
     success: function(user) {
-    // }
-// });
 
 // Signup Sample User 2		
 $.ajax({
@@ -136,8 +122,6 @@ $.ajax({
     	'username': 'test2',
         'password': '123' 
     }, success: function(user) {
-//     },
-// });
 
 // Set Test User 2 Info
 $.ajax({
@@ -159,8 +143,6 @@ $.ajax({
 		} else {
 			console.log('/users POST: set test user 2 availability -- PASSED')
 		};
-// 	}
-// });
 
 // Add Test User 2 to Sample Project
 $.ajax({
@@ -177,15 +159,12 @@ $.ajax({
 		} else {
 			console.log('/projects/sample/users PUT: added test user 2 to sample project -- PASSED');	
 		}
-// 	}
-// });
 
 // Logout Test User 2	
 $.ajax({
     url: '/logout',
     type: 'POST', 
     success: function(user) {
-// });
 
 // Signup Test User 3
 $.ajax({
@@ -194,8 +173,6 @@ $.ajax({
     data: { 'username': 'test3',
             'password': '123'
     }, success: function(user) {
-    // }
-// });
 
 // Set Test User 3 Information
 $.ajax({
@@ -205,8 +182,6 @@ $.ajax({
     	'location': 'place1',
     	'availability': ['M10','W15']
    	}, success: function(user) {
-    // }
-// });
 
 // Add Test User 3 to Sample Project
 $.ajax({
@@ -217,8 +192,6 @@ $.ajax({
 		'dedication':1,
 		'interaction':1
 	}, success: function(user) {
-	// }
-// });
 
 // Get List of Test Users for Sample Project
 $.ajax({
@@ -231,8 +204,6 @@ $.ajax({
 		} else {
 			console.log("/projects/sample/users GET: get list of sample users -- PASSED");
 		}
-	// }
-// });
 
 // Filter with No Inputs
 $.ajax({
@@ -245,8 +216,6 @@ $.ajax({
 		} else {
 			console.log("/projects/sample/users/filter GET: filter with no inputs -- PASSED");
 		}
-	// }
-// });
 
 // Filter with Weighted Location
 $.ajax({
@@ -261,8 +230,6 @@ $.ajax({
 		} else {
 			console.log("/projects/sample/users/filter GET: filter with location input -- PASSED");
 		}
-	// }
-// });
 
 // Filter with Weighted Skill and Desired Skillset
 $.ajax({
@@ -278,8 +245,6 @@ $.ajax({
 		} else {
 			console.log("/projects/sample/users/filter GET: filter with weighted skill and desired skillset -- PASSED");
 		}
-	// }
-// });
 
 // Delete Sample Project
 $.ajax({
@@ -292,8 +257,6 @@ $.ajax({
 		} else {
 			console.log("/projects/sample DELETE: deleted sample project -- PASSED");
 		}
-	// }
-// });
 
 // Delete Test User 3
 $.ajax({
@@ -306,8 +269,6 @@ $.ajax({
 		} else {
 			console.log("/users DELETE: deleted test user -- PASSED");
 		}
-	// }
-// });
  
 // Login to Test User 1
 $.ajax({
@@ -317,15 +278,12 @@ $.ajax({
     	'username': 'test1',
         'password': '123' 
     }, success: function(user) {
-//     }
-// });
 
 // Delete Test User 1	
 $.ajax({
     url: '/users',
     type: 'DELETE', 
     success: function(user) {
-// });
 
 // Login Test User 2
 $.ajax({
@@ -334,15 +292,12 @@ $.ajax({
     data: { 'username': 'test2',
             'password': '123'
     }, success: function(user) {
-//     }
-// });
 
 // Delete Test User 2	
 $.ajax({
     url: '/users',
     type: 'DELETE',
     success: function(user) {
-// });
 
 console.log("ALL TESTS PASSED?: "+passes);
 
