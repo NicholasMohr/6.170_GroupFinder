@@ -147,6 +147,7 @@ router.put('/:project_name/users', function(req, res) {
 				 utils.sendErrResponse(res, 500, 'An unexpected error occurred. We could not add the user to the project.');
 			}
 			//TODO: add project name to user's project list
+			console.log(docs);
 			Project.findOne({"name": req.params.project_name},function(err,docs){
 				User.find({"_id": req.user._id,"projects.proj_id": docs._id}, function(e,projects){
 					if(projects.length === 0){

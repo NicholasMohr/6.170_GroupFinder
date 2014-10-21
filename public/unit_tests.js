@@ -63,7 +63,7 @@ $.ajax({
 		} else {
 			console.log('/login POST: successful login and password retreival -- PASSED');
 		};
-
+		
 // Add Test User 1 Information		
 $.ajax({
     url: '/users',

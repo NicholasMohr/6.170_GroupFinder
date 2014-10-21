@@ -27,7 +27,7 @@ if (process.env.OPENSHIFT_MONGODB_DB_PASSWORD) {
 mongoose.connect('mongodb://' + connection_string);
 
 // pass passport for configuration
-require('./config/passport')(passport);
+require('./utils/passport')(passport);
 
 // instantiate routes
 var routes = require('./routes/index');
