@@ -33,6 +33,7 @@ require('./config/passport')(passport);
 var routes = require('./routes/index');
 var projs = require('./routes/projects');
 var users = require('./routes/users');
+var tests = require('./routes/tests');
 
 /**
 ----- MIDDLEWARE -----
@@ -68,6 +69,7 @@ app.listen(port || 3000, ip)
 
 app.use('/users', users);
 app.use('/projects', projs);
+app.use('/tests', tests);
 app.use('/', routes);
 
 /// catch 404 and forwarding to error handler
