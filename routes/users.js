@@ -4,10 +4,16 @@ var User = require('../models/users');
 var Project = require('../models/projects');
 var utils = require('../utils/utils');
 
+/**
+Renders user index page.
+**/
 router.get('/', function(req, res) {
   	res.render('index', { title: 'User Request'});
 });
 
+/**
+Returns the profile information for the requested user.
+**/
 router.get('/:username', function(req, res) {
 	User.findOne({'authentication.username': req.params.username}, function (err, user) {
 		if(err){
@@ -21,6 +27,9 @@ router.get('/:username', function(req, res) {
 });
 
 
+/**
+Returns a list of projects associated with the requested user.
+**/
 router.get('/:username/projects', function(req, res) {
 	User.findOne({'authentication.username': req.params.username}).populate("projects.proj_id").exec({}, function (err, user) {
 		if(err){
@@ -33,15 +42,13 @@ router.get('/:username/projects', function(req, res) {
 });
 
 /**
-Users can update:
+Updates user info. Users can update:
   password, name, email, phone, location, availability, skills, timing
 **/
 router.put('/', function (req,res) {
-	
-	var password=req.user.authentication.password;
-	if (req.body.password) {password=req.body.password;} 
-	
-	info = req.user.info;
+	var password = req.user.authentication.password;
+	var info = req.user.info;
+	if (req.body.password) { password = req.body.password; } 
 	if (req.body.name) { info.name = req.body.name; }
 	if (req.body.email) { info.email = req.body.email; }
 	if (req.body.phone) { info.phone = req.body.phone; }
@@ -53,15 +60,17 @@ router.put('/', function (req,res) {
 	User.update({'_id': req.user._id}, {
 		$set: { 'info': info , 'authentication.password': password}
 	}, function (err) {
-		
-			if(err){utils.sendErrResponse(res, 500, 'An unexpected error occured. Could not update information');}
-		else{res.json(req.user);}
+		if (err) {
+			utils.sendErrResponse(res, 500, 'An unexpected error occured. Could not update information');
+		} else {
+			res.json(req.user);
+		}
 	});
-
-	
-	
 });
 
+/**
+Deletes a user based on their ID.
+**/
 router.delete('/', function(req, res) {
   	if(req.user){
   		User.remove({_id:req.user._id},function(e,docs){
