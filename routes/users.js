@@ -26,6 +26,14 @@ router.get('/:username', function(req, res) {
 	});
 });
 
+// returns success if there is a currently logged in user
+router.get('/current', function(req, res) {
+  if (req.user) {
+    utils.sendSuccessResponse(res, {loggedIn: true, user: req.user});
+  } else {
+    utils.sendSuccessResponse(res, {loggedIn: false});
+  }
+});
 
 /**
 Returns a list of projects associated with the requested user.

@@ -8,10 +8,12 @@ LocalStrategy = require('passport-local').Strategy;
 /**
 Renders home page.
 **/
+/* GET home page. */
 router.get('/', function(req, res) {
-    res.render('index', { title: 'This is for the API'});
+  res.render('index', {});
 });
 
+module.exports = router;
 /**
 Logs in user based on username/password they submit.
 **/
