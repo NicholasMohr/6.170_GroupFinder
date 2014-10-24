@@ -1,6 +1,7 @@
 var express = require('express');
 var cookieparser = require('cookie-parser');
 var router = express.Router();
+var utils = require('../utils/utils');
 
 var passport = require('passport');
 LocalStrategy = require('passport-local').Strategy;
@@ -38,7 +39,8 @@ Signs up user based on the username/password they submit.
 router.post('/signup', passport.authenticate('local-signup', {
 	failureRedirect : '/',
 	failureFlash : true 
-}), function (req,res) { // if successful
+}), function (req,res) {
+	// if successful
 	res.json(req.user);
 });
 

@@ -4,12 +4,6 @@ var User = require('../models/users');
 var Project = require('../models/projects');
 var utils = require('../utils/utils');
 
-/**
-Renders user index page.
-**/
-router.get('/', function(req, res) {
-  	res.render('index', { title: 'User Request'});
-});
 
 /**
 Returns the profile information for the requested user.
@@ -27,7 +21,7 @@ router.get('/:username', function(req, res) {
 });
 
 // returns success if there is a currently logged in user
-router.get('/current', function(req, res) {
+router.get('/', function(req, res) {
   if (req.user) {
     utils.sendSuccessResponse(res, {loggedIn: true, user: req.user});
   } else {
