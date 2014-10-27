@@ -33,8 +33,9 @@ $(document).on('submit', '#signup-form', function(evt) {
   });
 });
 
-$(document).on('click', '#logout', function(evt) {
+$(document).on('click', '#logout-link', function(evt) {
   evt.preventDefault();
+  console.log("logging out");
   $.post(
     '/logout'
   ).done(function(response) {
