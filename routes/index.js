@@ -28,8 +28,10 @@ router.post('/login', passport.authenticate('local-login',
 Logs out user.
 **/
 router.post('/logout', function(req, res) {
-    res.json(req.logout());
-});
+	req.logout();
+    res.json('yay');
+	console.log("successful logout");
+   });
 
 /**
 Signs up user based on the username/password they submit.

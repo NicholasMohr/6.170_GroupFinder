@@ -18,6 +18,20 @@ $(document).on('click', '#home-link', function(evt) {
   loadHomePage();
 });
 
+$(document).on('click', '#logout-link', function(evt) {
+  evt.preventDefault();
+  console.log("logging out");
+  $.post(
+    '/logout'
+  ).done(function(response) {
+    currentUser = undefined;
+    loadHomePage();
+  }).fail(function(jqxhr) {
+    var response = $.parseJSON(jqxhr.responseText);
+    loadUsersPage({error: response.err});
+  });
+});
+
 $(document).on('click', '#login-btn', function(evt) {
   loadPage('login');
 });
@@ -53,8 +67,21 @@ var loadHomePage = function() {
 };
 
 var loadUserPage = function() {
-  console.log('USER PAGE');
-  $.get('/users', function(response) {
-//TODO: USER HOME PAGE
+
+	console.log('USER PAGE');
+  $.get('/users/projects', function(projects) {
+    $.get('/users/' + currentUser.username, function(info){
+      //TODO: Fix that it says currentUser here, it should prol be something else
+      loadPage(
+        'user',
+        $.extend(
+          {},//TODO: Check if these are needed?
+          {info: info.content},
+          {projects: projects.content},
+          {currentUser: currentUser},
+          additional//TODO: Also check if this is needed
+          )
+        )
+    });
   });
 };
