@@ -4,6 +4,7 @@ $(document).on('submit', '#login-form', function(evt) {
     '/login',
     helpers.getFormData(this)
   ).done(function(response) {
+	  console.log(response);
     currentUser = response.user;
     loadHomePage();
   }).fail(function(jqxhr) {
