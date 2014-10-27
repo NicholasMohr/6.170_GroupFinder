@@ -70,9 +70,9 @@ var loadHomePage = function() {
   }
 };
 
-var loadUserPage = function() {
+var loadUserPage = function(additional) {
   console.log('USER PAGE');
-  $.get('/users/projects', function(projects) {
+  $.get('/projects', function(projects) {
     $.get('/users/' + currentUser.username, function(info){
       //TODO: Fix that it says currentUser here, it should prol be something else
       loadPage(

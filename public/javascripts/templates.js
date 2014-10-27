@@ -36,8 +36,6 @@ templates['signup'] = template({"1":function(depth0,helpers,partials,data) {
 templates['user'] = template({"1":function(depth0,helpers,partials,data) {
   var helper, functionType="function", helperMissing=helpers.helperMissing, escapeExpression=this.escapeExpression;
   return "    <div class=\"project\">\n      <p>"
-    + escapeExpression(((helper = (helper = helpers._id || (depth0 != null ? depth0._id : depth0)) != null ? helper : helperMissing),(typeof helper === functionType ? helper.call(depth0, {"name":"_id","hash":{},"data":data}) : helper)))
-    + "</p>\n      <p>"
     + escapeExpression(((helper = (helper = helpers.name || (depth0 != null ? depth0.name : depth0)) != null ? helper : helperMissing),(typeof helper === functionType ? helper.call(depth0, {"name":"name","hash":{},"data":data}) : helper)))
     + "</p>\n    </div>\n";
 },"compiler":[6,">= 2.0.0-beta.1"],"main":function(depth0,helpers,partials,data) {
@@ -46,6 +44,6 @@ templates['user'] = template({"1":function(depth0,helpers,partials,data) {
     + " (<a href=\"#\" id=\"logout-link\">logout</a>)</p>\n  <h1>View your info</h1>\n  <h1>Your Projects</h1>\n\n";
   stack1 = helpers.each.call(depth0, (depth0 != null ? depth0.projects : depth0), {"name":"each","hash":{},"fn":this.program(1, data),"inverse":this.noop,"data":data});
   if (stack1 != null) { buffer += stack1; }
-  return buffer + "  \n</div>\n";
+  return buffer + "\n</div>\n";
 },"useData":true});
 })();
