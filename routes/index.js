@@ -29,6 +29,7 @@ Logs out user.
 **/
 router.post('/logout', function(req, res) {
 	req.logout();
+	res.json('Logged out');
    });
 
 /**

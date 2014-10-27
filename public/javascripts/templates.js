@@ -39,9 +39,9 @@ templates['user'] = template({"1":function(depth0,helpers,partials,data) {
   if (stack1 != null) { buffer += stack1; }
   return buffer;
 },"compiler":[6,">= 2.0.0-beta.1"],"main":function(depth0,helpers,partials,data) {
-  var stack1, lambda=this.lambda, escapeExpression=this.escapeExpression, buffer = "<div id=\"user\">\n  <p>Welcome, "
-    + escapeExpression(lambda(((stack1 = (depth0 != null ? depth0.currentUser : depth0)) != null ? stack1.username : stack1), depth0))
-    + " (<a href=\"#\" id=\"logout-link\">logout</a>)</p>\n  <h1>View your info</h1>\n  <h1>Your Info</h1>\n";
+  var stack1, helper, functionType="function", helperMissing=helpers.helperMissing, escapeExpression=this.escapeExpression, buffer = "<div id=\"user\">\n  <p><span>Welcome, </span><span>"
+    + escapeExpression(((helper = (helper = helpers.currentUser || (depth0 != null ? depth0.currentUser : depth0)) != null ? helper : helperMissing),(typeof helper === functionType ? helper.call(depth0, {"name":"currentUser","hash":{},"data":data}) : helper)))
+    + "</span> (<a href=\"#\" id=\"logout-link\">logout</a>)</p>\n  <h1>View your info</h1>\n  <h1>Your Info</h1>\n";
   stack1 = helpers.each.call(depth0, (depth0 != null ? depth0.infos : depth0), {"name":"each","hash":{},"fn":this.program(1, data),"inverse":this.noop,"data":data});
   if (stack1 != null) { buffer += stack1; }
   return buffer + "</div>\n";

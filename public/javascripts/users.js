@@ -4,10 +4,10 @@ $(document).on('submit', '#login-form', function(evt) {
     '/login',
     helpers.getFormData(this)
   ).done(function(response) {
-	  console.log(response);
-    currentUser = response.user;
+    currentUser = response;
     loadHomePage();
   }).fail(function(jqxhr) {
+	  console.log('fail');
 	  $('.error').text('Password or username is invalid');
 	  loadPage('login', {error: 'Password or username is invalid'});
   });
@@ -25,7 +25,7 @@ $(document).on('submit', '#signup-form', function(evt) {
     '/signup',
     formData
   ).done(function(response) {
-    loadHomePage();
+	 loadPage('login');
   }).fail(function(jqxhr) {
 	$('.error').text('That username already exists. Please try again');
     loadPage('register', {error: 'That username already exists. Please try again'});
