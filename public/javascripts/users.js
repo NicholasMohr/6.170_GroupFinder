@@ -7,9 +7,8 @@ $(document).on('submit', '#login-form', function(evt) {
     currentUser = response.user;
     loadHomePage();
   }).fail(function(jqxhr) {
-	  console.log('FAILS');
-    var response = $.parseJSON(jqxhr.responseText);
-    loadPage('login', {error: response.err});
+	  $('.error').text('Password or username is invalid');
+	  loadPage('login', {error: 'Password or username is invalid'});
   });
 });
 
@@ -25,23 +24,10 @@ $(document).on('submit', '#signup-form', function(evt) {
     '/signup',
     formData
   ).done(function(response) {
-	  console.log(response);
     loadHomePage();
   }).fail(function(jqxhr) {
-    var response = $.parseJSON(jqxhr.responseText);
-    loadPage('register', {error: response.err});
+	$('.error').text('That username already exists. Please try again');
+    loadPage('register', {error: 'That username already exists. Please try again'});
   });
 });
 
-$(document).on('click', '#logout', function(evt) {
-  evt.preventDefault();
-  $.post(
-    '/logout'
-  ).done(function(response) {
-    currentUser = undefined;
-    loadHomePage();
-  }).fail(function(jqxhr) {
-    var response = $.parseJSON(jqxhr.responseText);
-    loadUsersPage({error: response.err});
-  });
-});

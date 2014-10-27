@@ -7,6 +7,7 @@ $(document).ready(function() {
   $.get('/users', function(response) {
     if (response.content.loggedIn) {
       currentUser = response.content.user;
+	  console.log(currentUser);
     }
     loadHomePage();
   });
@@ -25,6 +26,19 @@ $(document).on('click', '#signup-btn', function(evt) {
   loadPage('signup');
 });
 
+$(document).on('click', '#logout-btn', function(evt) {
+  evt.preventDefault();
+  $.post(
+    '/logout'
+  ).done(function(response) {
+    currentUser = undefined; 
+    loadHomePage();
+  }).fail(function(jqxhr) {
+	  console.log('FAIL');
+    loadUsersPage({error: 'Failed to log out'});
+  });
+});
+
 var loadPage = function(template, data) {
   data = data || {};
   $('#main-container').html(Handlebars.templates[template](data));
@@ -32,7 +46,6 @@ var loadPage = function(template, data) {
 
 var loadHomePage = function() {
   if (currentUser) {
-	console.log(currentUser);
     loadUserPage();
   } else {
     loadPage('index');
@@ -40,8 +53,8 @@ var loadHomePage = function() {
 };
 
 var loadUserPage = function() {
-	console.log('USER PAGE');
-  $.get('/users/projects', function(response) {
+  console.log('USER PAGE');
+  $.get('/users', function(response) {
 //TODO: USER HOME PAGE
   });
 };

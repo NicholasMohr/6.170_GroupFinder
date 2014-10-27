@@ -18,10 +18,9 @@ module.exports = router;
 /**
 Logs in user based on username/password they submit.
 **/
-router.post('/login', passport.authenticate('local-login', {
-	failureRedirect: '/',
-	failureFlash: true 
-}), function(req, res) { // if successful
+router.post('/login', passport.authenticate('local-login', 
+	{ failureFlash: 'Invalid username or password.' }
+), function(req, res) { // if successful
     res.json(req.user);
 });
 
@@ -29,17 +28,13 @@ router.post('/login', passport.authenticate('local-login', {
 Logs out user.
 **/
 router.post('/logout', function(req, res) {
-    req.logout();
-  	res.redirect('/');
+    res.json(req.logout());
 });
 
 /**
 Signs up user based on the username/password they submit.
 **/
-router.post('/signup', passport.authenticate('local-signup', {
-	failureRedirect : '/',
-	failureFlash : true 
-}), function (req,res) {
+router.post('/signup', passport.authenticate('local-signup', 	{ failureFlash: 'That already exists.' }), function (req,res) {
 	// if successful
 	res.json(req.user);
 });
