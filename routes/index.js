@@ -22,6 +22,7 @@ router.post('/login', passport.authenticate('local-login', {
 	failureRedirect: '/',
 	failureFlash: true 
 }), function(req, res) { // if successful
+	console.log("successful login");
     res.json(req.user);
 });
 
@@ -29,8 +30,8 @@ router.post('/login', passport.authenticate('local-login', {
 Logs out user.
 **/
 router.post('/logout', function(req, res) {
+	console.log("successful logout");
     req.logout();
-  	res.redirect('/');
 });
 
 /**
