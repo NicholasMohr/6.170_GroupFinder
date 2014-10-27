@@ -1,5 +1,14 @@
 <div id="user">
-  <p>Welcome, {{currentUser.username}} (<a href="#" id="logout-link">logout</a>)</p>
+  <p>Welcome, {{currentUser.authentication.username}} (<a href="#" id="logout-link">logout</a>)</p>
+  <h1>Your Projects</h1>
+
+  {{#each projects}}
+    <div class="project">
+      <p>{{_id}}</p>
+      <p>{{name}}</p>
+    </div>
+  {{/each}}
+
   <h1>View your info</h1>
   <h1>Your Info</h1>
   <div info-id="name">

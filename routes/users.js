@@ -14,7 +14,7 @@ router.get('/:username', function(req, res) {
 			utils.sendErrResponse(res, 500, 'An unexpected error occured.');
 		}
 		else{
-			res.json(user.info);
+			res.json(req.user.info);
 		}
 		
 	});
@@ -38,6 +38,7 @@ router.get('/:username/projects', function(req, res) {
 		utils.sendErrResponse(res, 500, 'An unexpected error occured.');
 		}
 		else{
+			console.log(projects);
 			res.json(user.projects);
 		}
 	});

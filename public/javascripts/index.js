@@ -56,6 +56,8 @@ $(document).on('click', '#logout-btn', function(evt) {
 
 var loadPage = function(template, data) {
   data = data || {};
+  console.log(data);
+  console.log(currentUser);
   $('#main-container').html(Handlebars.templates[template](data));
 };
 
@@ -68,20 +70,19 @@ var loadHomePage = function() {
   }
 };
 
-var loadUserPage = function() {
-
+var loadUserPage = function(additional) {
   console.log('USER PAGE');
-  $.get('/users/projects', function(projects) {
+  $.get('/projects', function(projects) {
     $.get('/users/' + currentUser.username, function(info){
       //TODO: Fix that it says currentUser here, it should prol be something else
       loadPage(
         'user',
         $.extend(
           {},//TODO: Check if these are needed?
-          {info: info.content},
-          {projects: projects.content},
+          {infos: info},
+          {projects: projects},
           {currentUser: currentUser},
-          additional//TODO: Also check if this is needed
+          additional //TODO: Also check if this is needed
           )
         )
     });
