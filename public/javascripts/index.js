@@ -25,6 +25,7 @@ $(document).on('click', '#logout-link', function(evt) {
     '/logout'
   ).done(function(response) {
     currentUser = undefined;
+	console.log(response);
     loadHomePage();
   }).fail(function(jqxhr) {
     var response = $.parseJSON(jqxhr.responseText);
@@ -61,6 +62,7 @@ var loadPage = function(template, data) {
 };
 
 var loadHomePage = function() {
+	console.log('LOAD PLEASE');
   if (currentUser) {
     loadUserPage();
   } else {
@@ -68,13 +70,10 @@ var loadHomePage = function() {
   }
 };
 
-var loadUserPage = function(additional) {
-	console.log('USER PAGE');
-  $.get('/projects', function(projects) {
-    console.log('projects');
-    console.log(projects);
-    $.get('/users/' + currentUser.authentication.username, function(info){
-      console.log(info);
+var loadUserPage = function() {
+  console.log('USER PAGE');
+  $.get('/users/projects', function(projects) {
+    $.get('/users/' + currentUser.username, function(info){
       //TODO: Fix that it says currentUser here, it should prol be something else
       loadPage(
         'user',
