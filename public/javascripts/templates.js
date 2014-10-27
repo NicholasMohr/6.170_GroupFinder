@@ -1,7 +1,7 @@
 (function() {
   var template = Handlebars.template, templates = Handlebars.templates = Handlebars.templates || {};
 templates['index'] = template({"compiler":[6,">= 2.0.0-beta.1"],"main":function(depth0,helpers,partials,data) {
-  return "<div id=\"homepage\">\n<h1>Group Finder <a style=\"float: right\" href=\"#\" id=\"home-link\">Home</a> <a style=\"float: right\" href=\"#\" id=\"logout-link\">Log out</a></h1>\n  <h2>Welcome to Group Finder!</h2>\n  <p>You must be logged in to continue.</p>\n  <button id=\"login-btn\">Log In</button>\n  <button id=\"signup-btn\">Sign Up</button>\n</div>";
+  return "<div id=\"homepage\">\n\n	<h1>Group Finder</h1>\n\n	<h1>Welcome to Group Finder!</h1>\n	<p>You must be logged in to continue.</p>\n	<button id=\"login-btn\">Log In</button>\n	<button id=\"signup-btn\">Sign Up</button>\n	\n</div>";
   },"useData":true});
 templates['info'] = template({"compiler":[6,">= 2.0.0-beta.1"],"main":function(depth0,helpers,partials,data) {
   var helper, functionType="function", helperMissing=helpers.helperMissing, escapeExpression=this.escapeExpression;
@@ -33,17 +33,34 @@ templates['signup'] = template({"1":function(depth0,helpers,partials,data) {
   if (stack1 != null) { buffer += stack1; }
   return buffer + "  </div>\n  <form id=\"signup-form\">\n    <div>Username: <input type=\"text\" name=\"username\" required /></div>\n    <div>Password: <input type=\"password\" name=\"password\" required /></div>\n	<div>Confirm Password: <input type=\"password\" name=\"confirm\" required /></div>\n    <input type=\"submit\" /> \n  </form>\n	\n</div>\n";
 },"useData":true});
-templates['user'] = template({"1":function(depth0,helpers,partials,data) {
-  var stack1, buffer = "";
-  stack1 = this.invokePartial(partials.info, '    ', 'info', depth0, undefined, helpers, partials, data);
-  if (stack1 != null) { buffer += stack1; }
-  return buffer;
-},"compiler":[6,">= 2.0.0-beta.1"],"main":function(depth0,helpers,partials,data) {
-  var stack1, helper, functionType="function", helperMissing=helpers.helperMissing, escapeExpression=this.escapeExpression, buffer = "<div id=\"user\">\n  <p><span>Welcome, </span><span>"
+templates['user'] = template({"compiler":[6,">= 2.0.0-beta.1"],"main":function(depth0,helpers,partials,data) {
+  var stack1, helper, functionType="function", helperMissing=helpers.helperMissing, escapeExpression=this.escapeExpression, lambda=this.lambda;
+  return "<div id=\"user\">\n\n  <p><span>Welcome, </span><span>"
     + escapeExpression(((helper = (helper = helpers.currentUser || (depth0 != null ? depth0.currentUser : depth0)) != null ? helper : helperMissing),(typeof helper === functionType ? helper.call(depth0, {"name":"currentUser","hash":{},"data":data}) : helper)))
-    + "</span> (<a href=\"#\" id=\"logout-link\">logout</a>)</p>\n  <h1>View your info</h1>\n  <h1>Your Info</h1>\n";
-  stack1 = helpers.each.call(depth0, (depth0 != null ? depth0.infos : depth0), {"name":"each","hash":{},"fn":this.program(1, data),"inverse":this.noop,"data":data});
-  if (stack1 != null) { buffer += stack1; }
-  return buffer + "</div>\n";
-},"usePartial":true,"useData":true});
+    + "</span> (<a href=\"#\" id=\"logout-link\">Logout</a>)</p>\n\n  <h1>View your info</h1>\n  <h1>Your Info</h1>\n  <div info-id=\"name\">\n  	Name: "
+    + escapeExpression(lambda(((stack1 = (depth0 != null ? depth0.info : depth0)) != null ? stack1.name : stack1), depth0))
+    + "   <a href=\"#\" class=\"edit-info\" id=\"name\">Edit</a>\n  </div>\n  <div info-id=\"email\">\n    Email: "
+    + escapeExpression(lambda(((stack1 = (depth0 != null ? depth0.info : depth0)) != null ? stack1.email : stack1), depth0))
+    + "   <a href=\"#\" class=\"edit-info\" id=>Edit</a>\n  </div>\n  <div info-id=\"phone\">\n    Phone: "
+    + escapeExpression(lambda(((stack1 = (depth0 != null ? depth0.info : depth0)) != null ? stack1.phone : stack1), depth0))
+    + "   <a href=\"#\" class=\"edit-info\" id="
+    + escapeExpression(lambda(((stack1 = (depth0 != null ? depth0.info : depth0)) != null ? stack1.phone : stack1), depth0))
+    + ">Edit</a>\n  </div>\n  <div info-id=\"location\">\n    Location: "
+    + escapeExpression(lambda(((stack1 = (depth0 != null ? depth0.info : depth0)) != null ? stack1.location : stack1), depth0))
+    + "   <a href=\"#\" class=\"edit-info\" id="
+    + escapeExpression(lambda(((stack1 = (depth0 != null ? depth0.info : depth0)) != null ? stack1.location : stack1), depth0))
+    + ">Edit</a>\n  </div>\n  <div info-id=\"availability\">\n    Availability: "
+    + escapeExpression(lambda(((stack1 = (depth0 != null ? depth0.info : depth0)) != null ? stack1.availability : stack1), depth0))
+    + "   <a href=\"#\" class=\"edit-info\" id="
+    + escapeExpression(lambda(((stack1 = (depth0 != null ? depth0.info : depth0)) != null ? stack1.name : stack1), depth0))
+    + ">Edit</a>\n  </div>\n  <div info-id=\"skills\">\n    Skills: "
+    + escapeExpression(lambda(((stack1 = (depth0 != null ? depth0.info : depth0)) != null ? stack1.skills : stack1), depth0))
+    + "  <a href=\"#\" class=\"edit-info\" id="
+    + escapeExpression(lambda(((stack1 = (depth0 != null ? depth0.info : depth0)) != null ? stack1.name : stack1), depth0))
+    + ">Edit</a>\n  </div>\n  <div info-id=\"timing\">\n    Timing: "
+    + escapeExpression(lambda(((stack1 = (depth0 != null ? depth0.info : depth0)) != null ? stack1.timing : stack1), depth0))
+    + "  <a href=\"#\" class=\"edit-info\" id="
+    + escapeExpression(lambda(((stack1 = (depth0 != null ? depth0.info : depth0)) != null ? stack1.name : stack1), depth0))
+    + ">Edit</a>\n  </div>\n</div>\n";
+},"useData":true});
 })();

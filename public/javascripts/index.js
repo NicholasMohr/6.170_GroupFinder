@@ -42,6 +42,8 @@ $(document).on('click', '#signup-btn', function(evt) {
 
 var loadPage = function(template, data) {
   data = data || {};
+  console.log(data);
+  console.log(currentUser);
   $('#main-container').html(Handlebars.templates[template](data));
 };
 
@@ -53,8 +55,10 @@ var loadHomePage = function() {
   }
 };
 
-var loadUserPage = function(){
-      loadPage(
+
+var loadUserPage = function() {
+  console.log('USER PAGE');
+        loadPage(
         'user',
         $.extend(
           {},//TODO: Check if these are needed?
@@ -65,3 +69,4 @@ var loadUserPage = function(){
           )
         );
 };
+

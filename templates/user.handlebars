@@ -1,8 +1,28 @@
 <div id="user">
+
   <p><span>Welcome, </span><span>{{currentUser}}</span> (<a href="#" id="logout-link">Logout</a>)</p>
+
   <h1>View your info</h1>
   <h1>Your Info</h1>
-  {{#each infos}}
-    {{> info}}
-  {{/each}}
+  <div info-id="name">
+  	Name: {{info.name}}   <a href="#" class="edit-info" id="name">Edit</a>
+  </div>
+  <div info-id="email">
+    Email: {{info.email}}   <a href="#" class="edit-info" id=>Edit</a>
+  </div>
+  <div info-id="phone">
+    Phone: {{info.phone}}   <a href="#" class="edit-info" id={{info.phone}}>Edit</a>
+  </div>
+  <div info-id="location">
+    Location: {{info.location}}   <a href="#" class="edit-info" id={{info.location}}>Edit</a>
+  </div>
+  <div info-id="availability">
+    Availability: {{info.availability}}   <a href="#" class="edit-info" id={{info.name}}>Edit</a>
+  </div>
+  <div info-id="skills">
+    Skills: {{info.skills}}  <a href="#" class="edit-info" id={{info.name}}>Edit</a>
+  </div>
+  <div info-id="timing">
+    Timing: {{info.timing}}  <a href="#" class="edit-info" id={{info.name}}>Edit</a>
+  </div>
 </div>
