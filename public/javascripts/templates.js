@@ -105,16 +105,16 @@ templates['user'] = template({"1":function(depth0,helpers,partials,data) {
     + escapeExpression(((helper = (helper = helpers.end_date || (depth0 != null ? depth0.end_date : depth0)) != null ? helper : helperMissing),(typeof helper === functionType ? helper.call(depth0, {"name":"end_date","hash":{},"data":data}) : helper)))
     + "</td>\n              <td><button id=\""
     + escapeExpression(((helper = (helper = helpers.name || (depth0 != null ? depth0.name : depth0)) != null ? helper : helperMissing),(typeof helper === functionType ? helper.call(depth0, {"name":"name","hash":{},"data":data}) : helper)))
-    + "\" class=\"join-project\">Join</button></td>\n            </tr>\n";
+    + "\" data-toggle=\"modal\" data-target=\"#join_project_modal\">Join</button></td>\n            </tr>\n";
 },"compiler":[6,">= 2.0.0-beta.1"],"main":function(depth0,helpers,partials,data) {
   var stack1, helper, functionType="function", helperMissing=helpers.helperMissing, escapeExpression=this.escapeExpression, buffer = "<div id=\"user\">\n  <div class=\"container\">\n\n    <div class=\"row\">\n      <span style=\"float:right\"><a href=\"#\" id=\"logout-link\">Logout</a></span>\n      <h1 class=\"title\">GroupFinder</h1>\n    </div>\n\n    <div class=\"row\" id=\"project_container\">\n\n      <div id=\"user_panel\" class=\"col-sm-4\">\n        <h3>Welcome "
     + escapeExpression(((helper = (helper = helpers.currentUser || (depth0 != null ? depth0.currentUser : depth0)) != null ? helper : helperMissing),(typeof helper === functionType ? helper.call(depth0, {"name":"currentUser","hash":{},"data":data}) : helper)))
-    + "!</h3>\n        <a href=\"#\" class=\"info-page\">Edit User Info</a>\n        <p></p>\n        <p><b>Your Projects</b></p>\n        <table class=\"table\">\n";
+    + "!</h3>\n        <a href=\"#\" class=\"info-page\">Edit User Info</a>\n        <br>\n        <br>\n        <h4>Your Projects</h4>\n        <table class=\"table\">\n";
   stack1 = helpers.each.call(depth0, (depth0 != null ? depth0.userProjects : depth0), {"name":"each","hash":{},"fn":this.program(1, data),"inverse":this.noop,"data":data});
   if (stack1 != null) { buffer += stack1; }
-  buffer += "        </table>\n      </div>\n\n      <div class=\"col-sm-8\">\n        <h1>All Projects</h1>\n        <table class=\"table\">\n          <tr>\n            <th>Project Name</th>\n            <th>Members</th>\n            <th>Due Date</th>\n          </tr>\n";
+  buffer += "        </table>\n      </div>\n\n      <div class=\"col-sm-8\">\n        <h1 class=\"subtitle\">All Projects</h1>\n        <table class=\"table\">\n          <tr>\n            <th>Project Name</th>\n            <th>Members</th>\n            <th>Due Date</th>\n          </tr>\n";
   stack1 = helpers.each.call(depth0, (depth0 != null ? depth0.allProjects : depth0), {"name":"each","hash":{},"fn":this.program(3, data),"inverse":this.noop,"data":data});
   if (stack1 != null) { buffer += stack1; }
-  return buffer + "        </table>\n      </div>\n\n    </div>\n\n  </div>\n</div>";
+  return buffer + "        </table>\n      </div>\n\n    </div>\n\n  </div>\n</div>\n\n\n\n\n\n\n\n<!-- Modal -->\n<div class=\"modal fade\" id=\"join_project_modal\" tabindex=\"-1\" role=\"dialog\" aria-hidden=\"true\">\n  <div class=\"modal-dialog\">\n    <div class=\"modal-content\">\n      <div class=\"modal-header\">\n        <button type=\"button\" class=\"close\" data-dismiss=\"modal\"><span aria-hidden=\"true\">&times;</span><span class=\"sr-only\">Close</span></button>\n        <h4 class=\"modal-title\" id=\"myModalLabel\">Join a new Project!</h4>\n      </div>\n      <div class=\"modal-body\">\n        ...\n      </div>\n      <div class=\"modal-footer\">\n        <button type=\"button\" class=\"btn btn-default\" data-dismiss=\"modal\">Close</button>\n        <button class=\"join-project\" type=\"button\">Save changes</button>\n      </div>\n    </div>\n  </div>\n</div>";
 },"useData":true});
 })();

@@ -9,8 +9,18 @@ a{
 	font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
 }
 
+button {
+	background-color: #f9f9f9;
+	outline: 1px solid #ccc;
+	border: none;
+}
+
 .title {
 	font-weight: 100;
+}
+
+.subtitle {
+	color: #004c4c;
 }
 
 #project_container {
