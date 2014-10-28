@@ -2,6 +2,8 @@ currentUser = undefined;
 
 //Handlebars.registerPartial('login', Handlebars.templates['login']);
 //Handlebars.registerPartial('signup', Handlebars.templates['signup']);
+Handlebars.registerPartial('modal', Handlebars.templates['modal']);
+
 
 $(document).ready(function() {
   $.get('/users', function(response) {

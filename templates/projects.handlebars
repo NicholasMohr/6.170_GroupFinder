@@ -46,9 +46,10 @@
             {{#each users}}
               <tr>
                 <td>{{@index}}</td>
-                <td>{{authentication.username}}</td>
+                <td><a class="user_info" data-toggle="modal" data-target="#{{authentication.username}}_info">{{authentication.username}}</a></td>
                 <td>{{info.location}}</td>
               </tr>
+              {{> modal}}
             {{/each}}
           </table>
       </div>
