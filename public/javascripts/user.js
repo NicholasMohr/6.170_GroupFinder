@@ -78,9 +78,9 @@ $(document).on('click', '.save-info', function(evt) {
       data: datas, 
       success: function(user) {
         currentUser.info = user.info
-          $.get('/projects', function(allProjects) {
-            loadUserInfoPage();
-          })
+        $.get('/projects', function(allProjects) {
+          loadUserPage();
+        })
       }
   });
 });
