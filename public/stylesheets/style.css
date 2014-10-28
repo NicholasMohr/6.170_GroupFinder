@@ -9,12 +9,21 @@ a{
 	font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
 }
 
+.title {
+	font-weight: 100;
+}
+
 #project_container {
 	outline: 1px solid #ccc;
 }
 
 #project_panel {
-	background-color: #eaeaea;
+	background-color: #e5f8f8;
+	text-align: center;
+}
+
+#user_panel {
+	background-color: #e5f8f8;
 	text-align: center;
 }
 

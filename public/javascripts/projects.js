@@ -1,8 +1,6 @@
 $(document).on('click', '.join-project', function(evt) {
   //open up the slider/text box to input your new info
-  var item = $(this).parent();
-  var proj_name = item.find('p').text()
-
+  var proj_name = evt.target.id;
   $.get('/projects/'+proj_name, function(project) {
     $.post('/projects/'+proj_name+'/users/', {
       proj_id: project._id,
@@ -15,7 +13,6 @@ $(document).on('click', '.join-project', function(evt) {
       loadHomePage();
     });
   });
-  
 });
 
 var loadProjectPage = function(name) {

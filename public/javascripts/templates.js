@@ -40,7 +40,7 @@ templates['projects'] = template({"1":function(depth0,helpers,partials,data) {
     + escapeExpression(lambda(((stack1 = (depth0 != null ? depth0.info : depth0)) != null ? stack1.location : stack1), depth0))
     + "</td>\n              </tr>\n";
 },"compiler":[6,">= 2.0.0-beta.1"],"main":function(depth0,helpers,partials,data) {
-  var stack1, lambda=this.lambda, escapeExpression=this.escapeExpression, buffer = "<div id=\"project\">\n\n  <div class=\"container\">\n\n    <div class=\"row\">\n      <span style=\"float:right\"><a href=\"#\" id=\"home-link\">Home</a><a href=\"#\" id=\"logout-link\">Logout</a></span>\n      <h1>GroupFinder</h1>\n    </div>\n\n    <div class=\"row\" id=\"project_container\">\n\n      <div id=\"project_panel\" class=\"col-sm-4\">\n\n        <h3>"
+  var stack1, lambda=this.lambda, escapeExpression=this.escapeExpression, buffer = "<div id=\"project\">\n\n  <div class=\"container\">\n\n    <div class=\"row\">\n      <span style=\"float:right\"><a href=\"#\" id=\"home-link\">Home</a><a href=\"#\" id=\"logout-link\">Logout</a></span>\n      <h1 class=\"title\">GroupFinder</h1>\n    </div>\n\n    <div class=\"row\" id=\"project_container\">\n\n      <div id=\"project_panel\" class=\"col-sm-4\">\n\n        <h3>"
     + escapeExpression(lambda(((stack1 = (depth0 != null ? depth0.project : depth0)) != null ? stack1.name : stack1), depth0))
     + "</h3>\n        <p>\n          <b>Due Date:</b> <br>\n          "
     + escapeExpression(lambda(((stack1 = (depth0 != null ? depth0.project : depth0)) != null ? stack1.end_date : stack1), depth0))
@@ -62,7 +62,7 @@ templates['signup'] = template({"1":function(depth0,helpers,partials,data) {
 },"useData":true});
 templates['user-info'] = template({"compiler":[6,">= 2.0.0-beta.1"],"main":function(depth0,helpers,partials,data) {
   var stack1, lambda=this.lambda, escapeExpression=this.escapeExpression;
-  return "<div id=\"user\">\n\n  <div class=\"container\">\n\n    <div class=\"row\">\n      <span style=\"float:right\"><a href=\"#\" class=\"user-page\">View Projects</a><a href=\"#\" id=\"home-link\">Home</a><a href=\"#\" id=\"logout-link\">Logout</a></span>\n      <h1>GroupFinder</h1>\n    </div>\n\n    <h1>Your Info</h1>\n    <div class=\"row\">\n\n      <div class=\"col-xs-6\">\n        <div class=\"info\" data-info-id=\"name\">\n          Name: <p>"
+  return "<div id=\"user\">\n\n  <div class=\"container\">\n\n    <div class=\"row\">\n      <span style=\"float:right\"><a href=\"#\" class=\"user-page\">View Projects</a><a href=\"#\" id=\"home-link\">Home</a><a href=\"#\" id=\"logout-link\">Logout</a></span>\n      <h1 class=\"title\">GroupFinder</h1>\n    </div>\n\n    <h1>Your Info</h1>\n    <div class=\"row\">\n\n      <div class=\"col-xs-6\">\n        <div class=\"info\" data-info-id=\"name\">\n          Name: <p>"
     + escapeExpression(lambda(((stack1 = (depth0 != null ? depth0.info : depth0)) != null ? stack1.name : stack1), depth0))
     + "</p>   <input type=\"text\" value=\""
     + escapeExpression(lambda(((stack1 = (depth0 != null ? depth0.info : depth0)) != null ? stack1.name : stack1), depth0))
@@ -91,24 +91,30 @@ templates['user-info'] = template({"compiler":[6,">= 2.0.0-beta.1"],"main":funct
     + "</p>  <input type=\"range\" name=\"interaction\" min=\"0\" max=\"10\" value=5>\n        </div>\n      </div>\n\n    </div>\n\n    <div class=\"row\">\n      <button class=\"save-info\">Save</button>\n    </div>\n\n  </div>\n</div>";
 },"useData":true});
 templates['user'] = template({"1":function(depth0,helpers,partials,data) {
-  var helper, functionType="function", helperMissing=helpers.helperMissing, escapeExpression=this.escapeExpression;
-  return "    <div class=\"project\">\n      <p>"
-    + escapeExpression(((helper = (helper = helpers.name || (depth0 != null ? depth0.name : depth0)) != null ? helper : helperMissing),(typeof helper === functionType ? helper.call(depth0, {"name":"name","hash":{},"data":data}) : helper)))
-    + "</p><button class=\"join-project\">Join</button>\n    </div>\n";
-},"3":function(depth0,helpers,partials,data) {
   var stack1, lambda=this.lambda, escapeExpression=this.escapeExpression;
-  return "    <div class=\"project\">\n      <p>"
+  return "            <tr>\n              <td>"
     + escapeExpression(lambda(((stack1 = (depth0 != null ? depth0.proj_id : depth0)) != null ? stack1.name : stack1), depth0))
-    + " <button>Visit</button> </p>\n    </div>\n";
+    + "</td>\n              <td><button class=\"visit-project\">Visit</button></td>\n            </tr>\n";
+},"3":function(depth0,helpers,partials,data) {
+  var stack1, helper, functionType="function", helperMissing=helpers.helperMissing, escapeExpression=this.escapeExpression, lambda=this.lambda;
+  return "            <tr>\n              <td id='proj_name'>"
+    + escapeExpression(((helper = (helper = helpers.name || (depth0 != null ? depth0.name : depth0)) != null ? helper : helperMissing),(typeof helper === functionType ? helper.call(depth0, {"name":"name","hash":{},"data":data}) : helper)))
+    + "</td>\n              <td>"
+    + escapeExpression(lambda(((stack1 = (depth0 != null ? depth0.users : depth0)) != null ? stack1.length : stack1), depth0))
+    + "</td>\n              <td>"
+    + escapeExpression(((helper = (helper = helpers.end_date || (depth0 != null ? depth0.end_date : depth0)) != null ? helper : helperMissing),(typeof helper === functionType ? helper.call(depth0, {"name":"end_date","hash":{},"data":data}) : helper)))
+    + "</td>\n              <td><button id=\""
+    + escapeExpression(((helper = (helper = helpers.name || (depth0 != null ? depth0.name : depth0)) != null ? helper : helperMissing),(typeof helper === functionType ? helper.call(depth0, {"name":"name","hash":{},"data":data}) : helper)))
+    + "\" class=\"join-project\">Join</button></td>\n            </tr>\n";
 },"compiler":[6,">= 2.0.0-beta.1"],"main":function(depth0,helpers,partials,data) {
-  var stack1, helper, functionType="function", helperMissing=helpers.helperMissing, escapeExpression=this.escapeExpression, buffer = "<div id=\"user\">\n\n  <p><span>Welcome, </span><span>"
+  var stack1, helper, functionType="function", helperMissing=helpers.helperMissing, escapeExpression=this.escapeExpression, buffer = "<div id=\"user\">\n  <div class=\"container\">\n\n    <div class=\"row\">\n      <span style=\"float:right\"><a href=\"#\" id=\"logout-link\">Logout</a></span>\n      <h1 class=\"title\">GroupFinder</h1>\n    </div>\n\n    <div class=\"row\" id=\"project_container\">\n\n      <div id=\"user_panel\" class=\"col-sm-4\">\n        <h3>Welcome "
     + escapeExpression(((helper = (helper = helpers.currentUser || (depth0 != null ? depth0.currentUser : depth0)) != null ? helper : helperMissing),(typeof helper === functionType ? helper.call(depth0, {"name":"currentUser","hash":{},"data":data}) : helper)))
-    + "</span> (<a href=\"#\" id=\"logout-link\">Logout</a>)</p>\n  <a href=\"#\" class=\"info-page\">edit info</a>\n\n  <h1>All Projects</h1>\n";
-  stack1 = helpers.each.call(depth0, (depth0 != null ? depth0.allProjects : depth0), {"name":"each","hash":{},"fn":this.program(1, data),"inverse":this.noop,"data":data});
+    + "!</h3>\n        <a href=\"#\" class=\"info-page\">Edit User Info</a>\n        <p></p>\n        <p><b>Your Projects</b></p>\n        <table class=\"table\">\n";
+  stack1 = helpers.each.call(depth0, (depth0 != null ? depth0.userProjects : depth0), {"name":"each","hash":{},"fn":this.program(1, data),"inverse":this.noop,"data":data});
   if (stack1 != null) { buffer += stack1; }
-  buffer += "\n  <h1>Your Projects</h1>\n";
-  stack1 = helpers.each.call(depth0, (depth0 != null ? depth0.userProjects : depth0), {"name":"each","hash":{},"fn":this.program(3, data),"inverse":this.noop,"data":data});
+  buffer += "        </table>\n      </div>\n\n      <div class=\"col-sm-8\">\n        <h1>All Projects</h1>\n        <table class=\"table\">\n          <tr>\n            <th>Project Name</th>\n            <th>Members</th>\n            <th>Due Date</th>\n          </tr>\n";
+  stack1 = helpers.each.call(depth0, (depth0 != null ? depth0.allProjects : depth0), {"name":"each","hash":{},"fn":this.program(3, data),"inverse":this.noop,"data":data});
   if (stack1 != null) { buffer += stack1; }
-  return buffer + "\n</div>\n";
+  return buffer + "        </table>\n      </div>\n\n    </div>\n\n  </div>\n</div>";
 },"useData":true});
 })();

@@ -1,61 +1,48 @@
 <div id="user">
-
-  
-
-  <h1>All Projects</h1>
-  {{#each allProjects}}
-    <div class="project">
-      <p>{{name}}</p><button class="join-project">Join</button>
-    </div>
-  {{/each}}
-
-  <h1>Your Projects</h1>
-  {{#each userProjects}}
-    <div class="project">
-      <p>{{proj_id.name}} <button>Visit</button> </p>
-    </div>
-  {{/each}}
-
-</div>
-
-<div id="project">
-
   <div class="container">
 
     <div class="row">
-      <span style="float:right"><a href="#" id="home-link">Home</a><a href="#" id="logout-link">Logout</a></span>
-      <h1>GroupFinder</h1>
+      <span style="float:right"><a href="#" id="logout-link">Logout</a></span>
+      <h1 class="title">GroupFinder</h1>
     </div>
 
     <div class="row" id="project_container">
 
-      <div id="project_panel" class="col-sm-4">
-
-        <h3>Welcome {{currentUser}}</h3>
-        <a href="#" class="info-page">Edit Info</a>
-
-        
+      <div id="user_panel" class="col-sm-4">
+        <h3>Welcome {{currentUser}}!</h3>
+        <a href="#" class="info-page">Edit User Info</a>
+        <p></p>
+        <p><b>Your Projects</b></p>
+        <table class="table">
+          {{#each userProjects}}
+            <tr>
+              <td>{{proj_id.name}}</td>
+              <td><button class="visit-project">Visit</button></td>
+            </tr>
+          {{/each}}
+        </table>
       </div>
 
       <div class="col-sm-8">
-        <h1>Members</h1>
-          <table class="table">
+        <h1>All Projects</h1>
+        <table class="table">
+          <tr>
+            <th>Project Name</th>
+            <th>Members</th>
+            <th>Due Date</th>
+          </tr>
+          {{#each allProjects}}
             <tr>
-              <th>Rank</th>
-              <th>Username</th>
-              <th>Location</th>
+              <td id='proj_name'>{{name}}</td>
+              <td>{{users.length}}</td>
+              <td>{{end_date}}</td>
+              <td><button id="{{name}}" class="join-project">Join</button></td>
             </tr>
-            {{#each users}}
-              <tr>
-                <td>{{@index}}</td>
-                <td>{{authentication.username}}</td>
-                <td>{{info.location}}</td>
-              </tr>
-            {{/each}}
-          </table>
+          {{/each}}
+        </table>
       </div>
 
     </div>
-  </div>
 
+  </div>
 </div>
