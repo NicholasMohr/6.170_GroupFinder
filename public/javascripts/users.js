@@ -31,6 +31,3 @@ $(document).on('submit', '#signup-form', function(evt) {
     loadPage('register', {error: 'That username already exists. Please try again'});
   });
 });
-
-
-

@@ -8,6 +8,7 @@ $(document).on('click', '.edit-info', function(evt) {
 	}));
 	item.hide();
 });
+
 $(document).on('click', '.reset-button', function(evt) {
   var item = $(this).parent();
   item.prev().show();
