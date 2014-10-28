@@ -60,6 +60,12 @@ button {
 	padding: 40px;
 }
 
+.join_project_container {
+	text-align: center;
+	width: 300px;
+	outline: 1px solid #ccc;
+}
+
 .subtitle {
 	color: #004c4c;
 }
@@ -72,4 +78,5 @@ button {
 	background-color: #e5f8f8;
 	text-align: center;
 	height: 100%;
+	display: inline-block;
 }
