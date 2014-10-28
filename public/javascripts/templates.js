@@ -73,20 +73,34 @@ templates['user'] = template({"1":function(depth0,helpers,partials,data) {
   buffer += "\n  <h1>Your Projects</h1>\n";
   stack1 = helpers.each.call(depth0, (depth0 != null ? depth0.userProjects : depth0), {"name":"each","hash":{},"fn":this.program(3, data),"inverse":this.noop,"data":data});
   if (stack1 != null) { buffer += stack1; }
-  return buffer + "\n  <h1>Your Info</h1>\n  <div data-info-id=\"name\">\n  	Name: <p>"
+  return buffer + "\n  <h1>Your Info</h1>\n  <div class=\"info\" data-info-id=\"name\">\n  	Name: <p>"
     + escapeExpression(lambda(((stack1 = (depth0 != null ? depth0.info : depth0)) != null ? stack1.name : stack1), depth0))
-    + "</p>     <button class=\"edit-info\">Edit</button>\n  </div>\n  <div data-info-id=\"email\">\n    Email: <p>"
+    + "</p>   <input type=\"text\" value=\""
+    + escapeExpression(lambda(((stack1 = (depth0 != null ? depth0.info : depth0)) != null ? stack1.name : stack1), depth0))
+    + "\" />\n  </div>\n  <div class=\"info\" data-info-id=\"email\">\n    Email: <p>"
     + escapeExpression(lambda(((stack1 = (depth0 != null ? depth0.info : depth0)) != null ? stack1.email : stack1), depth0))
-    + "</p>   <button class=\"edit-info\">Edit</button>\n  </div>\n  <div data-info-id=\"phone\">\n    Phone: <p>"
+    + "</p>    <input type=\"text\" value=\""
+    + escapeExpression(lambda(((stack1 = (depth0 != null ? depth0.info : depth0)) != null ? stack1.email : stack1), depth0))
+    + "\" />\n  </div>\n  <div class=\"info\" data-info-id=\"phone\">\n    Phone: <p>"
     + escapeExpression(lambda(((stack1 = (depth0 != null ? depth0.info : depth0)) != null ? stack1.phone : stack1), depth0))
-    + "</p>   <button class=\"edit-info\">Edit</button>\n  </div>\n  <div data-info-id=\"location\">\n    Location:<p>"
+    + "</p>  <input type=\"text\" value=\""
+    + escapeExpression(lambda(((stack1 = (depth0 != null ? depth0.info : depth0)) != null ? stack1.phone : stack1), depth0))
+    + "\" />\n  </div>\n  <div class=\"info\" data-info-id=\"location\">\n    Location:<p>"
     + escapeExpression(lambda(((stack1 = (depth0 != null ? depth0.info : depth0)) != null ? stack1.location : stack1), depth0))
-    + "</p>   <button class=\"edit-info\">Edit</button>\n  </div>\n  <div data-info-id=\"availability\">\n    Availability: <p>"
+    + "</p>  <input type=\"text\" value=\""
+    + escapeExpression(lambda(((stack1 = (depth0 != null ? depth0.info : depth0)) != null ? stack1.location : stack1), depth0))
+    + "\" />\n  </div>\n  <div class=\"info\" data-info-id=\"availability\">\n    Availability: <p>"
     + escapeExpression(lambda(((stack1 = (depth0 != null ? depth0.info : depth0)) != null ? stack1.availability : stack1), depth0))
-    + "</p>   <button class=\"edit-info\">Edit</button>\n  </div>\n  <div data-info-id=\"skills\">\n    Skills: <p>"
+    + "</p>  <input type=\"text\" value=\""
+    + escapeExpression(lambda(((stack1 = (depth0 != null ? depth0.info : depth0)) != null ? stack1.availability : stack1), depth0))
+    + "\" />\n  </div>\n  <div class=\"info\" data-info-id=\"skills\">\n    Skills: <p>"
     + escapeExpression(lambda(((stack1 = (depth0 != null ? depth0.info : depth0)) != null ? stack1.skills : stack1), depth0))
-    + "</p>  <button class=\"edit-info\">Edit</button>\n  </div>\n  <div data-info-id=\"timing\">\n    Timing: <p>"
+    + "</p>  <input type=\"text\" value=\""
+    + escapeExpression(lambda(((stack1 = (depth0 != null ? depth0.info : depth0)) != null ? stack1.skills : stack1), depth0))
+    + "\" />\n  </div>\n  <div class=\"info\" data-info-id=\"timing\">\n    Timing: <p>"
     + escapeExpression(lambda(((stack1 = (depth0 != null ? depth0.info : depth0)) != null ? stack1.timing : stack1), depth0))
-    + "</p>  <button class=\"edit-info\">Edit</button>\n  </div>\n</div>\n";
+    + "</p>  <input type=\"text\" value=\""
+    + escapeExpression(lambda(((stack1 = (depth0 != null ? depth0.info : depth0)) != null ? stack1.timing : stack1), depth0))
+    + "\" />\n  </div>\n  <button class=\"save-info\">Save</button>\n</div>\n";
 },"useData":true});
 })();

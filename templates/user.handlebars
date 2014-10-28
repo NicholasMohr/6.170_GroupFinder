@@ -17,25 +17,26 @@
   {{/each}}
 
   <h1>Your Info</h1>
-  <div data-info-id="name">
-  	Name: <p>{{info.name}}</p>     <button class="edit-info">Edit</button>
+  <div class="info" data-info-id="name">
+  	Name: <p>{{info.name}}</p>   <input type="text" value="{{info.name}}" />
   </div>
-  <div data-info-id="email">
-    Email: <p>{{info.email}}</p>   <button class="edit-info">Edit</button>
+  <div class="info" data-info-id="email">
+    Email: <p>{{info.email}}</p>    <input type="text" value="{{info.email}}" />
   </div>
-  <div data-info-id="phone">
-    Phone: <p>{{info.phone}}</p>   <button class="edit-info">Edit</button>
+  <div class="info" data-info-id="phone">
+    Phone: <p>{{info.phone}}</p>  <input type="text" value="{{info.phone}}" />
   </div>
-  <div data-info-id="location">
-    Location:<p>{{info.location}}</p>   <button class="edit-info">Edit</button>
+  <div class="info" data-info-id="location">
+    Location:<p>{{info.location}}</p>  <input type="text" value="{{info.location}}" />
   </div>
-  <div data-info-id="availability">
-    Availability: <p>{{info.availability}}</p>   <button class="edit-info">Edit</button>
+  <div class="info" data-info-id="availability">
+    Availability: <p>{{info.availability}}</p>  <input type="text" value="{{info.availability}}" />
   </div>
-  <div data-info-id="skills">
-    Skills: <p>{{info.skills}}</p>  <button class="edit-info">Edit</button>
+  <div class="info" data-info-id="skills">
+    Skills: <p>{{info.skills}}</p>  <input type="text" value="{{info.skills}}" />
   </div>
-  <div data-info-id="timing">
-    Timing: <p>{{info.timing}}</p>  <button class="edit-info">Edit</button>
+  <div class="info" data-info-id="timing">
+    Timing: <p>{{info.timing}}</p>  <input type="text" value="{{info.timing}}" />
   </div>
+  <button class="save-info">Save</button>
 </div>

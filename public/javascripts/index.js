@@ -40,7 +40,7 @@ $(document).on('click', '#signup-btn', function(evt) {
   loadPage('signup');
 });
 
-var loadPage = function(template, data) {
+loadPage = function(template, data) {
   data = data || {};
   console.log(data);
   console.log(currentUser);
