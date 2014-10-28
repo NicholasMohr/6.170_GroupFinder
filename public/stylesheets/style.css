@@ -23,10 +23,24 @@ button {
 	padding: 10px;
 }
 
+.projectFilter {
+	background-color: #ccf2f2;
+	border: 1px solid gray;
+	padding: 10px;
+	margin: 10px;
+}
+
 .save-info, .new-project-create {
 	margin: 30px;
 	font-size: 20px;
 	padding: 10px;
+	background-color: #00C0C0;
+	color: white;
+	font-weight: 100;
+	outline: none;
+}
+
+.visit-project, .join-project {
 	background-color: #00C0C0;
 	color: white;
 	font-weight: 100;
