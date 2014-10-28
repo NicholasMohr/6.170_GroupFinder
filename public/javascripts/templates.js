@@ -20,8 +20,15 @@ templates['info'] = template({"compiler":[6,">= 2.0.0-beta.1"],"main":function(d
     + "</p>\n  <a href=\"#\" class=\"edit-info\">Edit</a>\n</div>";
 },"useData":true});
 templates['join-project'] = template({"compiler":[6,">= 2.0.0-beta.1"],"main":function(depth0,helpers,partials,data) {
-  return "<div id=\"join-project\">\n  <div class=\"container\">\n\n    <div class=\"row\">\n      <span style=\"float:right\"><a href=\"#\" id=\"home-link\">Home</a><a href=\"#\" id=\"logout-link\">Logout</a></span>\n      <h1 class=\"title\">GroupFinder</h1>\n    </div>\n\n    <div class=\"row\" id=\"new_project_container\">\n      <div class=\"col-sm-12 center\">\n\n        <div class=\"row\">\n          <h3 class=\"center\">Join Project</h3>\n        </div>\n\n        <div class=\"row\">\n          <div class=\"join-project-container\">\n            <div class=\"join-proj-info\" data-info-id=\"desired_grade\" min=\"0\" max=\"10\">\n              <b>Desired Grade:</b> <br>\n              <input type=\"range\" />\n            </div>\n            <div class=\"join-proj-info\" data-info-id=\"dedication\" min=\"0\" max=\"10\">\n              <b>Dedication:</b> <br>\n              <input type=\"range\" />\n            </div>\n            <div class=\"join-proj-info\" data-info-id=\"interaction\" min=\"0\" max=\"10\">\n              <b>Interaction:</b> <br>\n              <input type=\"range\" />\n            </div>\n          </div>\n        </div>\n\n        <div class=\"row center\">\n          <button class=\"join-project-submit\">Create</button>\n        </div>\n\n      </div>\n    </div>\n\n  </div>\n</div>";
-  },"useData":true});
+  var helper, functionType="function", helperMissing=helpers.helperMissing, escapeExpression=this.escapeExpression;
+  return "<div id=\"join-project\">\n  <div class=\"container\">\n\n    <div class=\"row\">\n      <span style=\"float:right\"><a href=\"#\" id=\"home-link\">Home</a><a href=\"#\" id=\"logout-link\">Logout</a></span>\n      <h1 class=\"title\">GroupFinder</h1>\n    </div>\n\n    <div class=\"row\" id=\"new_project_container\">\n      <div class=\"col-sm-12 center\">\n\n        <div class=\"row\">\n          <h3 class=\"center\">Join "
+    + escapeExpression(((helper = (helper = helpers.proj_name || (depth0 != null ? depth0.proj_name : depth0)) != null ? helper : helperMissing),(typeof helper === functionType ? helper.call(depth0, {"name":"proj_name","hash":{},"data":data}) : helper)))
+    + "</h3>\n          <p>Please specify your desired grade, your desired amount of interaction, and your dedication to "
+    + escapeExpression(((helper = (helper = helpers.proj_name || (depth0 != null ? depth0.proj_name : depth0)) != null ? helper : helperMissing),(typeof helper === functionType ? helper.call(depth0, {"name":"proj_name","hash":{},"data":data}) : helper)))
+    + ".\n        </div>\n\n        <div class=\"row\">\n          <div class=\"join-project-container\">\n            <span style=\"float:left\"><p><i>Low</i></p></span>\n            <span style=\"float:right\"><p><i>High</i></p></span>\n            <br>\n            <div class=\"join-proj-info\" data-info-id=\"desired_grade\">\n              <b>Desired Grade:</b> <br>\n              <input type=\"range\" min=\"0\" max=\"10\"/>\n            </div>\n            <br>\n            <div class=\"join-proj-info\" data-info-id=\"interaction\">\n              <b>Interaction:</b> <br>\n              <input type=\"range\" min=\"0\" max=\"10\"/>\n            </div>\n            <br>\n            <div class=\"join-proj-info\" data-info-id=\"dedication\">\n              <b>Dedication:</b> <br>\n              <input type=\"range\" min=\"0\" max=\"10\"/>\n            </div>\n            <br>\n          </div>\n        </div>\n\n        <div class=\"row center\">\n          <button value=\""
+    + escapeExpression(((helper = (helper = helpers.proj_name || (depth0 != null ? depth0.proj_name : depth0)) != null ? helper : helperMissing),(typeof helper === functionType ? helper.call(depth0, {"name":"proj_name","hash":{},"data":data}) : helper)))
+    + "\" class=\"join-project-submit\">Join</button>\n        </div>\n\n      </div>\n    </div>\n\n  </div>\n</div>";
+},"useData":true});
 templates['login'] = template({"1":function(depth0,helpers,partials,data) {
   var helper, functionType="function", helperMissing=helpers.helperMissing, escapeExpression=this.escapeExpression;
   return "              <div class=\"error\">"
@@ -144,7 +151,7 @@ templates['user'] = template({"1":function(depth0,helpers,partials,data) {
   return buffer + "            </tr>\n";
 },"4":function(depth0,helpers,partials,data) {
   var helper, functionType="function", helperMissing=helpers.helperMissing, escapeExpression=this.escapeExpression;
-  return "                  <button id=\""
+  return "                  <button value=\""
     + escapeExpression(((helper = (helper = helpers.name || (depth0 != null ? depth0.name : depth0)) != null ? helper : helperMissing),(typeof helper === functionType ? helper.call(depth0, {"name":"name","hash":{},"data":data}) : helper)))
     + "\" class=\"join-project-request\">Join</button></td>\n";
 },"compiler":[6,">= 2.0.0-beta.1"],"main":function(depth0,helpers,partials,data,depths) {

@@ -25,12 +25,12 @@ button {
 
 .projectFilter {
 	background-color: #ccf2f2;
-	border: 1px solid gray;
+	border: 1px solid #ccc;
 	padding: 10px;
 	margin: 10px;
 }
 
-.save-info, .new-project-create {
+.save-info, .new-project-create, .join-project-submit {
 	margin: 30px;
 	font-size: 20px;
 	padding: 10px;
@@ -47,6 +47,15 @@ button {
 	outline: none;
 }
 
+.join-project-container {
+	width: 400px;
+	outline: 1px solid #ccc;
+	padding: 20px;
+	background-color: #ccf2f2;
+	margin-left: auto;
+	margin-right: auto;
+}
+
 .error {
 	color: #b42020;
 }
@@ -58,12 +67,6 @@ button {
 #index_button_container, #login_form_container {
 	text-align: center;
 	padding: 40px;
-}
-
-.join_project_container {
-	text-align: center;
-	width: 300px;
-	outline: 1px solid #ccc;
 }
 
 .subtitle {

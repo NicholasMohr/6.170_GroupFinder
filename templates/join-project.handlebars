@@ -10,28 +10,35 @@
       <div class="col-sm-12 center">
 
         <div class="row">
-          <h3 class="center">Join Project</h3>
+          <h3 class="center">Join {{proj_name}}</h3>
+          <p>Please specify your desired grade, your desired amount of interaction, and your dedication to {{proj_name}}.
         </div>
 
         <div class="row">
           <div class="join-project-container">
-            <div class="join-proj-info" data-info-id="desired_grade" min="0" max="10">
+            <span style="float:left"><p><i>Low</i></p></span>
+            <span style="float:right"><p><i>High</i></p></span>
+            <br>
+            <div class="join-proj-info" data-info-id="desired_grade">
               <b>Desired Grade:</b> <br>
-              <input type="range" />
+              <input type="range" min="0" max="10"/>
             </div>
-            <div class="join-proj-info" data-info-id="dedication" min="0" max="10">
-              <b>Dedication:</b> <br>
-              <input type="range" />
-            </div>
-            <div class="join-proj-info" data-info-id="interaction" min="0" max="10">
+            <br>
+            <div class="join-proj-info" data-info-id="interaction">
               <b>Interaction:</b> <br>
-              <input type="range" />
+              <input type="range" min="0" max="10"/>
             </div>
+            <br>
+            <div class="join-proj-info" data-info-id="dedication">
+              <b>Dedication:</b> <br>
+              <input type="range" min="0" max="10"/>
+            </div>
+            <br>
           </div>
         </div>
 
         <div class="row center">
-          <button class="join-project-submit">Join</button>
+          <button value="{{proj_name}}" class="join-project-submit">Join</button>
         </div>
 
       </div>

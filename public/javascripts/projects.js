@@ -1,17 +1,25 @@
 $(document).on('click', '.join-project-request', function(evt) {
-  loadPage('join-project',$.extend());
+  var proj_name = evt.target.value;
+  loadPage(
+    'join-project',
+    $.extend(
+      {proj_name: proj_name}
+    )
+  );
 });
 
 $(document).on('click', '.join-project-submit', function(evt) {
-  console.log("clicked!");
-  var proj_name = evt.target.id;
+  var proj_name = evt.target.value;
+  var datas = {}
+  $(".join-proj-info").each(function(index){
+    var infoName = $(this).data('info-id');
+    console.log($(this).find('input').val());
+    datas[infoName] = $(this).find('input').val()/10;
+  });
   $.get('/projects/'+proj_name +'', function(project) {
-    $.post('/projects/'+proj_name+'/users/', {
-      proj_id: project._id,
-      desired_grade: 3,
-      interaction: 3,
-      timing: 3
-    }).done(function(response) {
+    $.post(
+      '/projects/'+proj_name+'/users/', datas
+    ).done(function(response) {
       loadProjectPage(proj_name);
     }).fail(function(jqxhr) {
       loadHomePage();
