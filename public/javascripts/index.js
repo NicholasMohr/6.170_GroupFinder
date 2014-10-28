@@ -69,19 +69,29 @@ var loadHomePage = function() {
 
 var loadUserInfoPage = function(additional) {
   if (currentUser) {  
+    infos = {};
+    for (index in currentUser.info){
+      if(index !== "timing"){
+        infos[index] = currentUser.info[index];
+      }else{
+        infos[index] = currentUser.info[index]*10
+      }
+    }
+    console.log(currentUser.info.timing)
     $.get('/projects', function(allProjects) {
       loadPage(
       'user-info',
       $.extend(
         {},//TODO: Check if these are needed?
-        {info: currentUser.info},
+        {info: infos},
         {allProjects: allProjects},
         {userProjects: currentUser.projects},
         {currentUser: currentUser.authentication.username},
         additional//TODO: Also check if this is needed
         )
       );
-    });   
+    });
+    //currentUser.info.timing /= 10;
   } else {
     loadPage('index');
   }   

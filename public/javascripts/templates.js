@@ -117,7 +117,9 @@ templates['user-info'] = template({"compiler":[6,">= 2.0.0-beta.1"],"main":funct
     + escapeExpression(lambda(((stack1 = (depth0 != null ? depth0.info : depth0)) != null ? stack1.skills : stack1), depth0))
     + "\" />\n            </div>\n            <div class=\"info\" data-info-id=\"timing\">\n              <b>Timing</b> <br> <i> left is more procrastination, right is less </i> <br> "
     + escapeExpression(lambda(((stack1 = (depth0 != null ? depth0.info : depth0)) != null ? stack1.timing : stack1), depth0))
-    + " <br>\n              <input type=\"range\" name=\"interaction\" min=\"0\" max=\"10\" value=5>\n            </div>\n          </div>\n        </div>\n      </div>\n\n      <div class=\"row center\">\n        <button class=\"save-info\">Update</button>\n      </div>\n\n    </div>\n\n    \n\n  </div>\n</div>";
+    + " <br>\n              <input type=\"range\" name=\"interaction\" min=\"0\" max=\"10\" value=\""
+    + escapeExpression(lambda(((stack1 = (depth0 != null ? depth0.info : depth0)) != null ? stack1.timing : stack1), depth0))
+    + "\">\n            </div>\n          </div>\n        </div>\n      </div>\n\n      <div class=\"row center\">\n        <button class=\"save-info\">Update</button>\n      </div>\n\n    </div>\n\n    \n\n  </div>\n</div>";
 },"useData":true});
 templates['user'] = template({"1":function(depth0,helpers,partials,data) {
   var stack1, lambda=this.lambda, escapeExpression=this.escapeExpression;
