@@ -33,13 +33,18 @@ $(document).on('submit', '.projectFilter', function(evt) {
       success: function(users) {
         console.log("success")
         console.log(users);
+
+        var actualUsers = [];
+        for (user in users){
+          actualUsers.push(users[user].user);
+        }
         $.get('/projects/'+currentProject, function(project) {
           loadPage(
           'projects',
           $.extend(
             {info: currentUser.info},
             {currentUser: currentUser.authentication.username},
-            {users: users},
+            {users: actualUsers},
             {name: currentProject},
             {project: project}
             )
