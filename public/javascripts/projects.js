@@ -1,5 +1,7 @@
 $(document).on('click', '.join-project', function(evt) {
   //open up the slider/text box to input your new info
+
+
   var proj_name = evt.target.id;
   $.get('/projects/'+proj_name, function(project) {
     $.post('/projects/'+proj_name+'/users/', {
@@ -14,6 +16,16 @@ $(document).on('click', '.join-project', function(evt) {
     });
   });
 });
+/*
+$(document).on('submit', '.projectFilter', function(evt) {
+  var datas = {};
+  $(".info").each(function(index){
+    var infoName = $(this).data('info-id');
+    //FIXTHIS THIS IS WHERE YOU're working
+    datas[infoName] = $(this).find('input').val()/5 + .5;
+  });
+});
+*/
 
 $(document).on('click', '.visit-project', function(evt) {
   //open up the slider/text box to input your new info
