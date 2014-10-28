@@ -1,5 +1,6 @@
-$document.on('click', '.edit-info'){
+$(document).on('click', '.edit-info', function(evt) {
 	//open up the slider/text box to input your new info
+	console.log("edit button clicked");
 	var item = $(this).parent();
 	item.after(Handlebars.templates['edit-info']({
 	  id: item.data('info-id'),
@@ -21,14 +22,22 @@ $(document).on('click', '.edit-button', function(evt) {
     alert('Input must not be empty');
     return;
   }
+  /*
+  $.ajax({
+      url: '/script.cgi',
+      type: 'DELETE',
+      success: function(result) {
+          // Do something with the result
+      }
+  });*/
   $.post(
-    '/' + currentUser.username + '/' + id,
+    '/users/',
     {content: content}
   ).done(function(response) {
-    item.after(Handlebars.templates['secret']({
-      _id: id,
-      content: content
-    }));
+    /*item.after('<div data-info-id="' + content + '">
+    Skills: <p>{{info.' + content + '}}</p>  <a href="#" class="edit-info"></a>
+  </div>')
+*/
     item.prev().remove();
     item.remove();
   }).fail(function(jqxhr) {
