@@ -22,17 +22,13 @@ $(document).on('submit', '.projectFilter', function(evt) {
   $(".weight").each(function(index){
     var name = $(this).data('name');
     //FIXTHIS THIS IS WHERE YOU're working
-    console.log($(this).val());
     datas[name] = $(this).val()*3/20 + .5;
   });
-  console.log(datas);
   $.ajax({
       url: '/projects/'+ currentProject + '/users/filter',
       type: 'GET',
       data: datas, 
       success: function(users) {
-        console.log("success")
-        console.log(users);
 
         var actualUsers = [];
         for (user in users){
@@ -71,31 +67,24 @@ $(document).on('click', '.new-project-create', function(evt) {
   var datas = {}
   $(".new-proj-info").each(function(index){
     var infoName = $(this).data('info-id')
-      console.log($(this).find('input').val());
       datas[infoName] = $(this).find('input').val()
   });
-  console.log(datas);
   $.post(
     '/projects/', datas
   ).done(function(response) {
     loadUserPage();
   }).fail(function(jqxhr) {
-    console.log('something went wrong');
   });
 });
 
 var loadNewProjectPage = function() {
-  console.log('reloading new project page');
   loadPage('new-project',$.extend());
 };
 
 var loadProjectPage = function(name) {
   currentProject = name
-  console.log('loading project page');
   $.get('/projects/'+name+'/users', function(users) {
     $.get('/projects/'+name, function(project) {
-      console.log(users);
-      console.log(project);
       loadPage(
       'projects',
       $.extend(

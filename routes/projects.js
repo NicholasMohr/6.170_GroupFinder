@@ -112,6 +112,7 @@ router.get('/:project_name/users/filter', function(req, res) {
 										score+= location
 									}
 								}
+								console.log(score);
 								// number of same hours availible over total number of hours current user is available
 								// times the user-inputted weight
 								if(currentUser.info.availibility){
@@ -120,7 +121,7 @@ router.get('/:project_name/users/filter', function(req, res) {
 								});
 									score+=(result.length*availability)/currentUser.info.availibility.length
 								}
-								
+								console.log(score);
 							
 								
 								// number of matched requested skills divided by the total number of requested skills

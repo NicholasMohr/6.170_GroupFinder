@@ -7,7 +7,6 @@ $(document).on('submit', '#login-form', function(evt) {
     currentUser = response;
     loadUserInfoPage();
   }).fail(function(jqxhr) {
-	  console.log('fail');
 	  $('.error').text('Password or username is invalid');
 	  loadPage('login', {error: 'Password or username is invalid'});
   });
@@ -28,6 +27,6 @@ $(document).on('submit', '#signup-form', function(evt) {
 	 loadPage('login');
   }).fail(function(jqxhr) {
 	$('.error').text('That username already exists. Please try again');
-    loadPage('register', {error: 'That username already exists. Please try again'});
+    loadPage('signup', {error: 'That username already exists. Please try again'});
   });
 });
