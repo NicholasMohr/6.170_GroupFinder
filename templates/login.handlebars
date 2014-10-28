@@ -1,13 +1,34 @@
 <div id="login">
-	<h1>Group Finder <a style="float: right" href="#" id="home-link">Home</a></h1>
-  <h2>Sign in <button id="signup-btn">Sign Up</button></h2>
-  {{#if error}}
-    <div class="error">{{error}}</div>
-  {{/if}}
-  <form id="login-form">
-    <div>Username: <input type="text" name="username" required /></div>
-    <div>Password: <input type="password" name="password" required /></div>
-    <input type="submit" />
-  </form>
-	  
+  <div class="container">
+
+    <div class="row">
+      <a style="float: right" href="#" id="home-link">Home</a>
+      <h1 class="title">GroupFinder</h1>
+    </div>
+
+    <div class="row" id="login_container">
+
+      <div class="col-sm-6">
+        <div class="center" id="login_form_container">
+          <form id="login-form">
+            <h4>Login</h4>
+            {{#if error}}
+              <div class="error">{{error}}</div>
+            {{/if}}
+            <div>Username: <input type="text" name="username" required /></div>
+            <div>Password: <input type="password" name="password" required /></div>
+            <input type="submit" />
+          </form>
+        </div>
+      </div>
+
+      <div class="col-sm-6">
+        <div class="center" id="login_form_container">
+          <h4><button id="signup-btn">Sign Up</button></h4>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
 </div>
