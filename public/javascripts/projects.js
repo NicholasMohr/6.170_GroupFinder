@@ -3,6 +3,7 @@ $(document).on('click', '.join-project', function(evt) {
   var item = $(this).parent();
   var proj_name = item.find('p').text()
 
+
   $.get('/projects/'+proj_name, function(project) {
     $.post('/projects/'+proj_name+'/users/', {
       proj_id: project._id,
@@ -17,7 +18,16 @@ $(document).on('click', '.join-project', function(evt) {
   });
   
 });
-
+/*
+$(document).on('submit', '.projectFilter', function(evt) {
+  var datas = {};
+  $(".info").each(function(index){
+    var infoName = $(this).data('info-id');
+    //FIXTHIS THIS IS WHERE YOU're working
+    datas[infoName] = $(this).find('input').val()/5 + .5;
+  });
+});
+*/
 var loadProjectPage = function(name) {
   $.get('/projects/'+name+'/users', function(users) {
     $.get('/projects/'+name, function(project) {
