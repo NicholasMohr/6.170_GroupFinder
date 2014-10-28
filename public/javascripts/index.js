@@ -8,7 +8,7 @@ $(document).ready(function() {
     if (response.content.loggedIn) {
       currentUser = response.content.user;
     }
-    loadHomePage();
+    loadUserInfoPage();
   });
 });
 
@@ -47,7 +47,7 @@ loadPage = function(template, data) {
 
 var loadHomePage = function() {
   if (currentUser) {
-    loadUserInfoPage();
+    loadUserPage();
   } else {
     loadPage('index');
   }
