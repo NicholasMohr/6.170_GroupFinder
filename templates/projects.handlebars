@@ -1,0 +1,11 @@
+<div id="project">
+  <p>Welcome, {{currentUser}} (<a href="#" id="logout-link">logout</a>)</p>
+
+  <h1>Project Users</h1>
+  {{#each users}}
+    <div class="user">
+      <p>{{authentication.username}}</p>
+    </div>
+  {{/each}}
+
+</div>

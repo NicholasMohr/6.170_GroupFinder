@@ -42,16 +42,30 @@ router.post('/', function(req, res) {
 //WORKING
 router.get('/:project_name/users', function(req, res) {
 
-  	Project.findOne({"name" : req.params.project_name},function(err, docs){
+  	Project.findOne({"name" : req.params.project_name}).populate('users').exec({},function(err, docs){
 		if(err|| docs==null){
 			 utils.sendErrResponse(res, 404, 'The project could not be found.');
 		}
 		else{
+			console.log(docs.users);
   			res.json(docs.users);
 		}
   	});
 
 });
+
+router.get('/:username/projects', function(req, res) {
+	User.findOne({'authentication.username': req.params.username}).populate("projects.proj_id").exec({}, function (err, user) {
+		if(err){
+		utils.sendErrResponse(res, 500, 'An unexpected error occured.');
+		}
+		else{
+			console.log(projects);
+			res.json(user.projects);
+		}
+	});
+});
+
 //WORKING
 router.get('/:project_name/users/filter', function(req, res) {
 	var userID=req.session.passport.user; 

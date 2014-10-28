@@ -56,17 +56,20 @@ var loadHomePage = function() {
 };
 
 
-var loadUserPage = function() {
+var loadUserPage = function(additional) {
   console.log('USER PAGE');
-        loadPage(
-        'user',
-        $.extend(
-          {},//TODO: Check if these are needed?
-          {info: currentUser.info},
-          {projects: currentUser.projects},
-          {currentUser: currentUser.authentication.username}//,
-         // additional//TODO: Also check if this is needed
-          )
-        );
+  $.get('/projects', function(allProjects) {
+    loadPage(
+    'user',
+    $.extend(
+      {},//TODO: Check if these are needed?
+      {info: currentUser.info},
+      {allProjects: allProjects},
+      {userProjects: currentUser.projects},
+      {currentUser: currentUser.authentication.username},
+      additional//TODO: Also check if this is needed
+      )
+    );
+  });      
 };
 
