@@ -10,6 +10,18 @@ Handlebars.registerHelper("date", function(datetime) {
   return formatted;
 });
 
+Handlebars.registerHelper('ifIn', function(elem, list, options) {
+  console.log("element");
+  console.log(elem);
+  console.log("list");
+  console.log(list);
+  if(list.indexOf(elem) > -1) {
+    return 'member';
+  } else {
+    return options.fn(this);
+  }
+});
+
 $(document).ready(function() {
   $.get('/users', function(response) {
     if (response.content.loggedIn) {
@@ -85,11 +97,12 @@ var loadUserInfoPage = function(additional) {
 var loadUserPage = function(additional) {
   $.get('/projects', function(allProjects) {
     $.get('/users/'+currentUser.authentication.username+'/projects', function(userProjects) {
-      console.log(userProjects);
+      console.log(currentUser._id);
       loadPage(
       'user',
       $.extend(
         {currentUser: currentUser.authentication.username},
+        {user_id: currentUser._id},
         {info: currentUser.info},
         {allProjects: allProjects},
         {userProjects: userProjects},

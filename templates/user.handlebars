@@ -32,13 +32,17 @@
             <th>Project Name</th>
             <th>Members</th>
             <th>Due Date</th>
+            <th>Status</th>
           </tr>
           {{#each allProjects}}
             <tr>
               <td id='proj_name'>{{name}}</td>
               <td>{{users.length}}</td>
               <td>{{date end_date}}</td>
-              <td><button id="{{name}}" class="join-project">Join</button></td>
+              <td>
+                {{#ifIn ../user_id users}}
+                  <button id="{{name}}" class="join-project">Join</button></td>
+                {{/ifIn}}
             </tr>
           {{/each}}
         </table>
