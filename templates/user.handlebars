@@ -30,13 +30,14 @@
     Location:<p>{{info.location}}</p>  <input type="text" value="{{info.location}}" />
   </div>
   <div class="info" data-info-id="availability">
-    Availability: <p>{{info.availability}}</p>  <input type="text" value="{{info.availability}}" />
+    Availability, comma seperated e.g. R10,N11,M10: <p>{{info.availability}}</p>  <input type="text" value="{{info.availability}}" />
   </div>
   <div class="info" data-info-id="skills">
-    Skills: <p>{{info.skills}}</p>  <input type="text" value="{{info.skills}}" />
+    Skills, comma seperated e.g. front-end,back-end,bootstrap: <p>{{info.skills}}</p>  <input type="text" value="{{info.skills}}" />
   </div>
   <div class="info" data-info-id="timing">
-    Timing: <p>{{info.timing}}</p>  <input type="text" value="{{info.timing}}" />
+    Timing, left is more procrastination, right is less: <p>{{info.timing}}</p>  <input type="range" name="interaction" min="0" max="10">
+
   </div>
   <button class="save-info">Save</button>
 </div>

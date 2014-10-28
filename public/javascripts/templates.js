@@ -93,18 +93,16 @@ templates['user'] = template({"1":function(depth0,helpers,partials,data) {
     + escapeExpression(lambda(((stack1 = (depth0 != null ? depth0.info : depth0)) != null ? stack1.location : stack1), depth0))
     + "</p>  <input type=\"text\" value=\""
     + escapeExpression(lambda(((stack1 = (depth0 != null ? depth0.info : depth0)) != null ? stack1.location : stack1), depth0))
-    + "\" />\n  </div>\n  <div class=\"info\" data-info-id=\"availability\">\n    Availability: <p>"
+    + "\" />\n  </div>\n  <div class=\"info\" data-info-id=\"availability\">\n    Availability, comma seperated e.g. R10,N11,M10: <p>"
     + escapeExpression(lambda(((stack1 = (depth0 != null ? depth0.info : depth0)) != null ? stack1.availability : stack1), depth0))
     + "</p>  <input type=\"text\" value=\""
     + escapeExpression(lambda(((stack1 = (depth0 != null ? depth0.info : depth0)) != null ? stack1.availability : stack1), depth0))
-    + "\" />\n  </div>\n  <div class=\"info\" data-info-id=\"skills\">\n    Skills: <p>"
+    + "\" />\n  </div>\n  <div class=\"info\" data-info-id=\"skills\">\n    Skills, comma seperated e.g. front-end,back-end,bootstrap: <p>"
     + escapeExpression(lambda(((stack1 = (depth0 != null ? depth0.info : depth0)) != null ? stack1.skills : stack1), depth0))
     + "</p>  <input type=\"text\" value=\""
     + escapeExpression(lambda(((stack1 = (depth0 != null ? depth0.info : depth0)) != null ? stack1.skills : stack1), depth0))
-    + "\" />\n  </div>\n  <div class=\"info\" data-info-id=\"timing\">\n    Timing: <p>"
+    + "\" />\n  </div>\n  <div class=\"info\" data-info-id=\"timing\">\n    Timing, left is more procrastination, right is less: <p>"
     + escapeExpression(lambda(((stack1 = (depth0 != null ? depth0.info : depth0)) != null ? stack1.timing : stack1), depth0))
-    + "</p>  <input type=\"text\" value=\""
-    + escapeExpression(lambda(((stack1 = (depth0 != null ? depth0.info : depth0)) != null ? stack1.timing : stack1), depth0))
-    + "\" />\n  </div>\n  <button class=\"save-info\">Save</button>\n</div>\n";
+    + "</p>  <input type=\"range\" name=\"interaction\" min=\"0\" max=\"10\">\n\n  </div>\n  <button class=\"save-info\">Save</button>\n</div>\n";
 },"useData":true});
 })();

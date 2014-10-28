@@ -52,8 +52,15 @@ $(document).on('click', '.save-info', function(evt) {
   var item = $(this).parent();
   var datas = {}
   $(".info").each(function(index){
-    //if($(this).data('info-id'))
-    datas[$(this).data('info-id')] = $(this).find('input').val();
+    var infoName = $(this).data('info-id')
+    if(infoName === 'availability' || infoName === 'skills'){
+      datas[infoName] = $(this).find('input').val().split(",")
+    }else if(infoName === 'timing'){
+      datas[infoName] = $(this).find('input').val()/10
+    }
+    else{
+      datas[infoName] = $(this).find('input').val();
+    }
   });
   $.ajax({
       url: '/users',
