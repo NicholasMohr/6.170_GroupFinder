@@ -9,13 +9,28 @@ a{
 	font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
 }
 
-#project_container {
+button {
+	background-color: #f9f9f9;
+	outline: 1px solid #ccc;
+	border: none;
+}
+
+.title {
+	font-weight: 100;
+}
+
+.subtitle {
+	color: #004c4c;
+}
+
+#project_container, #user_container, #new_project_container, #user_info_container {
 	outline: 1px solid #ccc;
 }
 
-#project_panel {
-	background-color: #eaeaea;
+#project_panel, #user_panel {
+	background-color: #e5f8f8;
 	text-align: center;
+	height: 100%;
 }
 
 #project_users_panel {

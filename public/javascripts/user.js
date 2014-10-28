@@ -55,17 +55,20 @@ $(document).on('click', '.info-page', function(evt) {
   loadUserInfoPage();
 });
 
+$(document).on('click', '.user-page', function(evt) {
+  loadNewProjectPage();
+});
+
 $(document).on('click', '.save-info', function(evt) {
-  console.log("save dat info");
   var datas = {}
   $(".info").each(function(index){
     var infoName = $(this).data('info-id')
     if(infoName === 'availability' || infoName === 'skills'){
+      console.log($(this).find('input').val());
       datas[infoName] = $(this).find('input').val().split(",")
-    }else if(infoName === 'timing'){
+    } else if(infoName === 'timing'){
       datas[infoName] = $(this).find('input').val()/10
-    }
-    else{
+    } else{
       datas[infoName] = $(this).find('input').val();
     }
   });

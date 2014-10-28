@@ -1,7 +1,26 @@
 currentUser = undefined;
 
-//Handlebars.registerPartial('login', Handlebars.templates['login']);
-//Handlebars.registerPartial('signup', Handlebars.templates['signup']);
+Handlebars.registerPartial('modal', Handlebars.templates['modal']);
+
+Handlebars.registerHelper("date", function(datetime) {
+  var monthNames = [ "January", "February", "March", "April", "May", "June",
+        "July", "August", "September", "October", "November", "December" ];
+  var date = new Date(datetime);
+  var formatted = + date.getDate() + " " + monthNames[date.getMonth()] + " " + date.getFullYear();
+  return formatted;
+});
+
+Handlebars.registerHelper('ifIn', function(elem, list, options) {
+  console.log("element");
+  console.log(elem);
+  console.log("list");
+  console.log(list);
+  if(list.indexOf(elem) > -1) {
+    return 'member';
+  } else {
+    return options.fn(this);
+  }
+});
 
 $(document).ready(function() {
   $.get('/users', function(response) {
@@ -56,9 +75,7 @@ var loadHomePage = function() {
 
 
 var loadUserInfoPage = function(additional) {
-  if (currentUser) {
-    console.log("got in here")
-  
+  if (currentUser) {  
     $.get('/projects', function(allProjects) {
       loadPage(
       'user-info',
@@ -76,14 +93,16 @@ var loadUserInfoPage = function(additional) {
     loadPage('index');
   }   
 };
+
 var loadUserPage = function(additional) {
   $.get('/projects', function(allProjects) {
     $.get('/users/'+currentUser.authentication.username+'/projects', function(userProjects) {
-      console.log(userProjects);
+      console.log(currentUser._id);
       loadPage(
       'user',
       $.extend(
         {currentUser: currentUser.authentication.username},
+        {user_id: currentUser._id},
         {info: currentUser.info},
         {allProjects: allProjects},
         {userProjects: userProjects},
@@ -93,4 +112,3 @@ var loadUserPage = function(additional) {
     });
   });      
 };
-
