@@ -9,6 +9,7 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var passport = require('passport')
 var flash = require('connect-flash');
+var moment = require('moment');
 
 var mongo = require('mongodb');
 var mongoose = require('mongoose');
@@ -38,6 +39,9 @@ var tests = require('./routes/tests');
 /**
 ----- MIDDLEWARE -----
 **/
+
+
+moment().format();
 
 var app = express();
 app.listen(8080);

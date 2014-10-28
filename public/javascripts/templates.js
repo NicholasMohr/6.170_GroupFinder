@@ -52,6 +52,9 @@ templates['modal'] = template({"compiler":[6,">= 2.0.0-beta.1"],"main":function(
     + escapeExpression(lambda(((stack1 = (depth0 != null ? depth0.info : depth0)) != null ? stack1.timing : stack1), depth0))
     + "</p>\n      </div>\n      <div class=\"modal-footer\">\n        <button type=\"button\" data-dismiss=\"modal\">Close</button>\n      </div>\n    </div>\n  </div>\n</div>";
 },"useData":true});
+templates['new-project'] = template({"compiler":[6,">= 2.0.0-beta.1"],"main":function(depth0,helpers,partials,data) {
+  return "<div id=\"new-project\">\n\n  <div class=\"container\">\n\n    <div class=\"row\">\n      <span style=\"float:right\"><a href=\"#\" id=\"home-link\">Home</a><a href=\"#\" id=\"logout-link\">Logout</a></span>\n      <h1 class=\"title\">GroupFinder</h1>\n    </div>\n\n    <div class=\"row\" id=\"new_project_container\">\n      <div class=\"col-sm-12\">\n\n        <div class=\"new-proj-info\" data-info-id=\"name\">\n          <b>Name:</b> <br>\n          <input class=\"\" type=\"text\" placeholder=\"ex. 6.170 Project 3\" />\n        </div>\n        <div class=\"new-proj-info\" data-info-id=\"end_date\">\n          <b>End Date:</b> <br>\n          <input type=\"text\" placeholder=\"ex. October 28, 2014\" />\n        </div>\n\n        <button class=\"new-project-create\">Create</button>\n\n      </div>\n\n    </div>\n  </div>\n\n</div>";
+  },"useData":true});
 templates['projects'] = template({"1":function(depth0,helpers,partials,data) {
   var stack1, lambda=this.lambda, escapeExpression=this.escapeExpression, buffer = "              <tr>\n                <td>"
     + escapeExpression(lambda((data && data.index), depth0))
@@ -88,39 +91,41 @@ templates['signup'] = template({"1":function(depth0,helpers,partials,data) {
 },"useData":true});
 templates['user-info'] = template({"compiler":[6,">= 2.0.0-beta.1"],"main":function(depth0,helpers,partials,data) {
   var stack1, lambda=this.lambda, escapeExpression=this.escapeExpression;
-  return "<div id=\"user\">\n\n  <div class=\"container\">\n\n    <div class=\"row\">\n      <span style=\"float:right\"><a href=\"#\" class=\"user-page\">View Projects</a><a href=\"#\" id=\"home-link\">Home</a><a href=\"#\" id=\"logout-link\">Logout</a></span>\n      <h1 class=\"title\">GroupFinder</h1>\n    </div>\n\n    <h1>Your Info</h1>\n    <div class=\"row\">\n\n      <div class=\"col-xs-6\">\n        <div class=\"info\" data-info-id=\"name\">\n          Name: <p>"
+  return "<div id=\"user\">\n\n  <div class=\"container\">\n\n    <div class=\"row\">\n      <span style=\"float:right\"><a href=\"#\" id=\"home-link\">Home</a><a href=\"#\" id=\"logout-link\">Logout</a></span>\n      <h1 class=\"title\">GroupFinder</h1>\n    </div>\n\n    \n    <div class=\"row\" id=\"user_info_container\">\n      <h3>Your Info</h3>\n\n      <div class=\"col-xs-6\">\n        <div class=\"info\" data-info-id=\"name\">\n          <b>Name:</b> "
     + escapeExpression(lambda(((stack1 = (depth0 != null ? depth0.info : depth0)) != null ? stack1.name : stack1), depth0))
-    + "</p>   <input type=\"text\" value=\""
+    + " <br>\n          <input type=\"text\" value=\""
     + escapeExpression(lambda(((stack1 = (depth0 != null ? depth0.info : depth0)) != null ? stack1.name : stack1), depth0))
-    + "\" />\n        </div>\n        <div class=\"info\" data-info-id=\"email\">\n          Email: <p>"
+    + "\" />\n        </div>\n        <div class=\"info\" data-info-id=\"email\">\n          <b>Email:</b> "
     + escapeExpression(lambda(((stack1 = (depth0 != null ? depth0.info : depth0)) != null ? stack1.email : stack1), depth0))
-    + "</p>    <input type=\"text\" value=\""
+    + " <br>\n          <input type=\"text\" value=\""
     + escapeExpression(lambda(((stack1 = (depth0 != null ? depth0.info : depth0)) != null ? stack1.email : stack1), depth0))
-    + "\" />\n        </div>\n        <div class=\"info\" data-info-id=\"phone\">\n          Phone: <p>"
+    + "\" />\n        </div>\n        <div class=\"info\" data-info-id=\"phone\">\n          <b>Phone:</b> "
     + escapeExpression(lambda(((stack1 = (depth0 != null ? depth0.info : depth0)) != null ? stack1.phone : stack1), depth0))
-    + "</p>  <input type=\"text\" value=\""
+    + " <br>\n          <input type=\"text\" value=\""
     + escapeExpression(lambda(((stack1 = (depth0 != null ? depth0.info : depth0)) != null ? stack1.phone : stack1), depth0))
-    + "\" />\n        </div>\n        <div class=\"info\" data-info-id=\"location\">\n          Location:<p>"
+    + "\" />\n        </div>\n        <div class=\"info\" data-info-id=\"location\">\n          <b>Location:</b> "
     + escapeExpression(lambda(((stack1 = (depth0 != null ? depth0.info : depth0)) != null ? stack1.location : stack1), depth0))
-    + "</p>  <input type=\"text\" value=\""
+    + " <br>\n          <input type=\"text\" value=\""
     + escapeExpression(lambda(((stack1 = (depth0 != null ? depth0.info : depth0)) != null ? stack1.location : stack1), depth0))
-    + "\" />\n        </div>\n        <div class=\"info\" data-info-id=\"availability\">\n          Availability, comma seperated e.g. R10,N11,M10: <p>"
+    + "\" />\n        </div>\n        <div class=\"info\" data-info-id=\"availability\">\n          <b>Availability</b>, comma seperated e.g. R10,N11,M10: "
     + escapeExpression(lambda(((stack1 = (depth0 != null ? depth0.info : depth0)) != null ? stack1.availability : stack1), depth0))
-    + "</p>  <input type=\"text\" value=\""
+    + " <br>\n          <input type=\"text\" value=\""
     + escapeExpression(lambda(((stack1 = (depth0 != null ? depth0.info : depth0)) != null ? stack1.availability : stack1), depth0))
-    + "\" />\n        </div>\n      </div>\n\n      <div class=\"col-xs-6\">\n        <div class=\"info\" data-info-id=\"skills\">\n          Skills, comma seperated e.g. front-end,back-end,bootstrap: <p>"
+    + "\" />\n        </div>\n      </div>\n\n      <div class=\"col-xs-6\">\n        <div class=\"info\" data-info-id=\"skills\">\n          <b>Skills</b>, comma seperated e.g. front-end,back-end,bootstrap: "
     + escapeExpression(lambda(((stack1 = (depth0 != null ? depth0.info : depth0)) != null ? stack1.skills : stack1), depth0))
-    + "</p>  <input type=\"text\" value=\""
+    + " <br>\n          <input type=\"text\" value=\""
     + escapeExpression(lambda(((stack1 = (depth0 != null ? depth0.info : depth0)) != null ? stack1.skills : stack1), depth0))
-    + "\" />\n        </div>\n        <div class=\"info\" data-info-id=\"timing\">\n          Timing, left is more procrastination, right is less: <p>"
+    + "\" />\n        </div>\n        <div class=\"info\" data-info-id=\"timing\">\n          <b>Timing</b>, left is more procrastination, right is less: "
     + escapeExpression(lambda(((stack1 = (depth0 != null ? depth0.info : depth0)) != null ? stack1.timing : stack1), depth0))
-    + "</p>  <input type=\"range\" name=\"interaction\" min=\"0\" max=\"10\" value=5>\n        </div>\n      </div>\n\n    </div>\n\n    <div class=\"row\">\n      <button class=\"save-info\">Save</button>\n    </div>\n\n  </div>\n</div>";
+    + " <br>\n          <input type=\"range\" name=\"interaction\" min=\"0\" max=\"10\" value=5>\n        </div>\n      </div>\n\n      <button class=\"save-info\">Save</button>\n\n    </div>\n\n  </div>\n</div>";
 },"useData":true});
 templates['user'] = template({"1":function(depth0,helpers,partials,data) {
   var stack1, lambda=this.lambda, escapeExpression=this.escapeExpression;
   return "            <tr>\n              <td>"
     + escapeExpression(lambda(((stack1 = (depth0 != null ? depth0.proj_id : depth0)) != null ? stack1.name : stack1), depth0))
-    + "</td>\n              <td><button class=\"visit-project\">Visit</button></td>\n            </tr>\n";
+    + "</td>\n              <td><button id=\""
+    + escapeExpression(lambda(((stack1 = (depth0 != null ? depth0.proj_id : depth0)) != null ? stack1.name : stack1), depth0))
+    + "\" class=\"visit-project\">Visit</button></td>\n            </tr>\n";
 },"3":function(depth0,helpers,partials,data) {
   var stack1, helper, functionType="function", helperMissing=helpers.helperMissing, escapeExpression=this.escapeExpression, lambda=this.lambda;
   return "            <tr>\n              <td id='proj_name'>"
@@ -128,14 +133,14 @@ templates['user'] = template({"1":function(depth0,helpers,partials,data) {
     + "</td>\n              <td>"
     + escapeExpression(lambda(((stack1 = (depth0 != null ? depth0.users : depth0)) != null ? stack1.length : stack1), depth0))
     + "</td>\n              <td>"
-    + escapeExpression(((helper = (helper = helpers.end_date || (depth0 != null ? depth0.end_date : depth0)) != null ? helper : helperMissing),(typeof helper === functionType ? helper.call(depth0, {"name":"end_date","hash":{},"data":data}) : helper)))
+    + escapeExpression(((helpers.date || (depth0 && depth0.date) || helperMissing).call(depth0, (depth0 != null ? depth0.end_date : depth0), {"name":"date","hash":{},"data":data})))
     + "</td>\n              <td><button id=\""
     + escapeExpression(((helper = (helper = helpers.name || (depth0 != null ? depth0.name : depth0)) != null ? helper : helperMissing),(typeof helper === functionType ? helper.call(depth0, {"name":"name","hash":{},"data":data}) : helper)))
     + "\" class=\"join-project\">Join</button></td>\n            </tr>\n";
 },"compiler":[6,">= 2.0.0-beta.1"],"main":function(depth0,helpers,partials,data) {
-  var stack1, helper, functionType="function", helperMissing=helpers.helperMissing, escapeExpression=this.escapeExpression, buffer = "<div id=\"user\">\n  <div class=\"container\">\n\n    <div class=\"row\">\n      <span style=\"float:right\"><a href=\"#\" id=\"logout-link\">Logout</a></span>\n      <h1 class=\"title\">GroupFinder</h1>\n    </div>\n\n    <div class=\"row\" id=\"project_container\">\n\n      <div id=\"user_panel\" class=\"col-sm-4\">\n        <h3>Welcome "
+  var stack1, helper, functionType="function", helperMissing=helpers.helperMissing, escapeExpression=this.escapeExpression, buffer = "<div id=\"user\">\n  <div class=\"container\">\n\n    <div class=\"row\">\n      <span style=\"float:right\"><a href=\"#\" id=\"logout-link\">Logout</a></span>\n      <h1 class=\"title\">GroupFinder</h1>\n    </div>\n\n    <div class=\"row\" id=\"user_container\">\n\n      <div id=\"user_panel\" class=\"col-sm-4\">\n        <h3>Welcome "
     + escapeExpression(((helper = (helper = helpers.currentUser || (depth0 != null ? depth0.currentUser : depth0)) != null ? helper : helperMissing),(typeof helper === functionType ? helper.call(depth0, {"name":"currentUser","hash":{},"data":data}) : helper)))
-    + "!</h3>\n        <a href=\"#\" class=\"info-page\">Edit User Info</a>\n        <br>\n        <br>\n        <h4>Your Projects</h4>\n        <table class=\"table\">\n";
+    + "!</h3>\n        <a href=\"#\" class=\"info-page\">Edit User Info</a> <br>\n        <a href=\"#\" class=\"new-project\">New Project</a>\n        <br>\n        <br>\n        <h4>Your Projects</h4>\n        <table class=\"table\">\n";
   stack1 = helpers.each.call(depth0, (depth0 != null ? depth0.userProjects : depth0), {"name":"each","hash":{},"fn":this.program(1, data),"inverse":this.noop,"data":data});
   if (stack1 != null) { buffer += stack1; }
   buffer += "        </table>\n      </div>\n\n      <div class=\"col-sm-8\">\n        <h1 class=\"subtitle\">All Projects</h1>\n        <table class=\"table\">\n          <tr>\n            <th>Project Name</th>\n            <th>Members</th>\n            <th>Due Date</th>\n          </tr>\n";

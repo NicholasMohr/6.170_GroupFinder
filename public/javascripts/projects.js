@@ -15,7 +15,42 @@ $(document).on('click', '.join-project', function(evt) {
   });
 });
 
+$(document).on('click', '.visit-project', function(evt) {
+  //open up the slider/text box to input your new info
+  var proj_name = evt.target.id;
+  $.get('/projects/'+proj_name, function(project) {
+    loadProjectPage(proj_name);
+  });
+});
+
+$(document).on('click', '.new-project', function(evt) {
+  loadNewProjectPage();
+});
+
+$(document).on('click', '.new-project-create', function(evt) {
+  var datas = {}
+  $(".new-proj-info").each(function(index){
+    var infoName = $(this).data('info-id')
+      console.log($(this).find('input').val());
+      datas[infoName] = $(this).find('input').val()
+  });
+  console.log(datas);
+  $.post(
+    '/projects/', datas
+  ).done(function(response) {
+    loadUserPage();
+  }).fail(function(jqxhr) {
+    console.log('something went wrong');
+  });
+});
+
+var loadNewProjectPage = function() {
+  console.log('reloading new project page');
+  loadPage('new-project',$.extend());
+};
+
 var loadProjectPage = function(name) {
+  console.log('loading project page');
   $.get('/projects/'+name+'/users', function(users) {
     $.get('/projects/'+name, function(project) {
       console.log(users);
@@ -23,7 +58,6 @@ var loadProjectPage = function(name) {
       loadPage(
       'projects',
       $.extend(
-        {},//TODO: Check if these are needed?
         {info: currentUser.info},
         {currentUser: currentUser.authentication.username},
         {users: users},

@@ -6,11 +6,12 @@
       <h1 class="title">GroupFinder</h1>
     </div>
 
-    <div class="row" id="project_container">
+    <div class="row" id="user_container">
 
       <div id="user_panel" class="col-sm-4">
         <h3>Welcome {{currentUser}}!</h3>
-        <a href="#" class="info-page">Edit User Info</a>
+        <a href="#" class="info-page">Edit User Info</a> <br>
+        <a href="#" class="new-project">New Project</a>
         <br>
         <br>
         <h4>Your Projects</h4>
@@ -18,7 +19,7 @@
           {{#each userProjects}}
             <tr>
               <td>{{proj_id.name}}</td>
-              <td><button class="visit-project">Visit</button></td>
+              <td><button id="{{proj_id.name}}" class="visit-project">Visit</button></td>
             </tr>
           {{/each}}
         </table>
@@ -36,7 +37,7 @@
             <tr>
               <td id='proj_name'>{{name}}</td>
               <td>{{users.length}}</td>
-              <td>{{end_date}}</td>
+              <td>{{date end_date}}</td>
               <td><button id="{{name}}" class="join-project">Join</button></td>
             </tr>
           {{/each}}

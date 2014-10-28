@@ -1,9 +1,14 @@
 currentUser = undefined;
 
-//Handlebars.registerPartial('login', Handlebars.templates['login']);
-//Handlebars.registerPartial('signup', Handlebars.templates['signup']);
 Handlebars.registerPartial('modal', Handlebars.templates['modal']);
 
+Handlebars.registerHelper("date", function(datetime) {
+  var monthNames = [ "January", "February", "March", "April", "May", "June",
+        "July", "August", "September", "October", "November", "December" ];
+  var date = new Date(datetime);
+  var formatted = + date.getDate() + " " + monthNames[date.getMonth()] + " " + date.getFullYear();
+  return formatted;
+});
 
 $(document).ready(function() {
   $.get('/users', function(response) {
@@ -58,9 +63,7 @@ var loadHomePage = function() {
 
 
 var loadUserInfoPage = function(additional) {
-  if (currentUser) {
-    console.log("got in here")
-  
+  if (currentUser) {  
     $.get('/projects', function(allProjects) {
       loadPage(
       'user-info',
@@ -78,6 +81,7 @@ var loadUserInfoPage = function(additional) {
     loadPage('index');
   }   
 };
+
 var loadUserPage = function(additional) {
   $.get('/projects', function(allProjects) {
     $.get('/users/'+currentUser.authentication.username+'/projects', function(userProjects) {
@@ -95,4 +99,3 @@ var loadUserPage = function(additional) {
     });
   });      
 };
-
