@@ -40,7 +40,7 @@ button {
 	outline: none;
 }
 
-.visit-project, .join-project {
+.visit-project, .join-project-request {
 	background-color: #00C0C0;
 	color: white;
 	font-weight: 100;

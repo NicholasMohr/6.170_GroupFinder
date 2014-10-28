@@ -19,6 +19,9 @@ templates['info'] = template({"compiler":[6,">= 2.0.0-beta.1"],"main":function(d
     + escapeExpression(((helper = (helper = helpers.content || (depth0 != null ? depth0.content : depth0)) != null ? helper : helperMissing),(typeof helper === functionType ? helper.call(depth0, {"name":"content","hash":{},"data":data}) : helper)))
     + "</p>\n  <a href=\"#\" class=\"edit-info\">Edit</a>\n</div>";
 },"useData":true});
+templates['join-project'] = template({"compiler":[6,">= 2.0.0-beta.1"],"main":function(depth0,helpers,partials,data) {
+  return "<div id=\"join-project\">\n  <div class=\"container\">\n\n    <div class=\"row\">\n      <span style=\"float:right\"><a href=\"#\" id=\"home-link\">Home</a><a href=\"#\" id=\"logout-link\">Logout</a></span>\n      <h1 class=\"title\">GroupFinder</h1>\n    </div>\n\n    <div class=\"row\" id=\"new_project_container\">\n      <div class=\"col-sm-12 center\">\n\n        <div class=\"row\">\n          <h3 class=\"center\">Join Project</h3>\n        </div>\n\n        <div class=\"row\">\n          <div class=\"join-project-container\">\n            <div class=\"join-proj-info\" data-info-id=\"desired_grade\" min=\"0\" max=\"10\">\n              <b>Desired Grade:</b> <br>\n              <input type=\"range\" />\n            </div>\n            <div class=\"join-proj-info\" data-info-id=\"dedication\" min=\"0\" max=\"10\">\n              <b>Dedication:</b> <br>\n              <input type=\"range\" />\n            </div>\n            <div class=\"join-proj-info\" data-info-id=\"interaction\" min=\"0\" max=\"10\">\n              <b>Interaction:</b> <br>\n              <input type=\"range\" />\n            </div>\n          </div>\n        </div>\n\n        <div class=\"row center\">\n          <button class=\"join-project-submit\">Create</button>\n        </div>\n\n      </div>\n    </div>\n\n  </div>\n</div>";
+  },"useData":true});
 templates['login'] = template({"1":function(depth0,helpers,partials,data) {
   var helper, functionType="function", helperMissing=helpers.helperMissing, escapeExpression=this.escapeExpression;
   return "              <div class=\"error\">"
@@ -141,7 +144,7 @@ templates['user'] = template({"1":function(depth0,helpers,partials,data) {
   var helper, functionType="function", helperMissing=helpers.helperMissing, escapeExpression=this.escapeExpression;
   return "                  <button id=\""
     + escapeExpression(((helper = (helper = helpers.name || (depth0 != null ? depth0.name : depth0)) != null ? helper : helperMissing),(typeof helper === functionType ? helper.call(depth0, {"name":"name","hash":{},"data":data}) : helper)))
-    + "\" class=\"join-project\">Join</button></td>\n";
+    + "\" class=\"join-project-request\">Join</button></td>\n";
 },"compiler":[6,">= 2.0.0-beta.1"],"main":function(depth0,helpers,partials,data,depths) {
   var stack1, helper, functionType="function", helperMissing=helpers.helperMissing, escapeExpression=this.escapeExpression, buffer = "<div id=\"user\">\n  <div class=\"container\">\n\n    <div class=\"row\">\n      <span style=\"float:right\"><a href=\"#\" id=\"logout-link\">Logout</a></span>\n      <h1 class=\"title\">GroupFinder</h1>\n    </div>\n\n    <div class=\"row\" id=\"user_container\">\n\n      <div id=\"user_panel\" class=\"col-sm-4\">\n        <h3>Welcome "
     + escapeExpression(((helper = (helper = helpers.currentUser || (depth0 != null ? depth0.currentUser : depth0)) != null ? helper : helperMissing),(typeof helper === functionType ? helper.call(depth0, {"name":"currentUser","hash":{},"data":data}) : helper)))

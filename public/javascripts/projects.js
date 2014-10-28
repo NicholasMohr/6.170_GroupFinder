@@ -1,7 +1,9 @@
-$(document).on('click', '.join-project', function(evt) {
-  //open up the slider/text box to input your new info
+$(document).on('click', '.join-project-request', function(evt) {
+  loadPage('join-project',$.extend());
+});
 
-
+$(document).on('click', '.join-project-submit', function(evt) {
+  console.log("clicked!");
   var proj_name = evt.target.id;
   $.get('/projects/'+proj_name +'', function(project) {
     $.post('/projects/'+proj_name+'/users/', {
@@ -66,7 +68,7 @@ $(document).on('click', '.visit-project', function(evt) {
 });
 
 $(document).on('click', '.new-project', function(evt) {
-  loadNewProjectPage();
+  loadPage('new-project',$.extend());
 });
 
 $(document).on('click', '.new-project-create', function(evt) {
@@ -81,10 +83,6 @@ $(document).on('click', '.new-project-create', function(evt) {
     loadUserPage();
   })
 });
-
-var loadNewProjectPage = function() {
-  loadPage('new-project',$.extend());
-};
 
 var loadProjectPage = function(name) {
   currentProject = name
