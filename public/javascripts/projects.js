@@ -16,16 +16,38 @@ $(document).on('click', '.join-project', function(evt) {
     });
   });
 });
-/*
+
 $(document).on('submit', '.projectFilter', function(evt) {
   var datas = {};
-  $(".info").each(function(index){
-    var infoName = $(this).data('info-id');
+  $(".weight").each(function(index){
+    var name = $(this).data('name');
     //FIXTHIS THIS IS WHERE YOU're working
-    datas[infoName] = $(this).find('input').val()/5 + .5;
+    datas[name] = $(this).find('input').val()*20/3 + .5;
+  });
+  $.ajax({
+      url: '/'+ currentProject + '/users/filter',
+      type: 'GET',
+      data: datas, 
+      success: function(users) {
+        console.log('loading project page');
+        $.get('/projects/'+currentProject, function(project) {
+          console.log(users);
+          console.log(project);
+          loadPage(
+          'projects',
+          $.extend(
+            {info: currentUser.info},
+            {currentUser: currentUser.authentication.username},
+            {users: users},
+            {name: currentProject},
+            {project: project}
+            )
+          );
+        });
+      }
   });
 });
-*/
+
 
 $(document).on('click', '.visit-project', function(evt) {
   //open up the slider/text box to input your new info
@@ -62,6 +84,7 @@ var loadNewProjectPage = function() {
 };
 
 var loadProjectPage = function(name) {
+  currentProject = name
   console.log('loading project page');
   $.get('/projects/'+name+'/users', function(users) {
     $.get('/projects/'+name, function(project) {
