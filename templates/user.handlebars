@@ -1,7 +1,6 @@
 <div id="user">
 
-  <p><span>Welcome, </span><span>{{currentUser}}</span> (<a href="#" id="logout-link">Logout</a>)</p>
-  <a href="#" class="info-page">edit info</a>
+  
 
   <h1>All Projects</h1>
   {{#each allProjects}}
@@ -13,8 +12,50 @@
   <h1>Your Projects</h1>
   {{#each userProjects}}
     <div class="project">
-      <p>{{name}} <button>Visit</button> </p>
+      <p>{{proj_id.name}} <button>Visit</button> </p>
     </div>
   {{/each}}
+
+</div>
+
+<div id="project">
+
+  <div class="container">
+
+    <div class="row">
+      <span style="float:right"><a href="#" id="home-link">Home</a><a href="#" id="logout-link">Logout</a></span>
+      <h1>GroupFinder</h1>
+    </div>
+
+    <div class="row" id="project_container">
+
+      <div id="project_panel" class="col-sm-4">
+
+        <h3>Welcome {{currentUser}}</h3>
+        <a href="#" class="info-page">Edit Info</a>
+
+        
+      </div>
+
+      <div class="col-sm-8">
+        <h1>Members</h1>
+          <table class="table">
+            <tr>
+              <th>Rank</th>
+              <th>Username</th>
+              <th>Location</th>
+            </tr>
+            {{#each users}}
+              <tr>
+                <td>{{@index}}</td>
+                <td>{{authentication.username}}</td>
+                <td>{{info.location}}</td>
+              </tr>
+            {{/each}}
+          </table>
+      </div>
+
+    </div>
+  </div>
 
 </div>

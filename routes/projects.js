@@ -165,7 +165,7 @@ router.get('/:project_name/users/filter', function(req, res) {
 	
 });
 //WORKING
-router.put('/:project_name/users', function(req, res) {
+router.post('/:project_name/users', function(req, res) {
   	if(req.user){
 		Project.update({"name": req.params.project_name},{$addToSet: {"users":  req.user._id}},function(e,docs){
 			if(e){

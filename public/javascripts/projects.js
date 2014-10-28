@@ -1,8 +1,21 @@
 $(document).on('click', '.join-project', function(evt) {
   //open up the slider/text box to input your new info
   var item = $(this).parent();
-  var name = item.find('p').text()
-  loadProjectPage(name);
+  var proj_name = item.find('p').text()
+
+  $.get('/projects/'+proj_name, function(project) {
+    $.post('/projects/'+proj_name+'/users/', {
+      proj_id: project._id,
+      desired_grade: 3,
+      interaction: 3,
+      timing: 3
+    }).done(function(response) {
+      loadProjectPage(proj_name);
+    }).fail(function(jqxhr) {
+      loadHomePage();
+    });
+  });
+  
 });
 
 var loadProjectPage = function(name) {

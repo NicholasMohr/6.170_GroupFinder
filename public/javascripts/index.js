@@ -71,17 +71,19 @@ var loadUserInfoPage = function(additional) {
 };
 var loadUserPage = function(additional) {
   $.get('/projects', function(allProjects) {
-    loadPage(
-    'user',
-    $.extend(
-      {},//TODO: Check if these are needed?
-      {info: currentUser.info},
-      {allProjects: allProjects},
-      {userProjects: currentUser.projects},
-      {currentUser: currentUser.authentication.username},
-      additional//TODO: Also check if this is needed
-      )
-    );
+    $.get('/users/'+currentUser.authentication.username+'/projects', function(userProjects) {
+      console.log(userProjects);
+      loadPage(
+      'user',
+      $.extend(
+        {currentUser: currentUser.authentication.username},
+        {info: currentUser.info},
+        {allProjects: allProjects},
+        {userProjects: userProjects},
+        additional
+        )
+      );
+    });
   });      
 };
 

@@ -95,7 +95,7 @@ $.ajax({
 // Add Sample User to Sample Project	
 $.ajax({
     url: '/projects/sample/users',
-    type: 'PUT',
+    type: 'POST',
 	data: {
 		'desired_grade': 1,
 		'dedication':1,
@@ -147,7 +147,7 @@ $.ajax({
 // Add Test User 2 to Sample Project
 $.ajax({
     url: '/projects/sample/users',
-    type: 'PUT',
+    type: 'POST',
 	data: {
 		'desired_grade': .9,
 		'dedication': .1,
@@ -186,7 +186,7 @@ $.ajax({
 // Add Test User 3 to Sample Project
 $.ajax({
     url: '/projects/sample/users',
-    type: 'PUT',
+    type: 'POST',
 	data: {
 		'desired_grade': 1,
 		'dedication':1,
