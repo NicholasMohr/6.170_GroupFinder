@@ -1,16 +1,35 @@
 <div id="signup">
-	<h1>Group Finder <a style="float: right" href="#" id="home-link">Home</a></h1>
-  <h2>Sign up <button id="login-btn">Log In</button></h2>
-  <div class="error">
-    {{#if error}}
-      {{error}}
-    {{/if}}
+  <div class="container">
+
+    <div class="row">
+      <a style="float: right" href="#" id="home-link">Home</a>
+      <h1 class="title">GroupFinder</h1>
+    </div>
+
+    <div class="row" id="login_container">
+
+      <div class="col-sm-6">
+        <div class="center" id="login_form_container">
+          <form id="signup-form">
+            <h4>Signup</h4>
+            {{#if error}}
+              <div class="error">{{error}}</div>
+            {{/if}}
+            <div>Username: <input type="text" name="username" required /></div>
+            <div>Password: <input type="password" name="password" required /></div>
+            <div>Confirm Password: <input type="password" name="confirm" required /></div>
+            <input type="submit" /> 
+          </form>
+        </div>
+      </div>
+
+      <div class="col-sm-6">
+        <div class="center" id="login_form_container">
+          <h4><button id="login-btn">Log In</button></h4>
+        </div>
+      </div>
+
+    </div>
+
   </div>
-  <form id="signup-form">
-    <div>Username: <input type="text" name="username" required /></div>
-    <div>Password: <input type="password" name="password" required /></div>
-	<div>Confirm Password: <input type="password" name="confirm" required /></div>
-    <input type="submit" /> 
-  </form>
-	
 </div>

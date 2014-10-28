@@ -15,15 +15,42 @@ button {
 	border: none;
 }
 
+.center {
+	text-align: center
+}
+
+.info {
+	padding: 10px;
+}
+
+.save-info, .new-project-create {
+	margin: 30px;
+	font-size: 20px;
+	padding: 10px;
+	background-color: #00C0C0;
+	color: white;
+	font-weight: 100;
+	outline: none;
+}
+
+.error {
+	color: #b42020;
+}
+
 .title {
 	font-weight: 100;
+}
+
+#index_button_container, #login_form_container {
+	text-align: center;
+	padding: 40px;
 }
 
 .subtitle {
 	color: #004c4c;
 }
 
-#project_container, #user_container, #new_project_container, #user_info_container {
+#project_container, #user_container, #new_project_container, #user_info_container, #login_container, #index_container {
 	outline: 1px solid #ccc;
 }
 
@@ -31,8 +58,4 @@ button {
 	background-color: #e5f8f8;
 	text-align: center;
 	height: 100%;
-}
-
-#project_users_panel {
-	
 }
