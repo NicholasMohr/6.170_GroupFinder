@@ -33,6 +33,13 @@ button {
 	outline: none;
 }
 
+.visit-project, .join-project {
+	background-color: #00C0C0;
+	color: white;
+	font-weight: 100;
+	outline: none;
+}
+
 .error {
 	color: #b42020;
 }
