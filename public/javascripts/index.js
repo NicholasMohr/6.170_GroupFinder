@@ -11,10 +11,6 @@ Handlebars.registerHelper("date", function(datetime) {
 });
 
 Handlebars.registerHelper('ifIn', function(elem, list, options) {
-  console.log("element");
-  console.log(elem);
-  console.log("list");
-  console.log(list);
   if(list.indexOf(elem) > -1) {
     return 'member';
   } else {
@@ -38,14 +34,12 @@ $(document).on('click', '#home-link', function(evt) {
 
 $(document).on('click', '#logout-link', function(evt) {
   evt.preventDefault();
-  console.log('logout');
   $.post(
     '/logout'
   ).done(function(response) {
     currentUser = undefined;
     loadHomePage();
   }).fail(function(jqxhr) {
-	  console.log('fail');
     var response = $.parseJSON(jqxhr.responseText);
     loadUsersPage({error: response.err});
   });
@@ -66,7 +60,6 @@ loadPage = function(template, data) {
 
 var loadHomePage = function() {
   if (currentUser) {
-    console.log("got in here1")
     loadUserPage();
   } else {
     loadPage('index');
@@ -97,7 +90,6 @@ var loadUserInfoPage = function(additional) {
 var loadUserPage = function(additional) {
   $.get('/projects', function(allProjects) {
     $.get('/users/'+currentUser.authentication.username+'/projects', function(userProjects) {
-      console.log(currentUser._id);
       loadPage(
       'user',
       $.extend(

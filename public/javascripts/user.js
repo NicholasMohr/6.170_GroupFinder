@@ -64,7 +64,6 @@ $(document).on('click', '.save-info', function(evt) {
   $(".info").each(function(index){
     var infoName = $(this).data('info-id')
     if(infoName === 'availability' || infoName === 'skills'){
-      console.log($(this).find('input').val());
       datas[infoName] = $(this).find('input').val().split(",")
     } else if(infoName === 'timing'){
       datas[infoName] = $(this).find('input').val()/10
