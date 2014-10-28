@@ -3,7 +3,7 @@ $(document).on('click', '.join-project', function(evt) {
 
 
   var proj_name = evt.target.id;
-  $.get('/projects/'+proj_name, function(project) {
+  $.get('/projects/'+proj_name +'', function(project) {
     $.post('/projects/'+proj_name+'/users/', {
       proj_id: project._id,
       desired_grade: 3,
@@ -22,17 +22,18 @@ $(document).on('submit', '.projectFilter', function(evt) {
   $(".weight").each(function(index){
     var name = $(this).data('name');
     //FIXTHIS THIS IS WHERE YOU're working
-    datas[name] = $(this).find('input').val()*20/3 + .5;
+    console.log($(this).val());
+    datas[name] = $(this).val()*3/20 + .5;
   });
+  console.log(datas);
   $.ajax({
-      url: '/'+ currentProject + '/users/filter',
+      url: '/projects/'+ currentProject + '/users/filter',
       type: 'GET',
       data: datas, 
       success: function(users) {
-        console.log('loading project page');
+        console.log("success")
+        console.log(users);
         $.get('/projects/'+currentProject, function(project) {
-          console.log(users);
-          console.log(project);
           loadPage(
           'projects',
           $.extend(

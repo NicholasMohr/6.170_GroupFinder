@@ -66,7 +66,6 @@ loadPage = function(template, data) {
 
 var loadHomePage = function() {
   if (currentUser) {
-    console.log("got in here1")
     loadUserPage();
   } else {
     loadPage('index');
