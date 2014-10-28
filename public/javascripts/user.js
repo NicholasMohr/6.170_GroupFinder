@@ -47,23 +47,6 @@ $(document).on('click', '.edit-button', function(evt) {
   });
 });
 */
-var loadUserPage = function(additional) {
-  console.log('USER PAGE');
-  $.get('/projects', function(allProjects) {
-    loadPage(
-    'user',
-    $.extend(
-      {},//TODO: Check if these are needed?
-      {info: currentUser.info},
-      {allProjects: allProjects},
-      {userProjects: currentUser.projects},
-      {currentUser: currentUser.authentication.username},
-      additional//TODO: Also check if this is needed
-      )
-    );
-  });      
-};
-
 $(document).on('click', '.save-info', function(evt) {
   console.log("save dat info");
   var item = $(this).parent();
@@ -77,18 +60,10 @@ $(document).on('click', '.save-info', function(evt) {
       type: 'PUT',
       data: datas, 
       success: function(user) {
+        currentUser.info = user.info
           $.get('/projects', function(allProjects) {
-            loadPage(
-            'user',
-            $.extend(
-              {},//TODO: Check if these are needed?
-              {info: user.info},
-              {allProjects: allProjects},
-              {userProjects: currentUser.projects},
-              {currentUser: currentUser.authentication.username}
-              )
-            );
-          }); 
+            loadUserPage();
+          })
       }
   });
 });
