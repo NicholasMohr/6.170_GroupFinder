@@ -41,7 +41,7 @@ router.post('/', function(req, res) {
 }); 
 //WORKING
 router.get('/:project_name/users', function(req, res) {
-
+	// returning entire user object
   	Project.findOne({"name" : req.params.project_name}).populate('users').exec({},function(err, docs){
 		if(err|| docs==null){
 			 utils.sendErrResponse(res, 404, 'The project could not be found.');
@@ -51,7 +51,18 @@ router.get('/:project_name/users', function(req, res) {
   			res.json(docs.users);
 		}
   	});
+});
 
+router.get('/:project_name', function(req, res) {
+  	Project.findOne({"name" : req.params.project_name},function(err, docs){
+		if(err|| docs==null){
+			 utils.sendErrResponse(res, 404, 'The project could not be found.');
+		}
+		else{
+			console.log(docs);
+  			res.json(docs);
+		}
+  	});
 });
 
 router.get('/:username/projects', function(req, res) {

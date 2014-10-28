@@ -32,16 +32,20 @@ templates['login'] = template({"1":function(depth0,helpers,partials,data) {
 },"useData":true});
 templates['projects'] = template({"1":function(depth0,helpers,partials,data) {
   var stack1, lambda=this.lambda, escapeExpression=this.escapeExpression;
-  return "    <div class=\"user\">\n      <p>"
+  return "              <tr>\n                <td>"
     + escapeExpression(lambda(((stack1 = (depth0 != null ? depth0.authentication : depth0)) != null ? stack1.username : stack1), depth0))
-    + "</p>\n    </div>\n";
+    + "</td>\n                <td>"
+    + escapeExpression(lambda(((stack1 = (depth0 != null ? depth0.info : depth0)) != null ? stack1.location : stack1), depth0))
+    + "</td>\n              </tr>\n";
 },"compiler":[6,">= 2.0.0-beta.1"],"main":function(depth0,helpers,partials,data) {
-  var stack1, helper, functionType="function", helperMissing=helpers.helperMissing, escapeExpression=this.escapeExpression, buffer = "<div id=\"project\">\n  <p>Welcome, "
-    + escapeExpression(((helper = (helper = helpers.currentUser || (depth0 != null ? depth0.currentUser : depth0)) != null ? helper : helperMissing),(typeof helper === functionType ? helper.call(depth0, {"name":"currentUser","hash":{},"data":data}) : helper)))
-    + " (<a href=\"#\" id=\"logout-link\">logout</a>)</p>\n\n  <h1>Project Users</h1>\n";
+  var stack1, lambda=this.lambda, escapeExpression=this.escapeExpression, buffer = "<div id=\"project\">\n\n  <div class=\"container\">\n\n    <div class=\"row\">\n      <span style=\"float:right\"><a href=\"#\" id=\"home-link\">Home</a><a href=\"#\" id=\"logout-link\">Logout</a></span>\n      <h1>GroupFinder</h1>\n    </div>\n\n    <div class=\"row\" id=\"project_container\">\n\n      <div id=\"project_panel\" class=\"col-xs-4\">\n\n        <h3>"
+    + escapeExpression(lambda(((stack1 = (depth0 != null ? depth0.project : depth0)) != null ? stack1.name : stack1), depth0))
+    + "</h3>\n        <p>\n          <b>Due Date:</b> <br>\n          "
+    + escapeExpression(lambda(((stack1 = (depth0 != null ? depth0.project : depth0)) != null ? stack1.end_date : stack1), depth0))
+    + "\n        </p>\n\n        <form action=\"demo_form.asp\" method=\"get\">\n          <p><span style=\"float:left\"><b>Low</b></span><span style=\"float:right\"><b>High</b></span></p>\n          <p>Location</p>\n          <input type=\"range\" name=\"location\" min=\"0\" max=\"10\">\n          <p>Availability</p>\n          <input type=\"range\" name=\"availability\" min=\"0\" max=\"10\">\n          <p>Desired Grade</p>\n          <input type=\"range\" name=\"desired_grade\" min=\"0\" max=\"10\">\n          <p>Interaction</p>\n          <input type=\"range\" name=\"interaction\" min=\"0\" max=\"10\">\n          <p>Dedication</p>\n          <input type=\"range\" name=\"dedication\" min=\"0\" max=\"10\">\n          <p>Timing</p>\n          <input type=\"range\" name=\"timing\" min=\"0\" max=\"10\">\n          <input type=\"submit\" value=\"Filter\">\n        </form>\n      </div>\n\n      <div class=\"col-xs-8\">\n        <h1>Project Users</h1>\n          <table class=\"table\">\n            <tr>\n              <th>Username</th>\n              <th>Location</th>\n            </tr>\n";
   stack1 = helpers.each.call(depth0, (depth0 != null ? depth0.users : depth0), {"name":"each","hash":{},"fn":this.program(1, data),"inverse":this.noop,"data":data});
   if (stack1 != null) { buffer += stack1; }
-  return buffer + "\n</div>";
+  return buffer + "          </table>\n      </div>\n\n    </div>\n  </div>\n\n</div>";
 },"useData":true});
 templates['signup'] = template({"1":function(depth0,helpers,partials,data) {
   var helper, functionType="function", helperMissing=helpers.helperMissing, escapeExpression=this.escapeExpression;

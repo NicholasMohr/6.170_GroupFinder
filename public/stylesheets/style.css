@@ -1,8 +1,23 @@
 body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  	padding: 50px;
+  	font-family: 'Lato', sans-serif;
+	font-weight: 200;
 }
+
 a{
 	padding: 5px;
 	font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+}
+
+#project_container {
+	outline: 1px solid #ccc;
+}
+
+#project_panel {
+	background-color: #eaeaea;
+	text-align: center;
+}
+
+#project_users_panel {
+	
 }

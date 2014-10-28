@@ -42,8 +42,6 @@ $(document).on('click', '#signup-btn', function(evt) {
 
 loadPage = function(template, data) {
   data = data || {};
-  console.log(data);
-  console.log(currentUser);
   $('#main-container').html(Handlebars.templates[template](data));
 };
 
@@ -57,7 +55,6 @@ var loadHomePage = function() {
 
 
 var loadUserPage = function(additional) {
-  console.log('USER PAGE');
   $.get('/projects', function(allProjects) {
     loadPage(
     'user',
