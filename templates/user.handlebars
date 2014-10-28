@@ -26,7 +26,7 @@
       </div>
 
       <div class="col-sm-8">
-        <h1 class="subtitle">All Projects</h1>
+        <h3 class="subtitle">All Projects</h3>
         <table class="table">
           <tr>
             <th>Project Name</th>
@@ -41,7 +41,7 @@
               <td>{{date end_date}}</td>
               <td>
                 {{#ifIn ../user_id users}}
-                  <button id="{{name}}" class="join-project">Join</button></td>
+                  <button value="{{name}}" class="join-project-request">Join</button></td>
                 {{/ifIn}}
             </tr>
           {{/each}}

@@ -18,6 +18,7 @@ Handlebars.registerHelper('ifIn', function(elem, list, options) {
   }
 });
 
+//written by Marissa
 $(document).ready(function() {
   $.get('/users', function(response) {
     if (response.content.loggedIn) {
@@ -27,11 +28,13 @@ $(document).ready(function() {
   });
 });
 
+//written by Marissa
 $(document).on('click', '#home-link', function(evt) {
   evt.preventDefault();
   loadHomePage();
 });
 
+//written by Marissa
 $(document).on('click', '#logout-link', function(evt) {
   evt.preventDefault();
   $.post(
@@ -45,19 +48,23 @@ $(document).on('click', '#logout-link', function(evt) {
   });
 });
 
+//written by Marissa
 $(document).on('click', '#login-btn', function(evt) {
   loadPage('login');
 });
 
+//written by Marissa
 $(document).on('click', '#signup-btn', function(evt) {
   loadPage('signup');
 });
 
+//written by Marissa
 loadPage = function(template, data) {
   data = data || {};
   $('#main-container').html(Handlebars.templates[template](data));
 };
 
+//written by Marissa
 var loadHomePage = function() {
   if (currentUser) {
     loadUserPage();
@@ -66,27 +73,37 @@ var loadHomePage = function() {
   }
 };
 
-
+//written by Nick
 var loadUserInfoPage = function(additional) {
   if (currentUser) {  
+    infos = {};
+    for (index in currentUser.info){
+      if(index !== "timing"){
+        infos[index] = currentUser.info[index];
+      }else{
+        infos[index] = currentUser.info[index]*10
+      }
+    }
+    console.log(currentUser.info.timing)
     $.get('/projects', function(allProjects) {
       loadPage(
       'user-info',
       $.extend(
         {},//TODO: Check if these are needed?
-        {info: currentUser.info},
+        {info: infos},
         {allProjects: allProjects},
         {userProjects: currentUser.projects},
         {currentUser: currentUser.authentication.username},
         additional//TODO: Also check if this is needed
         )
       );
-    });   
+    });
+    //currentUser.info.timing /= 10;
   } else {
     loadPage('index');
   }   
 };
-
+//written by Danielle
 var loadUserPage = function(additional) {
   $.get('/projects', function(allProjects) {
     $.get('/users/'+currentUser.authentication.username+'/projects', function(userProjects) {

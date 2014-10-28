@@ -1,15 +1,25 @@
-$(document).on('click', '.join-project', function(evt) {
-  //open up the slider/text box to input your new info
+$(document).on('click', '.join-project-request', function(evt) {
+  var proj_name = evt.target.value;
+  loadPage(
+    'join-project',
+    $.extend(
+      {proj_name: proj_name}
+    )
+  );
+});
 
-
-  var proj_name = evt.target.id;
+$(document).on('click', '.join-project-submit', function(evt) {
+  var proj_name = evt.target.value;
+  var datas = {}
+  $(".join-proj-info").each(function(index){
+    var infoName = $(this).data('info-id');
+    console.log($(this).find('input').val());
+    datas[infoName] = $(this).find('input').val()/10;
+  });
   $.get('/projects/'+proj_name +'', function(project) {
-    $.post('/projects/'+proj_name+'/users/', {
-      proj_id: project._id,
-      desired_grade: 3,
-      interaction: 3,
-      timing: 3
-    }).done(function(response) {
+    $.post(
+      '/projects/'+proj_name+'/users/', datas
+    ).done(function(response) {
       loadProjectPage(proj_name);
     }).fail(function(jqxhr) {
       loadHomePage();
@@ -18,6 +28,7 @@ $(document).on('click', '.join-project', function(evt) {
 });
 
 $(document).on('submit', '.projectFilter', function(evt) {
+  evt.preventDefault();
   var datas = {};
   $(".weight").each(function(index){
     var name = $(this).data('name');
@@ -32,7 +43,9 @@ $(document).on('submit', '.projectFilter', function(evt) {
 
         var actualUsers = [];
         for (user in users){
-          actualUsers.push(users[user].user);
+          if(users[user].user.authentication.username !== currentUser.authentication.username){
+            actualUsers.push(users[user].user);
+          }
         }
         $.get('/projects/'+currentProject, function(project) {
           loadPage(
@@ -60,7 +73,7 @@ $(document).on('click', '.visit-project', function(evt) {
 });
 
 $(document).on('click', '.new-project', function(evt) {
-  loadNewProjectPage();
+  loadPage('new-project',$.extend());
 });
 
 $(document).on('click', '.new-project-create', function(evt) {
@@ -80,6 +93,8 @@ $(document).on('click', '.new-project-create', function(evt) {
 var loadNewProjectPage = function() {
   loadPage('new-project',$.extend());
 };
+
+
 
 var loadProjectPage = function(name) {
   currentProject = name

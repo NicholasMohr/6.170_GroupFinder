@@ -1,3 +1,4 @@
+/*Written by Danielle*/
 body {
   	padding: 50px;
   	font-family: 'Lato', sans-serif;
@@ -23,7 +24,14 @@ button {
 	padding: 10px;
 }
 
-.save-info, .new-project-create {
+.projectFilter {
+	background-color: #ccf2f2;
+	border: 1px solid #ccc;
+	padding: 10px;
+	margin: 10px;
+}
+
+.save-info, .new-project-create, .join-project-submit {
 	margin: 30px;
 	font-size: 20px;
 	padding: 10px;
@@ -31,6 +39,22 @@ button {
 	color: white;
 	font-weight: 100;
 	outline: none;
+}
+
+.visit-project, .join-project-request {
+	background-color: #00C0C0;
+	color: white;
+	font-weight: 100;
+	outline: none;
+}
+
+.join-project-container {
+	width: 400px;
+	outline: 1px solid #ccc;
+	padding: 20px;
+	background-color: #ccf2f2;
+	margin-left: auto;
+	margin-right: auto;
 }
 
 .error {
@@ -58,4 +82,5 @@ button {
 	background-color: #e5f8f8;
 	text-align: center;
 	height: 100%;
+	display: inline-block;
 }

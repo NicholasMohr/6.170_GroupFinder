@@ -1,3 +1,4 @@
+////written by Marissa
 $(document).on('submit', '#login-form', function(evt) {
   evt.preventDefault();
   $.post(
@@ -12,6 +13,7 @@ $(document).on('submit', '#login-form', function(evt) {
   });
 });
 
+//written by Marissa
 $(document).on('submit', '#signup-form', function(evt) {
   evt.preventDefault();
   var formData = helpers.getFormData(this);
