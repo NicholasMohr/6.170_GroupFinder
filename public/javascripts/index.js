@@ -47,6 +47,7 @@ loadPage = function(template, data) {
 
 var loadHomePage = function() {
   if (currentUser) {
+    console.log("got in here1")
     loadUserPage();
   } else {
     loadPage('index');
@@ -55,19 +56,25 @@ var loadHomePage = function() {
 
 
 var loadUserInfoPage = function(additional) {
-  $.get('/projects', function(allProjects) {
-    loadPage(
-    'user-info',
-    $.extend(
-      {},//TODO: Check if these are needed?
-      {info: currentUser.info},
-      {allProjects: allProjects},
-      {userProjects: currentUser.projects},
-      {currentUser: currentUser.authentication.username},
-      additional//TODO: Also check if this is needed
-      )
-    );
-  });      
+  if (currentUser) {
+    console.log("got in here")
+  
+    $.get('/projects', function(allProjects) {
+      loadPage(
+      'user-info',
+      $.extend(
+        {},//TODO: Check if these are needed?
+        {info: currentUser.info},
+        {allProjects: allProjects},
+        {userProjects: currentUser.projects},
+        {currentUser: currentUser.authentication.username},
+        additional//TODO: Also check if this is needed
+        )
+      );
+    });   
+  } else {
+    loadPage('index');
+  }   
 };
 var loadUserPage = function(additional) {
   $.get('/projects', function(allProjects) {

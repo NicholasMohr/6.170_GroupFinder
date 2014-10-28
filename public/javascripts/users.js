@@ -5,7 +5,7 @@ $(document).on('submit', '#login-form', function(evt) {
     helpers.getFormData(this)
   ).done(function(response) {
     currentUser = response;
-    loadHomePage();
+    loadUserInfoPage();
   }).fail(function(jqxhr) {
 	  console.log('fail');
 	  $('.error').text('Password or username is invalid');

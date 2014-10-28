@@ -57,7 +57,6 @@ $(document).on('click', '.info-page', function(evt) {
 
 $(document).on('click', '.save-info', function(evt) {
   console.log("save dat info");
-  var item = $(this).parent();
   var datas = {}
   $(".info").each(function(index){
     var infoName = $(this).data('info-id')
