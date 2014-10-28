@@ -1,6 +1,7 @@
 <div id="user">
 
   <p><span>Welcome, </span><span>{{currentUser}}</span> (<a href="#" id="logout-link">Logout</a>)</p>
+  <a href="#" class="info-page">edit info</a>
 
   <h1>All Projects</h1>
   {{#each allProjects}}
@@ -16,28 +17,4 @@
     </div>
   {{/each}}
 
-  <h1>Your Info</h1>
-  <div class="info" data-info-id="name">
-  	Name: <p>{{info.name}}</p>   <input type="text" value="{{info.name}}" />
-  </div>
-  <div class="info" data-info-id="email">
-    Email: <p>{{info.email}}</p>    <input type="text" value="{{info.email}}" />
-  </div>
-  <div class="info" data-info-id="phone">
-    Phone: <p>{{info.phone}}</p>  <input type="text" value="{{info.phone}}" />
-  </div>
-  <div class="info" data-info-id="location">
-    Location:<p>{{info.location}}</p>  <input type="text" value="{{info.location}}" />
-  </div>
-  <div class="info" data-info-id="availability">
-    Availability, comma seperated e.g. R10,N11,M10: <p>{{info.availability}}</p>  <input type="text" value="{{info.availability}}" />
-  </div>
-  <div class="info" data-info-id="skills">
-    Skills, comma seperated e.g. front-end,back-end,bootstrap: <p>{{info.skills}}</p>  <input type="text" value="{{info.skills}}" />
-  </div>
-  <div class="info" data-info-id="timing">
-    Timing, left is more procrastination, right is less: <p>{{info.timing}}</p>  <input type="range" name="interaction" min="0" max="10">
-
-  </div>
-  <button class="save-info">Save</button>
 </div>

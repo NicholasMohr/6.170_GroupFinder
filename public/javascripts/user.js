@@ -47,6 +47,14 @@ $(document).on('click', '.edit-button', function(evt) {
   });
 });
 */
+$(document).on('click', '.user-page', function(evt) {
+  loadUserPage();
+});
+
+$(document).on('click', '.info-page', function(evt) {
+  loadUserInfoPage();
+});
+
 $(document).on('click', '.save-info', function(evt) {
   console.log("save dat info");
   var item = $(this).parent();
@@ -69,7 +77,7 @@ $(document).on('click', '.save-info', function(evt) {
       success: function(user) {
         currentUser.info = user.info
           $.get('/projects', function(allProjects) {
-            loadUserPage();
+            loadUserInfoPage();
           })
       }
   });
