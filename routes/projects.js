@@ -109,9 +109,10 @@ router.get('/:project_name/users/filter', function(req, res) {
 								// Add 1 if the location is the same. Otherwise add 0
 								if(currentUser.info.location){
 									if(currentUser.info.location==user.info.location){
-										score+= location
+										score+= parseInt(location)
 									}
 								}
+								console.log("1: " + score + "!!!!" + typeof score + user.authentication.username);
 								// number of same hours availible over total number of hours current user is available
 								// times the user-inputted weight
 								if(currentUser.info.availibility){
@@ -120,7 +121,7 @@ router.get('/:project_name/users/filter', function(req, res) {
 								});
 									score+=(result.length*availability)/currentUser.info.availibility.length
 								}
-								
+								console.log("2: " + score + "!!!!" + typeof score)
 							
 								
 								// number of matched requested skills divided by the total number of requested skills
@@ -129,24 +130,33 @@ router.get('/:project_name/users/filter', function(req, res) {
 								var result = skillset.filter(function(c) {
 									return user.info.skills.indexOf(c) !== -1;
 								});
-									score+=(result.length*skills)/skillset.length
+									if(skillset.length > 0){
+										score+=(result.length*skills)/skillset.length
+									}
 								}
+								console.log("3: " + score + "!!!!" + typeof score)
 								var currentUserProject=currentUser.projects.filter(function(e){ return e.proj_id == projectID; });
 								var userProject=user.projects.filter(function(e){ return e.proj_id == projectID; });
 								// for grade, interaction, dedication, and timing the score is 1 minus the difference 
 								// times the user-inputed weight
 								if(currentUserProject.desired_grade){
-									score+=score+ (1-Math.abs(currentUserProject.desired_grade-userProject.desired_grade))*grade;
+									score+=(1-Math.abs(currentUserProject.desired_grade-userProject.desired_grade))*grade;
 								}
+								console.log("4: " + score + "!!!!" + typeof score)
 								if(currentUserProject.interaction){
 									score+=(1-Math.abs(currentUserProject.interaction-userProject.interaction))*interaction;
 								}
+								console.log("5: " + score + "!!!!" + typeof score)
 								if(currentUserProject.dedication){
 									score+= (1-Math.abs(currentUserProject.dedication-userProject.dedication))*dedication;
 								}
-								if(currentUser.info.timing){
-									score+=(1-Math.abs(currentUserProject.timing-userProject.timing))*timing;
+								console.log("6: " + score + "!!!!" + typeof score)
+								if(currentUser.info.timing != -1){
+									console.log(currentUser.info.timing)
+									console.log(user.info.timing)
+									score+=(1-Math.abs(currentUser.info.timing-user.info.timing))*timing;
 								}
+								console.log("7: " + score + "!!!!" + typeof score)
 								// add to list of users
 								users.push({'user':user, 'score':score});
 							});

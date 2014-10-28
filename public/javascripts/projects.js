@@ -36,7 +36,9 @@ $(document).on('submit', '.projectFilter', function(evt) {
 
         var actualUsers = [];
         for (user in users){
-          actualUsers.push(users[user].user);
+          if(users[user].user.authentication.username !== currentUser.authentication.username){
+            actualUsers.push(users[user].user);
+          }
         }
         $.get('/projects/'+currentProject, function(project) {
           loadPage(
