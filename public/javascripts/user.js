@@ -52,7 +52,7 @@ $(document).on('click', '.save-info', function(evt) {
   var item = $(this).parent();
   var datas = {}
   $(".info").each(function(index){
-    console.log($(this).find('input').val());
+    //if($(this).data('info-id'))
     datas[$(this).data('info-id')] = $(this).find('input').val();
   });
   $.ajax({
