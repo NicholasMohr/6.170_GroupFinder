@@ -20,6 +20,7 @@ $(document).on('click', '.join-project-submit', function(evt) {
 });
 
 $(document).on('submit', '.projectFilter', function(evt) {
+  evt.preventDefault();
   var datas = {};
   $(".weight").each(function(index){
     var name = $(this).data('name');
