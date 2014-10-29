@@ -32,17 +32,13 @@ $(document).on('submit', '.projectFilter', function(evt) {
   $(".weight").each(function(index){
     var name = $(this).data('name');
     //FIXTHIS THIS IS WHERE YOU're working
-    console.log($(this).val());
     datas[name] = $(this).val()*3/20 + .5;
   });
-  console.log(datas);
   $.ajax({
       url: '/projects/'+ currentProject + '/users/filter',
       type: 'GET',
       data: datas, 
       success: function(users) {
-        console.log("success")
-        console.log(users);
 
         var actualUsers = [];
         for (user in users){
@@ -89,8 +85,15 @@ $(document).on('click', '.new-project-create', function(evt) {
     '/projects/', datas
   ).done(function(response) {
     loadUserPage();
-  })
+  }).fail(function(jqxhr) {
+  });
 });
+
+var loadNewProjectPage = function() {
+  loadPage('new-project',$.extend());
+};
+
+
 
 var loadProjectPage = function(name) {
   currentProject = name

@@ -1,3 +1,4 @@
+// Written by Marissa, source: handelbars example
 var helpers = (function() {
   var self = {};
   self.getFormData = function(form) {

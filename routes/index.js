@@ -25,7 +25,7 @@ router.post('/login', passport.authenticate('local-login',
 });
 
 /**
-Logs out user.
+Logs out user. Written by Danielle
 **/
 router.post('/logout', function(req, res) {
 	req.logout();
@@ -33,7 +33,7 @@ router.post('/logout', function(req, res) {
    });
 
 /**
-Signs up user based on the username/password they submit.
+Signs up user based on the username/password they submit. Written by Danielle
 **/
 router.post('/signup', passport.authenticate('local-signup', 	{ successFlash: 'Welcome!' ,failureFlash: 'That already exists.' }), function (req,res) {
 	// if successful

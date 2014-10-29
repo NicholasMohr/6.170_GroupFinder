@@ -14,7 +14,7 @@ router.get('/', function(req, res) {
 		}
   	});
 });
-//WORKING
+//Written by Nick
 router.post('/', function(req, res) {
 	Project.find({name:req.body.name},function(err,docs){
 		if(err){
@@ -39,7 +39,7 @@ router.post('/', function(req, res) {
 	});
 	
 }); 
-//WORKING
+//Written by Nick
 router.get('/:project_name/users', function(req, res) {
 	// returning entire user object
   	Project.findOne({"name" : req.params.project_name}).populate('users').exec({},function(err, docs){
@@ -51,7 +51,7 @@ router.get('/:project_name/users', function(req, res) {
 		}
   	});
 });
-
+//Written by Nick
 router.get('/:project_name', function(req, res) {
   	Project.findOne({"name" : req.params.project_name},function(err, docs){
 		if(err|| docs==null){
@@ -62,7 +62,7 @@ router.get('/:project_name', function(req, res) {
 		}
   	});
 });
-
+//Written by Nick
 router.get('/:username/projects', function(req, res) {
 	User.findOne({'authentication.username': req.params.username}).populate("projects.proj_id").exec({}, function (err, user) {
 		if(err){
@@ -74,7 +74,7 @@ router.get('/:username/projects', function(req, res) {
 	});
 });
 
-//WORKING
+//Written by Marissa 
 router.get('/:project_name/users/filter', function(req, res) {
 	var userID=req.session.passport.user; 
 	var name=req.param('project_name');
@@ -112,6 +112,7 @@ router.get('/:project_name/users/filter', function(req, res) {
 										score+= parseInt(location)
 									}
 								}
+								console.log(score);
 								// number of same hours availible over total number of hours current user is available
 								// times the user-inputted weight
 								if(currentUser.info.availibility){
@@ -162,7 +163,7 @@ router.get('/:project_name/users/filter', function(req, res) {
 	});
 	
 });
-//WORKING
+//Written by Nick
 router.post('/:project_name/users', function(req, res) {
   	if(req.user){
 		Project.update({"name": req.params.project_name},{$addToSet: {"users":  req.user._id}},function(e,docs){
@@ -201,7 +202,7 @@ router.post('/:project_name/users', function(req, res) {
   	
 
 });
-
+//Written by Nick and Marissa
 router.delete('/:project_name/users', function(req, res) {
   	if(req.user){
   		Project.findOne({"name": req.params.project_name},function(err,docs){
@@ -219,7 +220,7 @@ router.delete('/:project_name/users', function(req, res) {
   	}
 });
 
-
+//Written by Nick and Marissa
 router.delete('/:project_name', function(req, res) {
   	if(req.user){
   		Project.remove({name:req.params.project_name},function(e,docs){

@@ -1,3 +1,4 @@
+// Written by Danielle, Nick and Marissa
 var mongoose = require('mongoose');
 
 var projectSchema = mongoose.Schema({
