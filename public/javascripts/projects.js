@@ -1,3 +1,4 @@
+//written by Danielle
 $(document).on('click', '.join-project-request', function(evt) {
   var proj_name = evt.target.value;
   loadPage(
@@ -8,6 +9,7 @@ $(document).on('click', '.join-project-request', function(evt) {
   );
 });
 
+//written by Danielle
 $(document).on('click', '.join-project-submit', function(evt) {
   var proj_name = evt.target.value;
   var datas = {}
@@ -26,12 +28,12 @@ $(document).on('click', '.join-project-submit', function(evt) {
   });
 });
 
+//written by Nick
 $(document).on('submit', '.projectFilter', function(evt) {
   evt.preventDefault();
   var datas = {};
   $(".weight").each(function(index){
     var name = $(this).data('name');
-    //FIXTHIS THIS IS WHERE YOU're working
     datas[name] = $(this).val()*3/20 + .5;
   });
   $.ajax({
@@ -62,7 +64,7 @@ $(document).on('submit', '.projectFilter', function(evt) {
   });
 });
 
-
+//written by Danielle
 $(document).on('click', '.visit-project', function(evt) {
   //open up the slider/text box to input your new info
   var proj_name = evt.target.id;

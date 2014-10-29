@@ -1,3 +1,4 @@
+//all written by Nick
 $(document).on('click', '.user-page', function(evt) {
   loadUserPage();
 });
