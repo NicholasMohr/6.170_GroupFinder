@@ -1,5 +1,6 @@
-<div id="project">
+{{!-- File Written by Danielle --}}
 
+<div id="project">
   <div class="container">
 
     <div class="row">
@@ -8,7 +9,6 @@
     </div>
 
     <div class="row" id="project_container">
-
       <div id="project_panel" class="col-sm-4">
 
         <h3>{{project.name}}</h3>
@@ -35,28 +35,28 @@
           <input class="weight" type="range" data-name="timing" min="0" max="10">
           <input type="submit" value="Filter">
         </form>
-      </div>
 
+      </div>
       <div class="col-sm-8">
         <h3>Members</h3>
-          <table class="table">
+        <table class="table">
+          <tr>
+            <th>Rank</th>
+            <th>Username</th>
+            <th>Location</th>
+          </tr>
+          {{#each users}}
             <tr>
-              <th>Rank</th>
-              <th>Username</th>
-              <th>Location</th>
+              <td>{{@index}}</td>
+              <td><a class="user_info" data-toggle="modal" data-target="#{{authentication.username}}_info">{{authentication.username}}</a></td>
+              <td>{{info.location}}</td>
             </tr>
-            {{#each users}}
-              <tr>
-                <td>{{@index}}</td>
-                <td><a class="user_info" data-toggle="modal" data-target="#{{authentication.username}}_info">{{authentication.username}}</a></td>
-                <td>{{info.location}}</td>
-              </tr>
-              {{> modal}}
-            {{/each}}
-          </table>
+            {{> modal}}
+          {{/each}}
+        </table>
       </div>
 
     </div>
-  </div>
 
+  </div>
 </div>

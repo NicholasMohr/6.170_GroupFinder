@@ -11,19 +11,18 @@ Written by Danielle
 **/
 router.get('/:username', function(req, res) {
 	User.findOne({'authentication.username': req.params.username}, function (err, user) {
-		if(err){
+		if (err) {
 			utils.sendErrResponse(res, 500, 'An unexpected error occured.');
-		}
-		else{
+		} else {
 			res.json(user);
-
 		}
-		
 	});
 });
 
-// returns success if there is a currently logged in user.
+/**
+Returns success if there is a currently logged in user.
 Written by Danielle
+**/
 router.get('/', function(req, res) {
   if (req.user) {
     utils.sendSuccessResponse(res, {loggedIn: true, user: req.user});
@@ -38,10 +37,9 @@ Written by Danielle
 **/
 router.get('/:username/projects', function(req, res) {
 	User.findOne({'authentication.username': req.params.username}).populate("projects.proj_id").exec({}, function (err, user) {
-		if(err){
+		if (err){
 		utils.sendErrResponse(res, 500, 'An unexpected error occured.');
-		}
-		else{
+		} else {
 			res.json(user.projects);
 		}
 	});
@@ -80,17 +78,15 @@ Deletes a user based on their ID.
 Written by Danielle
 **/
 router.delete('/', function(req, res) {
-  	if(req.user){
+  	if (req.user) {
   		User.remove({_id:req.user._id},function(e,docs){
-			if(e){
+			if (e) {
 				 utils.sendErrResponse(res, 500, 'An unexpected error occurred. We could not add the user to the project.');
-			}
-			else{
+			} else {
 				utils.sendSuccessResponse(res, 'Sucessfully removed user from project');
 			}
   		});
-  	}
-  	else{
+  	} else {
 		utils.sendErrResponse(res, 401, 'You must first login as a user');
   	}
 });
