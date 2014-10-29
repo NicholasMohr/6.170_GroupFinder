@@ -1,161 +1,163 @@
+{{!-- File Written by Danielle --}}
+
 <table id="schedule">
-                <tr>
-                  <th>Time</th><th>8</th><th>9</th><th>10</th><th>11</th><th>12</th><th>13</th>
-                  <th>14</th><th>15</th><th>16</th><th>17</th><th>18</th><th>19</th><th>20</th>
-                  <th>21</th><th>22</th><th>23</th><th>24</th><th>1</th><th>2</th>
-                </tr>
-                <tr>
-                  <td>Monday</td>
-                  <td><input type="checkbox" value="M8" {{#ifInAvail 'M8' info.availability}}checked{{/ifInAvail}}></td>
-                  <td><input type="checkbox" value="M9" {{#ifInAvail 'M9' info.availability}}checked{{/ifInAvail}}></td>
-                  <td><input type="checkbox" value="M10" {{#ifInAvail 'M10' info.availability}}checked{{/ifInAvail}}></td>
-                  <td><input type="checkbox" value="M11" {{#ifInAvail 'M11' info.availability}}checked{{/ifInAvail}}></td>
-                  <td><input type="checkbox" value="M12" {{#ifInAvail 'M12' info.availability}}checked{{/ifInAvail}}></td>
-                  <td><input type="checkbox" value="M13" {{#ifInAvail 'M13' info.availability}}checked{{/ifInAvail}}></td>
-                  <td><input type="checkbox" value="M14" {{#ifInAvail 'M14' info.availability}}checked{{/ifInAvail}}></td>
-                  <td><input type="checkbox" value="M15" {{#ifInAvail 'M15' info.availability}}checked{{/ifInAvail}}></td>
-                  <td><input type="checkbox" value="M16" {{#ifInAvail 'M16' info.availability}}checked{{/ifInAvail}}></td>
-                  <td><input type="checkbox" value="M17" {{#ifInAvail 'M17' info.availability}}checked{{/ifInAvail}}></td>
-                  <td><input type="checkbox" value="M18" {{#ifInAvail 'M18' info.availability}}checked{{/ifInAvail}}></td>
-                  <td><input type="checkbox" value="M19" {{#ifInAvail 'M19' info.availability}}checked{{/ifInAvail}}></td>
-                  <td><input type="checkbox" value="M20" {{#ifInAvail 'M20' info.availability}}checked{{/ifInAvail}}></td>
-                  <td><input type="checkbox" value="M21" {{#ifInAvail 'M21' info.availability}}checked{{/ifInAvail}}></td>
-                  <td><input type="checkbox" value="M22" {{#ifInAvail 'M22' info.availability}}checked{{/ifInAvail}}></td>
-                  <td><input type="checkbox" value="M23" {{#ifInAvail 'M23' info.availability}}checked{{/ifInAvail}}></td>
-                  <td><input type="checkbox" value="M24" {{#ifInAvail 'M23' info.availability}}checked{{/ifInAvail}}></td>
-                  <td><input type="checkbox" value="T1" {{#ifInAvail 'T1' info.availability}}checked{{/ifInAvail}}></td>
-                  <td><input type="checkbox" value="T2" {{#ifInAvail 'T2' info.availability}}checked{{/ifInAvail}}></td>
-                </tr>
-                <tr>
-                  <td>Tuesday</td>
-                  <td><input type="checkbox" value="T8" {{#ifInAvail 'T8' info.availability}}checked{{/ifInAvail}}></td>
-                  <td><input type="checkbox" value="T9" {{#ifInAvail 'T9' info.availability}}checked{{/ifInAvail}}></td>
-                  <td><input type="checkbox" value="T10" {{#ifInAvail 'T10' info.availability}}checked{{/ifInAvail}}></td>
-                  <td><input type="checkbox" value="T11" {{#ifInAvail 'T11' info.availability}}checked{{/ifInAvail}}></td>
-                  <td><input type="checkbox" value="T12" {{#ifInAvail 'T12' info.availability}}checked{{/ifInAvail}}></td>
-                  <td><input type="checkbox" value="T13" {{#ifInAvail 'T13' info.availability}}checked{{/ifInAvail}}></td>
-                  <td><input type="checkbox" value="T14" {{#ifInAvail 'T14' info.availability}}checked{{/ifInAvail}}></td>
-                  <td><input type="checkbox" value="T15" {{#ifInAvail 'T15' info.availability}}checked{{/ifInAvail}}></td>
-                  <td><input type="checkbox" value="T16" {{#ifInAvail 'T16' info.availability}}checked{{/ifInAvail}}></td>
-                  <td><input type="checkbox" value="T17" {{#ifInAvail 'T17' info.availability}}checked{{/ifInAvail}}></td>
-                  <td><input type="checkbox" value="T18" {{#ifInAvail 'T18' info.availability}}checked{{/ifInAvail}}></td>
-                  <td><input type="checkbox" value="T19" {{#ifInAvail 'T19' info.availability}}checked{{/ifInAvail}}></td>
-                  <td><input type="checkbox" value="T20" {{#ifInAvail 'T20' info.availability}}checked{{/ifInAvail}}></td>
-                  <td><input type="checkbox" value="T21" {{#ifInAvail 'T21' info.availability}}checked{{/ifInAvail}}></td>
-                  <td><input type="checkbox" value="T22" {{#ifInAvail 'T22' info.availability}}checked{{/ifInAvail}}></td>
-                  <td><input type="checkbox" value="T23" {{#ifInAvail 'T23' info.availability}}checked{{/ifInAvail}}></td>
-                  <td><input type="checkbox" value="T24" {{#ifInAvail 'T24' info.availability}}checked{{/ifInAvail}}></td>
-                  <td><input type="checkbox" value="W1" {{#ifInAvail 'W1' info.availability}}checked{{/ifInAvail}}></td>
-                  <td><input type="checkbox" value="W2" {{#ifInAvail 'W2' info.availability}}checked{{/ifInAvail}}></td>
-                </tr>
-                <tr>
-                  <td>Wednesday</td>
-                  <td><input type="checkbox" value="W8" {{#ifInAvail 'W8' info.availability}}checked{{/ifInAvail}}></td>
-                  <td><input type="checkbox" value="W9" {{#ifInAvail 'W9' info.availability}}checked{{/ifInAvail}}></td>
-                  <td><input type="checkbox" value="W10" {{#ifInAvail 'W10' info.availability}}checked{{/ifInAvail}}></td>
-                  <td><input type="checkbox" value="W11" {{#ifInAvail 'W11' info.availability}}checked{{/ifInAvail}}></td>
-                  <td><input type="checkbox" value="W12" {{#ifInAvail 'W12' info.availability}}checked{{/ifInAvail}}></td>
-                  <td><input type="checkbox" value="W13" {{#ifInAvail 'W13' info.availability}}checked{{/ifInAvail}}></td>
-                  <td><input type="checkbox" value="W14" {{#ifInAvail 'W14' info.availability}}checked{{/ifInAvail}}></td>
-                  <td><input type="checkbox" value="W15" {{#ifInAvail 'W15' info.availability}}checked{{/ifInAvail}}></td>
-                  <td><input type="checkbox" value="W16" {{#ifInAvail 'W16' info.availability}}checked{{/ifInAvail}}></td>
-                  <td><input type="checkbox" value="W17" {{#ifInAvail 'W17' info.availability}}checked{{/ifInAvail}}></td>
-                  <td><input type="checkbox" value="W18" {{#ifInAvail 'W18' info.availability}}checked{{/ifInAvail}}></td>
-                  <td><input type="checkbox" value="W19" {{#ifInAvail 'W19' info.availability}}checked{{/ifInAvail}}></td>
-                  <td><input type="checkbox" value="W20" {{#ifInAvail 'W20' info.availability}}checked{{/ifInAvail}}></td>
-                  <td><input type="checkbox" value="W21" {{#ifInAvail 'W21' info.availability}}checked{{/ifInAvail}}></td>
-                  <td><input type="checkbox" value="W22" {{#ifInAvail 'W22' info.availability}}checked{{/ifInAvail}}></td>
-                  <td><input type="checkbox" value="W23" {{#ifInAvail 'W23' info.availability}}checked{{/ifInAvail}}></td>
-                  <td><input type="checkbox" value="W24" {{#ifInAvail 'W24' info.availability}}checked{{/ifInAvail}}></td>
-                  <td><input type="checkbox" value="R1" {{#ifInAvail 'R1' info.availability}}checked{{/ifInAvail}}></td>
-                  <td><input type="checkbox" value="R2" {{#ifInAvail 'R2' info.availability}}checked{{/ifInAvail}}></td>
-                </tr>
-                <tr>
-                  <td>Thursday</td>
-                  <td><input type="checkbox" value="R8" {{#ifInAvail 'R8' info.availability}}checked{{/ifInAvail}}></td>
-                  <td><input type="checkbox" value="R9" {{#ifInAvail 'R9' info.availability}}checked{{/ifInAvail}}></td>
-                  <td><input type="checkbox" value="R10" {{#ifInAvail 'R10' info.availability}}checked{{/ifInAvail}}></td>
-                  <td><input type="checkbox" value="R11" {{#ifInAvail 'R11' info.availability}}checked{{/ifInAvail}}></td>
-                  <td><input type="checkbox" value="R12" {{#ifInAvail 'R12' info.availability}}checked{{/ifInAvail}}></td>
-                  <td><input type="checkbox" value="R13" {{#ifInAvail 'R13' info.availability}}checked{{/ifInAvail}}></td>
-                  <td><input type="checkbox" value="R14" {{#ifInAvail 'R14' info.availability}}checked{{/ifInAvail}}></td>
-                  <td><input type="checkbox" value="R15" {{#ifInAvail 'R15' info.availability}}checked{{/ifInAvail}}></td>
-                  <td><input type="checkbox" value="R16" {{#ifInAvail 'R16' info.availability}}checked{{/ifInAvail}}></td>
-                  <td><input type="checkbox" value="R17" {{#ifInAvail 'R17' info.availability}}checked{{/ifInAvail}}></td>
-                  <td><input type="checkbox" value="R18" {{#ifInAvail 'R18' info.availability}}checked{{/ifInAvail}}></td>
-                  <td><input type="checkbox" value="R19" {{#ifInAvail 'R19' info.availability}}checked{{/ifInAvail}}></td>
-                  <td><input type="checkbox" value="R20" {{#ifInAvail 'R20' info.availability}}checked{{/ifInAvail}}></td>
-                  <td><input type="checkbox" value="R21" {{#ifInAvail 'R21' info.availability}}checked{{/ifInAvail}}></td>
-                  <td><input type="checkbox" value="R22" {{#ifInAvail 'R22' info.availability}}checked{{/ifInAvail}}></td>
-                  <td><input type="checkbox" value="R23" {{#ifInAvail 'R23' info.availability}}checked{{/ifInAvail}}></td>
-                  <td><input type="checkbox" value="R24" {{#ifInAvail 'R24' info.availability}}checked{{/ifInAvail}}></td>
-                  <td><input type="checkbox" value="F1" {{#ifInAvail 'F1' info.availability}}checked{{/ifInAvail}}></td>
-                  <td><input type="checkbox" value="F2" {{#ifInAvail 'F2' info.availability}}checked{{/ifInAvail}}></td>
-                </tr>
-                <tr>
-                  <td>Friday</td>
-                  <td><input type="checkbox" value="F8" {{#ifInAvail 'F8' info.availability}}checked{{/ifInAvail}}></td>
-                  <td><input type="checkbox" value="F9" {{#ifInAvail 'F9' info.availability}}checked{{/ifInAvail}}></td>
-                  <td><input type="checkbox" value="F10" {{#ifInAvail 'F10' info.availability}}checked{{/ifInAvail}}></td>
-                  <td><input type="checkbox" value="F11" {{#ifInAvail 'F11' info.availability}}checked{{/ifInAvail}}></td>
-                  <td><input type="checkbox" value="F12" {{#ifInAvail 'F12' info.availability}}checked{{/ifInAvail}}></td>
-                  <td><input type="checkbox" value="F13" {{#ifInAvail 'F13' info.availability}}checked{{/ifInAvail}}></td>
-                  <td><input type="checkbox" value="F14" {{#ifInAvail 'F14' info.availability}}checked{{/ifInAvail}}></td>
-                  <td><input type="checkbox" value="F15" {{#ifInAvail 'F15' info.availability}}checked{{/ifInAvail}}></td>
-                  <td><input type="checkbox" value="F16" {{#ifInAvail 'F16' info.availability}}checked{{/ifInAvail}}></td>
-                  <td><input type="checkbox" value="F17" {{#ifInAvail 'F17' info.availability}}checked{{/ifInAvail}}></td>
-                  <td><input type="checkbox" value="F18" {{#ifInAvail 'F18' info.availability}}checked{{/ifInAvail}}></td>
-                  <td><input type="checkbox" value="F19" {{#ifInAvail 'F19' info.availability}}checked{{/ifInAvail}}></td>
-                  <td><input type="checkbox" value="F20" {{#ifInAvail 'F20' info.availability}}checked{{/ifInAvail}}></td>
-                  <td><input type="checkbox" value="F21" {{#ifInAvail 'F21' info.availability}}checked{{/ifInAvail}}></td>
-                  <td><input type="checkbox" value="F22" {{#ifInAvail 'F22' info.availability}}checked{{/ifInAvail}}></td>
-                  <td><input type="checkbox" value="F23" {{#ifInAvail 'F23' info.availability}}checked{{/ifInAvail}}></td>
-                  <td><input type="checkbox" value="F24" {{#ifInAvail 'F24' info.availability}}checked{{/ifInAvail}}></td>
-                  <td><input type="checkbox" value="S1" {{#ifInAvail 'S1' info.availability}}checked{{/ifInAvail}}></td>
-                  <td><input type="checkbox" value="S2" {{#ifInAvail 'S2' info.availability}}checked{{/ifInAvail}}></td>
-                </tr>
-                <tr>
-                  <td>Saturday</td>
-                  <td><input type="checkbox" value="S8" {{#ifInAvail 'S8' info.availability}}checked{{/ifInAvail}}></td>
-                  <td><input type="checkbox" value="S9" {{#ifInAvail 'S9' info.availability}}checked{{/ifInAvail}}></td>
-                  <td><input type="checkbox" value="10" {{#ifInAvail 'S10' info.availability}}checked{{/ifInAvail}}></td>
-                  <td><input type="checkbox" value="S11" {{#ifInAvail 'S11' info.availability}}checked{{/ifInAvail}}></td>
-                  <td><input type="checkbox" value="S12" {{#ifInAvail 'S12' info.availability}}checked{{/ifInAvail}}></td>
-                  <td><input type="checkbox" value="S13" {{#ifInAvail 'S13' info.availability}}checked{{/ifInAvail}}></td>
-                  <td><input type="checkbox" value="S14" {{#ifInAvail 'S14' info.availability}}checked{{/ifInAvail}}></td>
-                  <td><input type="checkbox" value="S15" {{#ifInAvail 'S15' info.availability}}checked{{/ifInAvail}}></td>
-                  <td><input type="checkbox" value="S16" {{#ifInAvail 'S16' info.availability}}checked{{/ifInAvail}}></td>
-                  <td><input type="checkbox" value="S17" {{#ifInAvail 'S17' info.availability}}checked{{/ifInAvail}}></td>
-                  <td><input type="checkbox" value="S18" {{#ifInAvail 'S18' info.availability}}checked{{/ifInAvail}}></td>
-                  <td><input type="checkbox" value="S19" {{#ifInAvail 'S19' info.availability}}checked{{/ifInAvail}}></td>
-                  <td><input type="checkbox" value="S20" {{#ifInAvail 'S20' info.availability}}checked{{/ifInAvail}}></td>
-                  <td><input type="checkbox" value="S21" {{#ifInAvail 'S21' info.availability}}checked{{/ifInAvail}}></td>
-                  <td><input type="checkbox" value="S22" {{#ifInAvail 'S22' info.availability}}checked{{/ifInAvail}}></td>
-                  <td><input type="checkbox" value="S23" {{#ifInAvail 'S23' info.availability}}checked{{/ifInAvail}}></td>
-                  <td><input type="checkbox" value="S24" {{#ifInAvail 'S24' info.availability}}checked{{/ifInAvail}}></td>
-                  <td><input type="checkbox" value="N1" {{#ifInAvail 'N1' info.availability}}checked{{/ifInAvail}}></td>
-                  <td><input type="checkbox" value="N2" {{#ifInAvail 'N2' info.availability}}checked{{/ifInAvail}}></td>
-                </tr>
-                <tr>
-                  <td>Sunday</td>
-                  <td><input type="checkbox" value="N8" {{#ifInAvail 'N8' info.availability}}checked{{/ifInAvail}}></td>
-                  <td><input type="checkbox" value="N9" {{#ifInAvail 'N9' info.availability}}checked{{/ifInAvail}}></td>
-                  <td><input type="checkbox" value="N10" {{#ifInAvail 'N10' info.availability}}checked{{/ifInAvail}}></td>
-                  <td><input type="checkbox" value="N11" {{#ifInAvail 'N11' info.availability}}checked{{/ifInAvail}}></td>
-                  <td><input type="checkbox" value="N12" {{#ifInAvail 'N12' info.availability}}checked{{/ifInAvail}}></td>
-                  <td><input type="checkbox" value="N13" {{#ifInAvail 'N13' info.availability}}checked{{/ifInAvail}}></td>
-                  <td><input type="checkbox" value="N14" {{#ifInAvail 'N14' info.availability}}checked{{/ifInAvail}}></td>
-                  <td><input type="checkbox" value="N15" {{#ifInAvail 'N15' info.availability}}checked{{/ifInAvail}}></td>
-                  <td><input type="checkbox" value="N16" {{#ifInAvail 'N16' info.availability}}checked{{/ifInAvail}}></td>
-                  <td><input type="checkbox" value="N17" {{#ifInAvail 'N17' info.availability}}checked{{/ifInAvail}}></td>
-                  <td><input type="checkbox" value="N18" {{#ifInAvail 'N18' info.availability}}checked{{/ifInAvail}}></td>
-                  <td><input type="checkbox" value="N19" {{#ifInAvail 'N19' info.availability}}checked{{/ifInAvail}}></td>
-                  <td><input type="checkbox" value="N20" {{#ifInAvail 'N20' info.availability}}checked{{/ifInAvail}}></td>
-                  <td><input type="checkbox" value="N21" {{#ifInAvail 'N21' info.availability}}checked{{/ifInAvail}}></td>
-                  <td><input type="checkbox" value="N22" {{#ifInAvail 'N22' info.availability}}checked{{/ifInAvail}}></td>
-                  <td><input type="checkbox" value="N23" {{#ifInAvail 'N23' info.availability}}checked{{/ifInAvail}}></td>
-                  <td><input type="checkbox" value="N24" {{#ifInAvail 'N24' info.availability}}checked{{/ifInAvail}}></td>
-                  <td><input type="checkbox" value="M1" {{#ifInAvail 'M1' info.availability}}checked{{/ifInAvail}}></td>
-                  <td><input type="checkbox" value="M2" {{#ifInAvail 'M2' info.availability}}checked{{/ifInAvail}}></td>
-                </tr>
-              </table>
+  <tr>
+    <th>Time</th><th>8</th><th>9</th><th>10</th><th>11</th><th>12</th><th>13</th>
+    <th>14</th><th>15</th><th>16</th><th>17</th><th>18</th><th>19</th><th>20</th>
+    <th>21</th><th>22</th><th>23</th><th>24</th><th>1</th><th>2</th>
+  </tr>
+  <tr>
+    <td>Monday</td>
+    <td><input type="checkbox" value="M8" {{#ifInAvail 'M8' info.availability}}checked{{/ifInAvail}}></td>
+    <td><input type="checkbox" value="M9" {{#ifInAvail 'M9' info.availability}}checked{{/ifInAvail}}></td>
+    <td><input type="checkbox" value="M10" {{#ifInAvail 'M10' info.availability}}checked{{/ifInAvail}}></td>
+    <td><input type="checkbox" value="M11" {{#ifInAvail 'M11' info.availability}}checked{{/ifInAvail}}></td>
+    <td><input type="checkbox" value="M12" {{#ifInAvail 'M12' info.availability}}checked{{/ifInAvail}}></td>
+    <td><input type="checkbox" value="M13" {{#ifInAvail 'M13' info.availability}}checked{{/ifInAvail}}></td>
+    <td><input type="checkbox" value="M14" {{#ifInAvail 'M14' info.availability}}checked{{/ifInAvail}}></td>
+    <td><input type="checkbox" value="M15" {{#ifInAvail 'M15' info.availability}}checked{{/ifInAvail}}></td>
+    <td><input type="checkbox" value="M16" {{#ifInAvail 'M16' info.availability}}checked{{/ifInAvail}}></td>
+    <td><input type="checkbox" value="M17" {{#ifInAvail 'M17' info.availability}}checked{{/ifInAvail}}></td>
+    <td><input type="checkbox" value="M18" {{#ifInAvail 'M18' info.availability}}checked{{/ifInAvail}}></td>
+    <td><input type="checkbox" value="M19" {{#ifInAvail 'M19' info.availability}}checked{{/ifInAvail}}></td>
+    <td><input type="checkbox" value="M20" {{#ifInAvail 'M20' info.availability}}checked{{/ifInAvail}}></td>
+    <td><input type="checkbox" value="M21" {{#ifInAvail 'M21' info.availability}}checked{{/ifInAvail}}></td>
+    <td><input type="checkbox" value="M22" {{#ifInAvail 'M22' info.availability}}checked{{/ifInAvail}}></td>
+    <td><input type="checkbox" value="M23" {{#ifInAvail 'M23' info.availability}}checked{{/ifInAvail}}></td>
+    <td><input type="checkbox" value="M24" {{#ifInAvail 'M23' info.availability}}checked{{/ifInAvail}}></td>
+    <td><input type="checkbox" value="T1" {{#ifInAvail 'T1' info.availability}}checked{{/ifInAvail}}></td>
+    <td><input type="checkbox" value="T2" {{#ifInAvail 'T2' info.availability}}checked{{/ifInAvail}}></td>
+  </tr>
+  <tr>
+    <td>Tuesday</td>
+    <td><input type="checkbox" value="T8" {{#ifInAvail 'T8' info.availability}}checked{{/ifInAvail}}></td>
+    <td><input type="checkbox" value="T9" {{#ifInAvail 'T9' info.availability}}checked{{/ifInAvail}}></td>
+    <td><input type="checkbox" value="T10" {{#ifInAvail 'T10' info.availability}}checked{{/ifInAvail}}></td>
+    <td><input type="checkbox" value="T11" {{#ifInAvail 'T11' info.availability}}checked{{/ifInAvail}}></td>
+    <td><input type="checkbox" value="T12" {{#ifInAvail 'T12' info.availability}}checked{{/ifInAvail}}></td>
+    <td><input type="checkbox" value="T13" {{#ifInAvail 'T13' info.availability}}checked{{/ifInAvail}}></td>
+    <td><input type="checkbox" value="T14" {{#ifInAvail 'T14' info.availability}}checked{{/ifInAvail}}></td>
+    <td><input type="checkbox" value="T15" {{#ifInAvail 'T15' info.availability}}checked{{/ifInAvail}}></td>
+    <td><input type="checkbox" value="T16" {{#ifInAvail 'T16' info.availability}}checked{{/ifInAvail}}></td>
+    <td><input type="checkbox" value="T17" {{#ifInAvail 'T17' info.availability}}checked{{/ifInAvail}}></td>
+    <td><input type="checkbox" value="T18" {{#ifInAvail 'T18' info.availability}}checked{{/ifInAvail}}></td>
+    <td><input type="checkbox" value="T19" {{#ifInAvail 'T19' info.availability}}checked{{/ifInAvail}}></td>
+    <td><input type="checkbox" value="T20" {{#ifInAvail 'T20' info.availability}}checked{{/ifInAvail}}></td>
+    <td><input type="checkbox" value="T21" {{#ifInAvail 'T21' info.availability}}checked{{/ifInAvail}}></td>
+    <td><input type="checkbox" value="T22" {{#ifInAvail 'T22' info.availability}}checked{{/ifInAvail}}></td>
+    <td><input type="checkbox" value="T23" {{#ifInAvail 'T23' info.availability}}checked{{/ifInAvail}}></td>
+    <td><input type="checkbox" value="T24" {{#ifInAvail 'T24' info.availability}}checked{{/ifInAvail}}></td>
+    <td><input type="checkbox" value="W1" {{#ifInAvail 'W1' info.availability}}checked{{/ifInAvail}}></td>
+    <td><input type="checkbox" value="W2" {{#ifInAvail 'W2' info.availability}}checked{{/ifInAvail}}></td>
+  </tr>
+  <tr>
+    <td>Wednesday</td>
+    <td><input type="checkbox" value="W8" {{#ifInAvail 'W8' info.availability}}checked{{/ifInAvail}}></td>
+    <td><input type="checkbox" value="W9" {{#ifInAvail 'W9' info.availability}}checked{{/ifInAvail}}></td>
+    <td><input type="checkbox" value="W10" {{#ifInAvail 'W10' info.availability}}checked{{/ifInAvail}}></td>
+    <td><input type="checkbox" value="W11" {{#ifInAvail 'W11' info.availability}}checked{{/ifInAvail}}></td>
+    <td><input type="checkbox" value="W12" {{#ifInAvail 'W12' info.availability}}checked{{/ifInAvail}}></td>
+    <td><input type="checkbox" value="W13" {{#ifInAvail 'W13' info.availability}}checked{{/ifInAvail}}></td>
+    <td><input type="checkbox" value="W14" {{#ifInAvail 'W14' info.availability}}checked{{/ifInAvail}}></td>
+    <td><input type="checkbox" value="W15" {{#ifInAvail 'W15' info.availability}}checked{{/ifInAvail}}></td>
+    <td><input type="checkbox" value="W16" {{#ifInAvail 'W16' info.availability}}checked{{/ifInAvail}}></td>
+    <td><input type="checkbox" value="W17" {{#ifInAvail 'W17' info.availability}}checked{{/ifInAvail}}></td>
+    <td><input type="checkbox" value="W18" {{#ifInAvail 'W18' info.availability}}checked{{/ifInAvail}}></td>
+    <td><input type="checkbox" value="W19" {{#ifInAvail 'W19' info.availability}}checked{{/ifInAvail}}></td>
+    <td><input type="checkbox" value="W20" {{#ifInAvail 'W20' info.availability}}checked{{/ifInAvail}}></td>
+    <td><input type="checkbox" value="W21" {{#ifInAvail 'W21' info.availability}}checked{{/ifInAvail}}></td>
+    <td><input type="checkbox" value="W22" {{#ifInAvail 'W22' info.availability}}checked{{/ifInAvail}}></td>
+    <td><input type="checkbox" value="W23" {{#ifInAvail 'W23' info.availability}}checked{{/ifInAvail}}></td>
+    <td><input type="checkbox" value="W24" {{#ifInAvail 'W24' info.availability}}checked{{/ifInAvail}}></td>
+    <td><input type="checkbox" value="R1" {{#ifInAvail 'R1' info.availability}}checked{{/ifInAvail}}></td>
+    <td><input type="checkbox" value="R2" {{#ifInAvail 'R2' info.availability}}checked{{/ifInAvail}}></td>
+  </tr>
+  <tr>
+    <td>Thursday</td>
+    <td><input type="checkbox" value="R8" {{#ifInAvail 'R8' info.availability}}checked{{/ifInAvail}}></td>
+    <td><input type="checkbox" value="R9" {{#ifInAvail 'R9' info.availability}}checked{{/ifInAvail}}></td>
+    <td><input type="checkbox" value="R10" {{#ifInAvail 'R10' info.availability}}checked{{/ifInAvail}}></td>
+    <td><input type="checkbox" value="R11" {{#ifInAvail 'R11' info.availability}}checked{{/ifInAvail}}></td>
+    <td><input type="checkbox" value="R12" {{#ifInAvail 'R12' info.availability}}checked{{/ifInAvail}}></td>
+    <td><input type="checkbox" value="R13" {{#ifInAvail 'R13' info.availability}}checked{{/ifInAvail}}></td>
+    <td><input type="checkbox" value="R14" {{#ifInAvail 'R14' info.availability}}checked{{/ifInAvail}}></td>
+    <td><input type="checkbox" value="R15" {{#ifInAvail 'R15' info.availability}}checked{{/ifInAvail}}></td>
+    <td><input type="checkbox" value="R16" {{#ifInAvail 'R16' info.availability}}checked{{/ifInAvail}}></td>
+    <td><input type="checkbox" value="R17" {{#ifInAvail 'R17' info.availability}}checked{{/ifInAvail}}></td>
+    <td><input type="checkbox" value="R18" {{#ifInAvail 'R18' info.availability}}checked{{/ifInAvail}}></td>
+    <td><input type="checkbox" value="R19" {{#ifInAvail 'R19' info.availability}}checked{{/ifInAvail}}></td>
+    <td><input type="checkbox" value="R20" {{#ifInAvail 'R20' info.availability}}checked{{/ifInAvail}}></td>
+    <td><input type="checkbox" value="R21" {{#ifInAvail 'R21' info.availability}}checked{{/ifInAvail}}></td>
+    <td><input type="checkbox" value="R22" {{#ifInAvail 'R22' info.availability}}checked{{/ifInAvail}}></td>
+    <td><input type="checkbox" value="R23" {{#ifInAvail 'R23' info.availability}}checked{{/ifInAvail}}></td>
+    <td><input type="checkbox" value="R24" {{#ifInAvail 'R24' info.availability}}checked{{/ifInAvail}}></td>
+    <td><input type="checkbox" value="F1" {{#ifInAvail 'F1' info.availability}}checked{{/ifInAvail}}></td>
+    <td><input type="checkbox" value="F2" {{#ifInAvail 'F2' info.availability}}checked{{/ifInAvail}}></td>
+  </tr>
+  <tr>
+    <td>Friday</td>
+    <td><input type="checkbox" value="F8" {{#ifInAvail 'F8' info.availability}}checked{{/ifInAvail}}></td>
+    <td><input type="checkbox" value="F9" {{#ifInAvail 'F9' info.availability}}checked{{/ifInAvail}}></td>
+    <td><input type="checkbox" value="F10" {{#ifInAvail 'F10' info.availability}}checked{{/ifInAvail}}></td>
+    <td><input type="checkbox" value="F11" {{#ifInAvail 'F11' info.availability}}checked{{/ifInAvail}}></td>
+    <td><input type="checkbox" value="F12" {{#ifInAvail 'F12' info.availability}}checked{{/ifInAvail}}></td>
+    <td><input type="checkbox" value="F13" {{#ifInAvail 'F13' info.availability}}checked{{/ifInAvail}}></td>
+    <td><input type="checkbox" value="F14" {{#ifInAvail 'F14' info.availability}}checked{{/ifInAvail}}></td>
+    <td><input type="checkbox" value="F15" {{#ifInAvail 'F15' info.availability}}checked{{/ifInAvail}}></td>
+    <td><input type="checkbox" value="F16" {{#ifInAvail 'F16' info.availability}}checked{{/ifInAvail}}></td>
+    <td><input type="checkbox" value="F17" {{#ifInAvail 'F17' info.availability}}checked{{/ifInAvail}}></td>
+    <td><input type="checkbox" value="F18" {{#ifInAvail 'F18' info.availability}}checked{{/ifInAvail}}></td>
+    <td><input type="checkbox" value="F19" {{#ifInAvail 'F19' info.availability}}checked{{/ifInAvail}}></td>
+    <td><input type="checkbox" value="F20" {{#ifInAvail 'F20' info.availability}}checked{{/ifInAvail}}></td>
+    <td><input type="checkbox" value="F21" {{#ifInAvail 'F21' info.availability}}checked{{/ifInAvail}}></td>
+    <td><input type="checkbox" value="F22" {{#ifInAvail 'F22' info.availability}}checked{{/ifInAvail}}></td>
+    <td><input type="checkbox" value="F23" {{#ifInAvail 'F23' info.availability}}checked{{/ifInAvail}}></td>
+    <td><input type="checkbox" value="F24" {{#ifInAvail 'F24' info.availability}}checked{{/ifInAvail}}></td>
+    <td><input type="checkbox" value="S1" {{#ifInAvail 'S1' info.availability}}checked{{/ifInAvail}}></td>
+    <td><input type="checkbox" value="S2" {{#ifInAvail 'S2' info.availability}}checked{{/ifInAvail}}></td>
+  </tr>
+  <tr>
+    <td>Saturday</td>
+    <td><input type="checkbox" value="S8" {{#ifInAvail 'S8' info.availability}}checked{{/ifInAvail}}></td>
+    <td><input type="checkbox" value="S9" {{#ifInAvail 'S9' info.availability}}checked{{/ifInAvail}}></td>
+    <td><input type="checkbox" value="10" {{#ifInAvail 'S10' info.availability}}checked{{/ifInAvail}}></td>
+    <td><input type="checkbox" value="S11" {{#ifInAvail 'S11' info.availability}}checked{{/ifInAvail}}></td>
+    <td><input type="checkbox" value="S12" {{#ifInAvail 'S12' info.availability}}checked{{/ifInAvail}}></td>
+    <td><input type="checkbox" value="S13" {{#ifInAvail 'S13' info.availability}}checked{{/ifInAvail}}></td>
+    <td><input type="checkbox" value="S14" {{#ifInAvail 'S14' info.availability}}checked{{/ifInAvail}}></td>
+    <td><input type="checkbox" value="S15" {{#ifInAvail 'S15' info.availability}}checked{{/ifInAvail}}></td>
+    <td><input type="checkbox" value="S16" {{#ifInAvail 'S16' info.availability}}checked{{/ifInAvail}}></td>
+    <td><input type="checkbox" value="S17" {{#ifInAvail 'S17' info.availability}}checked{{/ifInAvail}}></td>
+    <td><input type="checkbox" value="S18" {{#ifInAvail 'S18' info.availability}}checked{{/ifInAvail}}></td>
+    <td><input type="checkbox" value="S19" {{#ifInAvail 'S19' info.availability}}checked{{/ifInAvail}}></td>
+    <td><input type="checkbox" value="S20" {{#ifInAvail 'S20' info.availability}}checked{{/ifInAvail}}></td>
+    <td><input type="checkbox" value="S21" {{#ifInAvail 'S21' info.availability}}checked{{/ifInAvail}}></td>
+    <td><input type="checkbox" value="S22" {{#ifInAvail 'S22' info.availability}}checked{{/ifInAvail}}></td>
+    <td><input type="checkbox" value="S23" {{#ifInAvail 'S23' info.availability}}checked{{/ifInAvail}}></td>
+    <td><input type="checkbox" value="S24" {{#ifInAvail 'S24' info.availability}}checked{{/ifInAvail}}></td>
+    <td><input type="checkbox" value="N1" {{#ifInAvail 'N1' info.availability}}checked{{/ifInAvail}}></td>
+    <td><input type="checkbox" value="N2" {{#ifInAvail 'N2' info.availability}}checked{{/ifInAvail}}></td>
+  </tr>
+  <tr>
+    <td>Sunday</td>
+    <td><input type="checkbox" value="N8" {{#ifInAvail 'N8' info.availability}}checked{{/ifInAvail}}></td>
+    <td><input type="checkbox" value="N9" {{#ifInAvail 'N9' info.availability}}checked{{/ifInAvail}}></td>
+    <td><input type="checkbox" value="N10" {{#ifInAvail 'N10' info.availability}}checked{{/ifInAvail}}></td>
+    <td><input type="checkbox" value="N11" {{#ifInAvail 'N11' info.availability}}checked{{/ifInAvail}}></td>
+    <td><input type="checkbox" value="N12" {{#ifInAvail 'N12' info.availability}}checked{{/ifInAvail}}></td>
+    <td><input type="checkbox" value="N13" {{#ifInAvail 'N13' info.availability}}checked{{/ifInAvail}}></td>
+    <td><input type="checkbox" value="N14" {{#ifInAvail 'N14' info.availability}}checked{{/ifInAvail}}></td>
+    <td><input type="checkbox" value="N15" {{#ifInAvail 'N15' info.availability}}checked{{/ifInAvail}}></td>
+    <td><input type="checkbox" value="N16" {{#ifInAvail 'N16' info.availability}}checked{{/ifInAvail}}></td>
+    <td><input type="checkbox" value="N17" {{#ifInAvail 'N17' info.availability}}checked{{/ifInAvail}}></td>
+    <td><input type="checkbox" value="N18" {{#ifInAvail 'N18' info.availability}}checked{{/ifInAvail}}></td>
+    <td><input type="checkbox" value="N19" {{#ifInAvail 'N19' info.availability}}checked{{/ifInAvail}}></td>
+    <td><input type="checkbox" value="N20" {{#ifInAvail 'N20' info.availability}}checked{{/ifInAvail}}></td>
+    <td><input type="checkbox" value="N21" {{#ifInAvail 'N21' info.availability}}checked{{/ifInAvail}}></td>
+    <td><input type="checkbox" value="N22" {{#ifInAvail 'N22' info.availability}}checked{{/ifInAvail}}></td>
+    <td><input type="checkbox" value="N23" {{#ifInAvail 'N23' info.availability}}checked{{/ifInAvail}}></td>
+    <td><input type="checkbox" value="N24" {{#ifInAvail 'N24' info.availability}}checked{{/ifInAvail}}></td>
+    <td><input type="checkbox" value="M1" {{#ifInAvail 'M1' info.availability}}checked{{/ifInAvail}}></td>
+    <td><input type="checkbox" value="M2" {{#ifInAvail 'M2' info.availability}}checked{{/ifInAvail}}></td>
+  </tr>
+</table>

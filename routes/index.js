@@ -2,12 +2,12 @@ var express = require('express');
 var cookieparser = require('cookie-parser');
 var router = express.Router();
 var utils = require('../utils/utils');
-
 var passport = require('passport');
 LocalStrategy = require('passport-local').Strategy;
 
 /**
 Renders home page.
+Written by Danielle
 **/
 /* GET home page. */
 router.get('/', function(req, res) {
@@ -17,6 +17,7 @@ router.get('/', function(req, res) {
 module.exports = router;
 /**
 Logs in user based on username/password they submit.
+Written by Danielle
 **/
 router.post('/login', passport.authenticate('local-login', 
 	{ failureFlash: 'Invalid username or password.' ,successFlash: 'Welcome!' }
@@ -25,7 +26,8 @@ router.post('/login', passport.authenticate('local-login',
 });
 
 /**
-Logs out user. Written by Danielle
+Logs out user.
+Written by Danielle
 **/
 router.post('/logout', function(req, res) {
 	req.logout();
@@ -33,10 +35,10 @@ router.post('/logout', function(req, res) {
    });
 
 /**
-Signs up user based on the username/password they submit. Written by Danielle
+Signs up user based on the username/password they submit.
+Written by Danielle
 **/
 router.post('/signup', passport.authenticate('local-signup', 	{ successFlash: 'Welcome!' ,failureFlash: 'That already exists.' }), function (req,res) {
-	// if successful
 	res.json(req.user);
 });
 

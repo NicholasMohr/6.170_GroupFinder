@@ -2,7 +2,10 @@ var LocalStrategy = require('passport-local').Strategy;
 var User = require('../models/users');
 var utils = require('../utils/utils');
 
-// expose functions to app
+/**
+Passport Utilities
+Written by Danielle
+**/
 module.exports = function(passport) {
 
     passport.serializeUser(function(user, done) {

@@ -6,7 +6,8 @@ var utils = require('../utils/utils');
 
 
 /**
-Returns the profile information for the requested user. Written by Danielle
+Returns the profile information for the requested user.
+Written by Danielle
 **/
 router.get('/:username', function(req, res) {
 	User.findOne({'authentication.username': req.params.username}, function (err, user) {
@@ -21,7 +22,8 @@ router.get('/:username', function(req, res) {
 	});
 });
 
-// returns success if there is a currently logged in user. Written by Danielle
+// returns success if there is a currently logged in user.
+Written by Danielle
 router.get('/', function(req, res) {
   if (req.user) {
     utils.sendSuccessResponse(res, {loggedIn: true, user: req.user});
@@ -31,7 +33,8 @@ router.get('/', function(req, res) {
 });
 
 /**
-Returns a list of projects associated with the requested user. Written by Danielle
+Returns a list of projects associated with the requested user.
+Written by Danielle
 **/
 router.get('/:username/projects', function(req, res) {
 	User.findOne({'authentication.username': req.params.username}).populate("projects.proj_id").exec({}, function (err, user) {
@@ -47,7 +50,7 @@ router.get('/:username/projects', function(req, res) {
 /**
 Updates user info. Users can update:
   password, name, email, phone, location, availability, skills, timing
-  Written by Danielle
+Written by Danielle
 **/
 router.put('/', function (req,res) {
 	var password = req.user.authentication.password;
