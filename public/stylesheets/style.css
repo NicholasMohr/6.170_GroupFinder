@@ -2,6 +2,7 @@ body {
   	padding: 50px;
   	font-family: 'Lato', sans-serif;
 	font-weight: 200;
+	word-wrap: break-word;
 }
 
 a{
@@ -82,4 +83,18 @@ button {
 	text-align: center;
 	height: 100%;
 	display: inline-block;
+}
+
+#schedule td {
+	border: 1px solid #ccc;
+	width: 25px;
+}
+
+#schedule th {
+	text-align: center;
+}
+
+#schedule-container table {
+	margin-left: auto;
+	margin-right: auto;
 }

@@ -40,9 +40,9 @@
               <td>{{users.length}}</td>
               <td>{{date end_date}}</td>
               <td>
-                {{#ifIn ../user_id users}}
+                {{#ifInProj ../user_id users}}
                   <button value="{{name}}" class="join-project-request">Join</button></td>
-                {{/ifIn}}
+                {{/ifInProj}}
             </tr>
           {{/each}}
         </table>

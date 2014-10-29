@@ -1,6 +1,7 @@
 currentUser = undefined;
 
 Handlebars.registerPartial('modal', Handlebars.templates['modal']);
+Handlebars.registerPartial('schedule', Handlebars.templates['schedule']);
 
 Handlebars.registerHelper("date", function(datetime) {
   var monthNames = [ "January", "February", "March", "April", "May", "June",
@@ -10,11 +11,21 @@ Handlebars.registerHelper("date", function(datetime) {
   return formatted;
 });
 
-Handlebars.registerHelper('ifIn', function(elem, list, options) {
+Handlebars.registerHelper('ifInProj', function(elem, list, options) {
   if(list.indexOf(elem) > -1) {
     return 'member';
   } else {
     return options.fn(this);
+  }
+});
+
+Handlebars.registerHelper('ifInAvail', function(elem, list, options) {
+  console.log(elem);
+  console.log(list);
+  if(list.indexOf(elem) > -1) {
+    return options.fn(this);
+  } else {
+    return options.inverse(this);
   }
 });
 

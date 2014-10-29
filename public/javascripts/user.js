@@ -14,14 +14,21 @@ $(document).on('click', '.save-info', function(evt) {
   var datas = {}
   $(".info").each(function(index){
     var infoName = $(this).data('info-id')
-    if(infoName === 'availability' || infoName === 'skills'){
-      datas[infoName] = $(this).find('input').val().split(",")
-    } else if(infoName === 'timing'){
+    if (infoName === 'availability') {
+      var availability = []
+      $("input:checked").each(function (index) {
+          availability.push($(this).val());
+      });
+      datas[infoName] = availability;
+    } else if (infoName === 'skills') {
+      datas[infoName] = $(this).find('textarea').val().split(",")
+    } else if (infoName === 'timing') {
       datas[infoName] = $(this).find('input').val()/10
-    } else{
+    } else {
       datas[infoName] = $(this).find('input').val();
     }
   });
+  console.log(datas);
   $.ajax({
       url: '/users',
       type: 'PUT',

@@ -33,22 +33,33 @@
               <b>Location:</b> {{info.location}} <br>
               <input type="text" value="{{info.location}}" />
             </div>
-            <div class="info" data-info-id="availability">
-              <b>Availability:</b> <br> <i>comma seperated e.g. R10,N11,M10</i> <br> {{info.availability}} <br>
-              <input type="text" value="{{info.availability}}" />
-            </div>
           </div>
         </div>
 
         <div class="col-xs-6">
           <div class="center">
             <div class="info" data-info-id="skills">
-              <b>Skills:</b> <br> <i>comma seperated e.g. front-end,back-end,bootstrap</i> <br> {{info.skills}} <br>
-              <input type="text" value="{{info.skills}}" />
+              <b>Skills:</b> {{info.skills}} <br> <i>comma seperated e.g. front-end,back-end,bootstrap</i> <br>
+              <textarea type="text" rows="6">{{info.skills}}</textarea>
             </div>
             <div class="info" data-info-id="timing">
               <b>Timing</b> <br> <i> left is more procrastination, right is less </i> <br> {{info.timing}} <br>
               <input type="range" name="interaction" min="0" max="10" value="{{info.timing}}">
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-xs-12">
+          <div class="center">
+            <div class="info" data-info-id="availability">
+
+              <b>Availability:</b> {{info.availability}} <br>
+              <div id="schedule-container">
+                {{> schedule}}
+              </div<
+
             </div>
           </div>
         </div>
@@ -59,8 +70,6 @@
       </div>
 
     </div>
-
-    
 
   </div>
 </div>

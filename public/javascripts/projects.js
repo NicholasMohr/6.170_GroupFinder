@@ -13,7 +13,6 @@ $(document).on('click', '.join-project-submit', function(evt) {
   var datas = {}
   $(".join-proj-info").each(function(index){
     var infoName = $(this).data('info-id');
-    console.log($(this).find('input').val());
     datas[infoName] = $(this).find('input').val()/10;
   });
   $.get('/projects/'+proj_name +'', function(project) {
